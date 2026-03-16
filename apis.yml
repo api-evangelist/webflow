@@ -1,0 +1,104 @@
+aid: webflow
+name: Webflow
+description: >-
+  Webflow provides a visual web development platform with a comprehensive REST
+  API for programmatically managing sites, CMS collections, ecommerce, assets,
+  users, and forms. The Data API enables developers to build integrations,
+  automate workflows, and extend Webflow's core functionality.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - CMS
+  - Web Development
+  - No-Code
+  - Ecommerce
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/webflow/refs/heads/main/apis.yml
+created: '2026-03-16'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: webflow:data-api
+    name: Webflow Data API
+    description: >-
+      The Webflow Data API is a RESTful API that provides access to Webflow
+      sites, pages, CMS collections, ecommerce products and orders, assets,
+      users, and forms. All V2 API endpoints start with https://api.webflow.com/v2
+      and use OAuth 2.0 for authentication.
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    tags:
+      - CMS
+      - Ecommerce
+      - Sites
+      - Content Management
+    properties:
+      - type: Documentation
+        url: https://developers.webflow.com/data/reference/rest-introduction
+      - type: Getting Started
+        url: https://developers.webflow.com/data/reference/rest-introduction/quick-start
+  - aid: webflow:designer-extension-api
+    name: Webflow Designer Extension API
+    description: >-
+      The Webflow Designer Extension API allows developers to build extensions
+      that run inside the Webflow Designer, enabling custom UI panels and
+      interactions with the designer canvas and site content.
+    humanURL: https://developers.webflow.com/designer/reference/introduction
+    tags:
+      - Designer
+      - Extensions
+      - Plugins
+    properties:
+      - type: Documentation
+        url: https://developers.webflow.com/designer/reference/introduction
+common:
+  - url: https://developers.webflow.com/
+    name: Webflow Developer Documentation
+    type: Portal
+    description: 'null'
+  - url: https://developers.webflow.com/data/docs/data-clients
+    name: Working with the Data API
+    type: Documentation
+    description: 'null'
+  - url: https://developers.webflow.com/data/reference/rest-introduction/quick-start
+    name: Getting Started | Webflow Developer Documentation
+    type: Getting Started
+    description: 'null'
+  - url: https://webflow.com/
+    name: Webflow - Website Builder
+    type: Website
+    description: 'null'
+  - url: https://webflow.com/blog
+    name: Webflow Blog
+    type: Blog
+    description: 'null'
+  - url: https://help.webflow.com/
+    name: Webflow Help Center
+    type: Support
+    description: 'null'
+  - url: https://forum.webflow.com/
+    name: Webflow Forum
+    type: Community
+    description: 'null'
+  - url: https://university.webflow.com/
+    name: Webflow University
+    type: LearningCenter
+    description: 'null'
+  - url: https://github.com/webflow
+    name: Webflow GitHub Organization
+    type: GitHubOrganization
+    description: 'null'
+  - url: https://webflow.com/legal/terms
+    name: Terms of Service | Webflow
+    type: TermsOfService
+    description: 'null'
+  - url: https://webflow.com/legal/privacy
+    name: Privacy Policy | Webflow
+    type: PrivacyPolicy
+    description: 'null'
+  - url: https://status.webflow.com/
+    name: Webflow Status
+    type: Status
+    description: 'null'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
