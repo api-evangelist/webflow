@@ -1,0 +1,856 @@
+asyncapi: 2.6.0
+
+info:
+  title: Webflow Webhooks
+  version: 2.0.0
+  description: |
+    AsyncAPI specification for Webflow webhook events. Webflow delivers
+    webhook payloads via HTTP POST to a URL you register through the
+    Webflow API. Each payload includes a signature header
+    (`X-Webflow-Signature`) that lets you verify the request originated
+    from Webflow.
+
+    ## Webhook Registration
+
+    Register a webhook by sending a POST request to:
+
+        POST https://api.webflow.com/v2/sites/{site_id}/webhooks
+
+    with a JSON body containing `triggerType` and `url`. A Bearer token
+    is required in the `Authorization` header.
+
+    ## Signature Validation
+
+    Every webhook delivery includes an `X-Webflow-Signature` header
+    containing an HMAC-SHA256 digest of the request body, computed with
+    the secret returned when the webhook was created. Compare this value
+    against your own HMAC computation to verify authenticity.
+  contact:
+    name: Webflow Developer Platform
+    url: https://developers.webflow.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+
+servers:
+  webhookDelivery:
+    url: https://{yourDomain}
+    protocol: https
+    description: |
+      The HTTPS endpoint you provide when registering a webhook. Webflow
+      delivers event payloads here via POST.
+    variables:
+      yourDomain:
+        description: The domain of the URL you registered to receive webhooks.
+        default: example.com
+    security:
+      - webhookSignature: []
+
+  webflowApi:
+    url: https://api.webflow.com/v2
+    protocol: https
+    description: |
+      Webflow REST API used to register, list, and delete webhooks.
+    security:
+      - bearerToken: []
+
+channels:
+  form_submission:
+    description: Triggered when a visitor submits a form on a Webflow site.
+    publish:
+      operationId: receiveFormSubmission
+      summary: Receive a form submission event.
+      message:
+        $ref: '#/components/messages/FormSubmission'
+
+  site_publish:
+    description: Triggered when a Webflow site is published.
+    publish:
+      operationId: receiveSitePublish
+      summary: Receive a site publish event.
+      message:
+        $ref: '#/components/messages/SitePublish'
+
+  page_created:
+    description: Triggered when a new page is created in the Webflow Designer.
+    publish:
+      operationId: receivePageCreated
+      summary: Receive a page created event.
+      message:
+        $ref: '#/components/messages/PageCreated'
+
+  page_metadata_updated:
+    description: Triggered when page metadata (title, description, OG tags, etc.) is updated.
+    publish:
+      operationId: receivePageMetadataUpdated
+      summary: Receive a page metadata updated event.
+      message:
+        $ref: '#/components/messages/PageMetadataUpdated'
+
+  page_deleted:
+    description: Triggered when a page is deleted from a Webflow site.
+    publish:
+      operationId: receivePageDeleted
+      summary: Receive a page deleted event.
+      message:
+        $ref: '#/components/messages/PageDeleted'
+
+  ecomm_new_order:
+    description: Triggered when a new e-commerce order is placed.
+    publish:
+      operationId: receiveEcommNewOrder
+      summary: Receive a new e-commerce order event.
+      message:
+        $ref: '#/components/messages/EcommNewOrder'
+
+  ecomm_order_changed:
+    description: Triggered when an existing e-commerce order is updated (status change, fulfillment, etc.).
+    publish:
+      operationId: receiveEcommOrderChanged
+      summary: Receive an e-commerce order changed event.
+      message:
+        $ref: '#/components/messages/EcommOrderChanged'
+
+  ecomm_inventory_changed:
+    description: Triggered when inventory quantities change for an e-commerce product.
+    publish:
+      operationId: receiveEcommInventoryChanged
+      summary: Receive an e-commerce inventory changed event.
+      message:
+        $ref: '#/components/messages/EcommInventoryChanged'
+
+  collection_item_created:
+    description: Triggered when a new CMS collection item is created.
+    publish:
+      operationId: receiveCollectionItemCreated
+      summary: Receive a collection item created event.
+      message:
+        $ref: '#/components/messages/CollectionItemCreated'
+
+  collection_item_changed:
+    description: Triggered when a CMS collection item is updated.
+    publish:
+      operationId: receiveCollectionItemChanged
+      summary: Receive a collection item changed event.
+      message:
+        $ref: '#/components/messages/CollectionItemChanged'
+
+  collection_item_deleted:
+    description: Triggered when a CMS collection item is deleted.
+    publish:
+      operationId: receiveCollectionItemDeleted
+      summary: Receive a collection item deleted event.
+      message:
+        $ref: '#/components/messages/CollectionItemDeleted'
+
+  collection_item_published:
+    description: Triggered when a CMS collection item is published (made live).
+    publish:
+      operationId: receiveCollectionItemPublished
+      summary: Receive a collection item published event.
+      message:
+        $ref: '#/components/messages/CollectionItemPublished'
+
+  collection_item_unpublished:
+    description: Triggered when a CMS collection item is unpublished (taken offline).
+    publish:
+      operationId: receiveCollectionItemUnpublished
+      summary: Receive a collection item unpublished event.
+      message:
+        $ref: '#/components/messages/CollectionItemUnpublished'
+
+  comment_created:
+    description: Triggered when a comment is added in the Webflow Designer.
+    publish:
+      operationId: receiveCommentCreated
+      summary: Receive a comment created event.
+      message:
+        $ref: '#/components/messages/CommentCreated'
+
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        Bearer token issued by Webflow. Required when registering,
+        listing, or deleting webhooks via the Webflow API.
+
+    webhookSignature:
+      type: httpApiKey
+      name: X-Webflow-Signature
+      in: header
+      description: |
+        HMAC-SHA256 signature of the request body, computed with the
+        webhook secret returned at registration time. Verify this header
+        to confirm the payload was sent by Webflow.
+
+  schemas:
+    WebhookEnvelope:
+      type: object
+      description: Common fields present in every Webflow webhook payload.
+      properties:
+        _id:
+          type: string
+          description: Unique identifier for the webhook event.
+        triggerType:
+          type: string
+          description: The event trigger type.
+        siteId:
+          type: string
+          description: The Webflow site ID associated with this event.
+        createdOn:
+          type: string
+          format: date-time
+          description: Timestamp when the event was created.
+      required:
+        - _id
+        - triggerType
+        - siteId
+        - createdOn
+
+    FormSubmissionPayload:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - form_submission
+            data:
+              type: object
+              description: The form submission data.
+              properties:
+                formId:
+                  type: string
+                  description: Identifier of the form that was submitted.
+                formName:
+                  type: string
+                  description: Display name of the form.
+                submissionId:
+                  type: string
+                  description: Unique identifier for this submission.
+                fields:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  description: Key-value pairs of submitted form field names and values.
+                dateSubmitted:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the submission.
+
+    SitePublishPayload:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - site_publish
+            data:
+              type: object
+              description: Details about the site publish event.
+              properties:
+                siteId:
+                  type: string
+                  description: The site that was published.
+                publishedBy:
+                  type: object
+                  properties:
+                    userId:
+                      type: string
+                    displayName:
+                      type: string
+                publishedOn:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the publish action.
+                domains:
+                  type: array
+                  items:
+                    type: string
+                  description: The domains the site was published to.
+
+    PagePayload:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          properties:
+            data:
+              type: object
+              description: Page data.
+              properties:
+                pageId:
+                  type: string
+                  description: Unique identifier for the page.
+                title:
+                  type: string
+                  description: The page title.
+                slug:
+                  type: string
+                  description: URL slug for the page.
+                parentId:
+                  type: string
+                  description: Identifier of the parent page, if any.
+                createdOn:
+                  type: string
+                  format: date-time
+                updatedOn:
+                  type: string
+                  format: date-time
+
+    PageCreatedPayload:
+      allOf:
+        - $ref: '#/components/schemas/PagePayload'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - page_created
+
+    PageMetadataUpdatedPayload:
+      allOf:
+        - $ref: '#/components/schemas/PagePayload'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - page_metadata_updated
+            data:
+              type: object
+              properties:
+                pageId:
+                  type: string
+                title:
+                  type: string
+                description:
+                  type: string
+                  description: The page meta description.
+                openGraphTitle:
+                  type: string
+                openGraphDescription:
+                  type: string
+                openGraphImage:
+                  type: string
+                  format: uri
+
+    PageDeletedPayload:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - page_deleted
+            data:
+              type: object
+              properties:
+                pageId:
+                  type: string
+                  description: Identifier of the deleted page.
+                deletedOn:
+                  type: string
+                  format: date-time
+
+    EcommOrderPayload:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          properties:
+            data:
+              type: object
+              description: E-commerce order data.
+              properties:
+                orderId:
+                  type: string
+                  description: Unique order identifier.
+                status:
+                  type: string
+                  description: Current order status.
+                  enum:
+                    - pending
+                    - fulfilled
+                    - refunded
+                    - disputed
+                    - cancelled
+                acceptedOn:
+                  type: string
+                  format: date-time
+                customerInfo:
+                  type: object
+                  properties:
+                    fullName:
+                      type: string
+                    email:
+                      type: string
+                      format: email
+                totalPrice:
+                  type: object
+                  properties:
+                    value:
+                      type: number
+                    unit:
+                      type: string
+                      description: ISO 4217 currency code.
+                purchasedItems:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      productId:
+                        type: string
+                      productName:
+                        type: string
+                      variantId:
+                        type: string
+                      quantity:
+                        type: integer
+                      price:
+                        type: object
+                        properties:
+                          value:
+                            type: number
+                          unit:
+                            type: string
+
+    EcommNewOrderPayload:
+      allOf:
+        - $ref: '#/components/schemas/EcommOrderPayload'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - ecomm_new_order
+
+    EcommOrderChangedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EcommOrderPayload'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - ecomm_order_changed
+
+    EcommInventoryChangedPayload:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - ecomm_inventory_changed
+            data:
+              type: object
+              description: Inventory change details.
+              properties:
+                productId:
+                  type: string
+                  description: Identifier of the product whose inventory changed.
+                productName:
+                  type: string
+                variantId:
+                  type: string
+                  description: Identifier of the specific variant, if applicable.
+                previousQuantity:
+                  type: integer
+                  description: Inventory count before the change.
+                newQuantity:
+                  type: integer
+                  description: Inventory count after the change.
+                updatedOn:
+                  type: string
+                  format: date-time
+
+    CollectionItemPayload:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          properties:
+            data:
+              type: object
+              description: CMS collection item data.
+              properties:
+                collectionId:
+                  type: string
+                  description: Identifier of the CMS collection.
+                collectionName:
+                  type: string
+                itemId:
+                  type: string
+                  description: Unique identifier of the collection item.
+                slug:
+                  type: string
+                  description: URL slug for the item.
+                name:
+                  type: string
+                  description: Display name of the item.
+                fields:
+                  type: object
+                  additionalProperties: true
+                  description: Dynamic field data for the collection item.
+                createdOn:
+                  type: string
+                  format: date-time
+                updatedOn:
+                  type: string
+                  format: date-time
+
+    CollectionItemCreatedPayload:
+      allOf:
+        - $ref: '#/components/schemas/CollectionItemPayload'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - collection_item_created
+
+    CollectionItemChangedPayload:
+      allOf:
+        - $ref: '#/components/schemas/CollectionItemPayload'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - collection_item_changed
+
+    CollectionItemDeletedPayload:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - collection_item_deleted
+            data:
+              type: object
+              properties:
+                collectionId:
+                  type: string
+                itemId:
+                  type: string
+                deletedOn:
+                  type: string
+                  format: date-time
+
+    CollectionItemPublishedPayload:
+      allOf:
+        - $ref: '#/components/schemas/CollectionItemPayload'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - collection_item_published
+
+    CollectionItemUnpublishedPayload:
+      allOf:
+        - $ref: '#/components/schemas/CollectionItemPayload'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - collection_item_unpublished
+
+    CommentCreatedPayload:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          properties:
+            triggerType:
+              type: string
+              enum:
+                - comment_created
+            data:
+              type: object
+              description: Comment details.
+              properties:
+                commentId:
+                  type: string
+                  description: Unique identifier for the comment.
+                author:
+                  type: object
+                  properties:
+                    userId:
+                      type: string
+                    displayName:
+                      type: string
+                body:
+                  type: string
+                  description: The comment text.
+                pageId:
+                  type: string
+                  description: The page the comment was left on.
+                itemId:
+                  type: string
+                  description: The element or item the comment refers to, if applicable.
+                createdOn:
+                  type: string
+                  format: date-time
+
+    WebhookRegistrationRequest:
+      type: object
+      description: Request body for registering a new webhook.
+      required:
+        - triggerType
+        - url
+      properties:
+        triggerType:
+          type: string
+          description: The event type to subscribe to.
+          enum:
+            - form_submission
+            - site_publish
+            - page_created
+            - page_metadata_updated
+            - page_deleted
+            - ecomm_new_order
+            - ecomm_order_changed
+            - ecomm_inventory_changed
+            - collection_item_created
+            - collection_item_changed
+            - collection_item_deleted
+            - collection_item_published
+            - collection_item_unpublished
+            - comment_created
+        url:
+          type: string
+          format: uri
+          description: The HTTPS URL that will receive webhook POST requests.
+        filter:
+          type: object
+          additionalProperties: true
+          description: Optional filter criteria to narrow which events trigger this webhook.
+
+    WebhookRegistrationResponse:
+      type: object
+      description: Response returned after successfully registering a webhook.
+      properties:
+        _id:
+          type: string
+          description: Unique identifier for the registered webhook.
+        triggerType:
+          type: string
+        url:
+          type: string
+          format: uri
+        siteId:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+        secret:
+          type: string
+          description: |
+            The HMAC secret used to compute the X-Webflow-Signature header.
+            Store this securely; it is only returned once at creation time.
+
+  messages:
+    FormSubmission:
+      name: FormSubmission
+      title: Form Submission
+      summary: A visitor submitted a form on the Webflow site.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/FormSubmissionPayload'
+
+    SitePublish:
+      name: SitePublish
+      title: Site Publish
+      summary: The Webflow site was published.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/SitePublishPayload'
+
+    PageCreated:
+      name: PageCreated
+      title: Page Created
+      summary: A new page was created in the Webflow Designer.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/PageCreatedPayload'
+
+    PageMetadataUpdated:
+      name: PageMetadataUpdated
+      title: Page Metadata Updated
+      summary: Page metadata was updated.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/PageMetadataUpdatedPayload'
+
+    PageDeleted:
+      name: PageDeleted
+      title: Page Deleted
+      summary: A page was deleted from the Webflow site.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/PageDeletedPayload'
+
+    EcommNewOrder:
+      name: EcommNewOrder
+      title: New E-Commerce Order
+      summary: A new e-commerce order was placed.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/EcommNewOrderPayload'
+
+    EcommOrderChanged:
+      name: EcommOrderChanged
+      title: E-Commerce Order Changed
+      summary: An existing e-commerce order was updated.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/EcommOrderChangedPayload'
+
+    EcommInventoryChanged:
+      name: EcommInventoryChanged
+      title: E-Commerce Inventory Changed
+      summary: Inventory quantities changed for a product.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/EcommInventoryChangedPayload'
+
+    CollectionItemCreated:
+      name: CollectionItemCreated
+      title: Collection Item Created
+      summary: A new CMS collection item was created.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/CollectionItemCreatedPayload'
+
+    CollectionItemChanged:
+      name: CollectionItemChanged
+      title: Collection Item Changed
+      summary: A CMS collection item was updated.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/CollectionItemChangedPayload'
+
+    CollectionItemDeleted:
+      name: CollectionItemDeleted
+      title: Collection Item Deleted
+      summary: A CMS collection item was deleted.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/CollectionItemDeletedPayload'
+
+    CollectionItemPublished:
+      name: CollectionItemPublished
+      title: Collection Item Published
+      summary: A CMS collection item was published.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/CollectionItemPublishedPayload'
+
+    CollectionItemUnpublished:
+      name: CollectionItemUnpublished
+      title: Collection Item Unpublished
+      summary: A CMS collection item was unpublished.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/CollectionItemUnpublishedPayload'
+
+    CommentCreated:
+      name: CommentCreated
+      title: Comment Created
+      summary: A comment was added in the Webflow Designer.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          X-Webflow-Signature:
+            type: string
+            description: HMAC-SHA256 signature for payload verification.
+      payload:
+        $ref: '#/components/schemas/CommentCreatedPayload'

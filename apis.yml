@@ -15,7 +15,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/webflow/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-03-16'
+modified: '2026-03-17'
 specificationVersion: '0.19'
 apis:
   - aid: webflow:data-api
@@ -36,6 +36,18 @@ apis:
         url: https://developers.webflow.com/data/reference/rest-introduction
       - type: Getting Started
         url: https://developers.webflow.com/data/reference/rest-introduction/quick-start
+      - type: Authentication
+        url: https://developers.webflow.com/data/reference/authentication
+      - type: Rate Limits
+        url: https://developers.webflow.com/data/reference/rate-limits
+      - type: Change Log
+        url: https://developers.webflow.com/data/v2.0.0/changelog
+      - type: SDKs
+        url: https://developers.webflow.com/data/reference/sdks
+      - type: OpenAPI
+        url: openapi/webflow-data-api-openapi.yml
+      - type: AsyncAPI
+        url: asyncapi/webflow-webhooks-asyncapi.yml
   - aid: webflow:designer-extension-api
     name: Webflow Designer Extension API
     description: >-
@@ -50,6 +62,244 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.webflow.com/designer/reference/introduction
+      - type: Getting Started
+        url: https://developers.webflow.com/designer/docs/getting-started-designer-extensions
+  - aid: webflow:meta-api
+    name: Webflow Meta API
+    description: >-
+      The Webflow Meta API provides endpoints for retrieving information about
+      the authorized user and introspecting API tokens, including scopes and
+      permissions.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Authentication
+      - Tokens
+      - Meta
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-meta-openapi.yml
+  - aid: webflow:sites-api
+    name: Webflow Sites API
+    description: >-
+      The Webflow Sites API provides endpoints for managing Webflow sites
+      within a workspace, including creating, updating, publishing, and
+      deleting sites, as well as managing custom domains, redirects,
+      robots.txt, and site activity logs.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Sites
+      - Domains
+      - Publishing
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-sites-openapi.yml
+  - aid: webflow:pages-api
+    name: Webflow Pages API
+    description: >-
+      The Webflow Pages API provides endpoints for listing, retrieving,
+      and updating page metadata and DOM content for pages within a
+      Webflow site.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Pages
+      - Content
+      - DOM
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-pages-openapi.yml
+  - aid: webflow:collections-api
+    name: Webflow Collections API
+    description: >-
+      The Webflow Collections API provides endpoints for managing CMS
+      collections, including creating, listing, and deleting collections,
+      as well as managing collection fields and their configurations.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - CMS
+      - Collections
+      - Fields
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-collections-openapi.yml
+  - aid: webflow:items-api
+    name: Webflow CMS Items API
+    description: >-
+      The Webflow CMS Items API provides endpoints for creating, reading,
+      updating, deleting, and publishing collection items, including
+      support for bulk operations and live/staged item management.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - CMS
+      - Items
+      - Content Management
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-items-openapi.yml
+  - aid: webflow:components-api
+    name: Webflow Components API
+    description: >-
+      The Webflow Components API provides endpoints for listing components
+      within a site, and retrieving or updating component content and
+      properties.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Components
+      - Design
+      - Reusable
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-components-openapi.yml
+  - aid: webflow:assets-api
+    name: Webflow Assets API
+    description: >-
+      The Webflow Assets API provides endpoints for uploading, listing,
+      updating, and deleting assets and asset folders within a Webflow
+      site.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Assets
+      - Files
+      - Media
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-assets-openapi.yml
+  - aid: webflow:forms-api
+    name: Webflow Forms API
+    description: >-
+      The Webflow Forms API provides endpoints for listing forms, retrieving
+      form schemas, and managing form submissions including listing,
+      modifying, and deleting submissions.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Forms
+      - Submissions
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-forms-openapi.yml
+  - aid: webflow:products-api
+    name: Webflow Products and SKUs API
+    description: >-
+      The Webflow Products and SKUs API provides endpoints for managing
+      ecommerce products and their SKU variants, including creating,
+      listing, updating products and creating or updating SKUs.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Ecommerce
+      - Products
+      - SKUs
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-products-openapi.yml
+  - aid: webflow:orders-api
+    name: Webflow Orders API
+    description: >-
+      The Webflow Orders API provides endpoints for listing, retrieving,
+      and updating ecommerce orders, as well as fulfilling, unfulfilling,
+      and refunding orders.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Ecommerce
+      - Orders
+      - Fulfillment
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-orders-openapi.yml
+  - aid: webflow:inventory-api
+    name: Webflow Inventory API
+    description: >-
+      The Webflow Inventory API provides endpoints for listing and updating
+      inventory quantities for ecommerce product SKUs.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Ecommerce
+      - Inventory
+      - Stock
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-inventory-openapi.yml
+  - aid: webflow:ecommerce-settings-api
+    name: Webflow Ecommerce Settings API
+    description: >-
+      The Webflow Ecommerce Settings API provides an endpoint for
+      retrieving the ecommerce configuration settings for a Webflow site.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Ecommerce
+      - Settings
+      - Configuration
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-ecommerce-settings-openapi.yml
+  - aid: webflow:webhooks-api
+    name: Webflow Webhooks API
+    description: >-
+      The Webflow Webhooks API provides endpoints for registering, listing,
+      retrieving, and removing webhooks that deliver real-time event
+      notifications for a Webflow site.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Webhooks
+      - Events
+      - Notifications
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-webhooks-openapi.yml
+  - aid: webflow:custom-code-api
+    name: Webflow Custom Code API
+    description: >-
+      The Webflow Custom Code API provides endpoints for adding, updating,
+      and deleting custom JavaScript code on sites and pages, as well as
+      registering and managing hosted or inline scripts.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Custom Code
+      - JavaScript
+      - Scripts
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-custom-code-openapi.yml
+  - aid: webflow:comments-api
+    name: Webflow Comments API
+    description: >-
+      The Webflow Comments API provides endpoints for listing comment
+      threads and retrieving comment replies within a Webflow site.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.webflow.com/data/reference/rest-introduction
+    baseURL: https://api.webflow.com/v2
+    tags:
+      - Comments
+      - Collaboration
+    properties:
+      - type: OpenAPI
+        url: openapi/webflow-comments-openapi.yml
 common:
   - url: https://developers.webflow.com/
     name: Webflow Developer Documentation
@@ -99,6 +349,52 @@ common:
     name: Webflow Status
     type: Status
     description: 'null'
+  - url: https://webflow.com/login
+    name: Webflow Login
+    type: Login
+    description: 'null'
+  - url: https://webflow.com/signup
+    name: Webflow Sign Up
+    type: Sign Up
+    description: 'null'
+  - url: https://webflow.com/marketplace
+    name: Webflow Marketplace
+    type: Marketplace
+    description: 'null'
+  - url: https://developers.webflow.com/apps/data/docs/register-an-app
+    name: Register an App
+    type: Getting Started
+    description: 'null'
+  - url: https://developers.webflow.com/data/reference/authentication
+    name: Webflow Authentication
+    type: Authentication
+    description: 'null'
+  - url: https://developers.webflow.com/data/reference/rate-limits
+    name: Webflow Rate Limits
+    type: Rate Limits
+    description: 'null'
+  - url: https://developers.webflow.com/data/v2.0.0/changelog
+    name: Webflow API Changelog
+    type: Change Log
+    description: 'null'
+  - url: https://developers.webflow.com/data/reference/sdks
+    name: Webflow SDKs
+    type: SDKs
+    description: 'null'
+  - url: https://developers.webflow.com/data/docs/working-with-webhooks
+    name: Working with Webhooks
+    type: Webhooks
+    description: 'null'
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+  - type: JSON-LD
+    url: json-ld/webflow-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
