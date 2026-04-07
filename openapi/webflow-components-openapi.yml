@@ -12,12 +12,12 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-- url: https://api.webflow.com/v2
-  description: Webflow API v2
-  x-fern-server-name: Data API
+  - url: https://api.webflow.com/v2
+    description: Webflow API v2
+    x-fern-server-name: Data API
 security:
-- OAuth2: []
-- ApiKey: []
+  - OAuth2: []
+  - ApiKey: []
 tags: []
 paths:
   /sites/{site_id}/components:
@@ -25,10 +25,10 @@ paths:
       x-fern-sdk-group-name: components
       x-fern-sdk-method-name: list
       security:
-      - OAuth2:
-        - components:read
+        - OAuth2:
+            - components:read
       operationId: list-components
-      summary: List Components
+      summary: Webflow List Components
       description: 'List of all components for a site.
 
 
@@ -36,42 +36,42 @@ paths:
 
         '
       tags:
-      - Components
+        - Components
       parameters:
-      - name: site_id
-        in: path
-        description: Unique identifier for a Site
-        example: 580e63e98c9a982ac9b8b741
-        required: true
-        schema:
-          type: string
-          format: objectid
-          default: null
-      - name: branchId
-        in: query
-        allowEmptyValue: true
-        description: Scope the operation to work on a specific branch.
-        example: 68026fa68ef6dc744c75b833
-        required: false
-        schema:
-          type: string
-          format: objectid
-      - in: query
-        allowEmptyValue: true
-        name: limit
-        example: 100
-        description: 'Maximum number of records to be returned (max limit: 100)'
-        required: false
-        schema:
-          type: integer
-      - in: query
-        example: 0
-        allowEmptyValue: true
-        name: offset
-        description: Offset used for pagination if the results have more than limit records
-        required: false
-        schema:
-          type: integer
+        - name: site_id
+          in: path
+          description: Unique identifier for a Site
+          example: 580e63e98c9a982ac9b8b741
+          required: true
+          schema:
+            type: string
+            format: objectid
+            default:
+        - name: branchId
+          in: query
+          allowEmptyValue: true
+          description: Scope the operation to work on a specific branch.
+          example: 68026fa68ef6dc744c75b833
+          required: false
+          schema:
+            type: string
+            format: objectid
+        - in: query
+          allowEmptyValue: true
+          name: limit
+          example: 100
+          description: 'Maximum number of records to be returned (max limit: 100)'
+          required: false
+          schema:
+            type: integer
+        - in: query
+          example: 0
+          allowEmptyValue: true
+          name: offset
+          description: Offset used for pagination if the results have more than limit records
+          required: false
+          schema:
+            type: integer
       responses:
         '200':
           description: Request was successful
@@ -82,23 +82,23 @@ paths:
                 type: object
                 example:
                   components:
-                  - id: 6596da6045e56dee495bcbba
-                    name: Primary Button
-                    group: Buttons
-                    description: A default button component that can be used across the site
-                  - id: 658205daa3e8206a523b5ad4
-                    name: Secondary Button
-                    group: Buttons
-                    description: A secondary button component that can be used across the site
-                  - id: 6258612d1ee792848f805dcf
-                    name: Card
-                    group: null
-                    description: null
-                  - id: 68a2b1d1ee792848f805dcf
-                    name: Nav
-                    group: null
-                    description: null
-                    readonly: true
+                    - id: 6596da6045e56dee495bcbba
+                      name: Primary Button
+                      group: Buttons
+                      description: A default button component that can be used across the site
+                    - id: 658205daa3e8206a523b5ad4
+                      name: Secondary Button
+                      group: Buttons
+                      description: A secondary button component that can be used across the site
+                    - id: 6258612d1ee792848f805dcf
+                      name: Card
+                      group:
+                      description:
+                    - id: 68a2b1d1ee792848f805dcf
+                      name: Nav
+                      group:
+                      description:
+                      readonly: true
                   pagination:
                     limit: 20
                     offset: 0
@@ -110,7 +110,7 @@ paths:
                       description: The Component object
                       type: object
                       required:
-                      - id
+                        - id
                       example:
                         id: 6258612d1ee792848f805dcf
                         name: Primary Button
@@ -138,8 +138,7 @@ paths:
                           example: A button component that can be used across the site
                         readonly:
                           type: boolean
-                          description: Indicates whether the component is read-only. Components that cannot be updated within
-                            this Site are set to readonly. Workspace Libraries are a good example.
+                          description: Indicates whether the component is read-only. Components that cannot be updated within this Site are set to readonly. Workspace Libraries are a good example.
                           optional: true
                           readOnly: true
                           example: true
@@ -147,9 +146,9 @@ paths:
                     description: Pagination object
                     type: object
                     required:
-                    - limit
-                    - offset
-                    - total
+                      - limit
+                      - offset
+                      - total
                     properties:
                       limit:
                         type: integer
@@ -176,7 +175,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -184,35 +183,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -225,19 +224,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: bad_request
                 message: 'Bad Request: Request is malformed'
-                externalReference: null
+                externalReference:
                 details: []
         '401':
           description: Provided access token is invalid or does not have access to requested resource
@@ -249,7 +248,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -257,35 +256,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -298,19 +297,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: not_authorized
                 message: Request not authorized
-                externalReference: null
+                externalReference:
                 details: []
         '404':
           description: Requested resource not found
@@ -322,7 +321,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -330,35 +329,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -371,23 +370,22 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: resource_not_found
                 message: 'Requested resource not found: The site cannot be found'
-                externalReference: null
+                externalReference:
                 details: []
         '429':
-          description: The rate limit of the provided access_token has been reached. Please have your application respect
-            the X-RateLimit-Remaining header we include on API responses.
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
           x-logErrorCode: 429
           headers:
             X-RateLimit-Remaining:
@@ -405,7 +403,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -413,35 +411,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -454,19 +452,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: too_many_requests
                 message: Too many requests
-                externalReference: null
+                externalReference:
                 details: []
         '500':
           description: We had a problem with our server. Try again later.
@@ -478,7 +476,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -486,35 +484,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -527,168 +525,162 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: internal_error
                 message: An Internal Error occurred
-                externalReference: null
+                externalReference:
                 details: []
   /sites/{site_id}/components/{component_id}/dom:
     get:
       x-fern-sdk-group-name: components
       x-fern-sdk-method-name: get-content
       security:
-      - OAuth2:
-        - components:read
+        - OAuth2:
+            - components:read
       operationId: get-component-content
-      summary: Get Component Content
-      description: 'Get static content from a component definition. This includes text nodes, image nodes, select nodes, text
-        input nodes, submit button nodes, and nested component instances.
+      summary: Webflow Get Component Content
+      description: 'Get static content from a component definition. This includes text nodes, image nodes, select nodes, text input nodes, submit button nodes, and nested component instances.
 
-        To retrieve dynamic content set by component properties, use the [get component properties](/data/reference/pages-and-components/components/get-properties)
-        endpoint.
+        To retrieve dynamic content set by component properties, use the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.
 
 
-        <Note>If you do not provide a Locale ID in your request, the response will return any content that can be localized
-        from the Primary locale.</Note>
+        <Note>If you do not provide a Locale ID in your request, the response will return any content that can be localized from the Primary locale.</Note>
 
 
         Required scope | `components:read`
 
         '
       tags:
-      - Components
+        - Components
       parameters:
-      - name: site_id
-        in: path
-        description: Unique identifier for a Site
-        example: 580e63e98c9a982ac9b8b741
-        required: true
-        schema:
-          type: string
-          format: objectid
-          default: null
-      - name: component_id
-        in: path
-        description: Unique identifier for a Component
-        example: 8505ba55-ef72-629e-f85c-33e4b703d48b
-        required: true
-        schema:
-          type: string
-          default: null
-      - name: localeId
-        in: query
-        allowEmptyValue: true
-        example: 65427cf400e02b306eaa04a0
-        description: 'Unique identifier for a specific Locale.
+        - name: site_id
+          in: path
+          description: Unique identifier for a Site
+          example: 580e63e98c9a982ac9b8b741
+          required: true
+          schema:
+            type: string
+            format: objectid
+            default:
+        - name: component_id
+          in: path
+          description: Unique identifier for a Component
+          example: 8505ba55-ef72-629e-f85c-33e4b703d48b
+          required: true
+          schema:
+            type: string
+            default:
+        - name: localeId
+          in: query
+          allowEmptyValue: true
+          example: 65427cf400e02b306eaa04a0
+          description: 'Unique identifier for a specific Locale.
 
 
-          [Lear more about localization.](/data/v2.0.0/docs/working-with-localization)
+            [Lear more about localization.](/data/v2.0.0/docs/working-with-localization)
 
-          '
-        schema:
-          type: string
-      - name: branchId
-        in: query
-        allowEmptyValue: true
-        description: Scope the operation to work on a specific branch.
-        example: 68026fa68ef6dc744c75b833
-        required: false
-        schema:
-          type: string
-          format: objectid
-      - in: query
-        allowEmptyValue: true
-        name: limit
-        example: 100
-        description: 'Maximum number of records to be returned (max limit: 100)'
-        required: false
-        schema:
-          type: integer
-      - in: query
-        example: 0
-        allowEmptyValue: true
-        name: offset
-        description: Offset used for pagination if the results have more than limit records
-        required: false
-        schema:
-          type: integer
+            '
+          schema:
+            type: string
+        - name: branchId
+          in: query
+          allowEmptyValue: true
+          description: Scope the operation to work on a specific branch.
+          example: 68026fa68ef6dc744c75b833
+          required: false
+          schema:
+            type: string
+            format: objectid
+        - in: query
+          allowEmptyValue: true
+          name: limit
+          example: 100
+          description: 'Maximum number of records to be returned (max limit: 100)'
+          required: false
+          schema:
+            type: integer
+        - in: query
+          example: 0
+          allowEmptyValue: true
+          name: offset
+          description: Offset used for pagination if the results have more than limit records
+          required: false
+          schema:
+            type: integer
       responses:
         '200':
           description: Request was successful
           content:
             application/json:
               schema:
-                description: 'The Component DOM schema represents the content structure of a component. Similar to Page DOM,
-                  it captures various content nodes and their associated attributes, but specifically for a component''s structure.
-                  Each node has a unique identifier and can contain text, images, select or text inputs, submit buttons, or
-                  nested component instances.
+                description: 'The Component DOM schema represents the content structure of a component. Similar to Page DOM, it captures various content nodes and their associated attributes, but specifically for a component''s structure. Each node has a unique identifier and can contain text, images, select or text inputs, submit buttons, or nested component instances.
 
                   '
                 type: object
                 example:
                   componentId: 69118560-d0bc-15fc-bbf8-b8fe5f6535b5
                   nodes:
-                  - id: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                    type: text
-                    text:
-                      html: <h1>The Hitchhiker's Guide to the Galaxy</h1>
-                      text: The Hitchhiker's Guide to the Galaxy
-                    attributes: {}
-                  - id: a245c12d-995b-55ee-5ec7-aa36a6cad627
-                    type: text
-                    text:
-                      html: <div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>
-                      text: null
-                    attributes:
-                      number: forty two
-                  - id: a245c12d-995b-55ee-5ec7-aa36a6cad629
-                    type: image
-                    image:
-                      alt: Marvin, the Paranoid Android
-                      assetId: 659595234426a9fcbad57043
-                    attributes: {}
-                  - id: 6e468d51-8942-f7be-34cc-347b0e24e118
-                    type: text-input
-                    placeholder: Search…
-                    attributes: {}
-                  - id: 82cdcd0b-b9c7-0ddc-0519-bc1fa02de26e
-                    type: select
-                    choices:
-                    - text: Magrathea
-                      value: Magrathea
-                    - text: Earth
-                      value: mostly-harmless
-                    - text: Vogsphere
-                      value: Vogsphere
-                    attributes: {}
-                  - id: 9fa3a9c4-87d4-19b0-95f7-1b0b099f82ab
-                    type: submit-button
-                    waitingText: Please wait...
-                    value: Subscribe
-                    attributes: {}
-                  - id: a245c12d-995b-55ee-5ec7-aa36a6cad631
-                    type: component-instance
-                    componentId: 6258612d1ee792848f805dcf
-                    propertyOverrides:
-                    - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad633
-                      type: Plain Text
+                    - id: a245c12d-995b-55ee-5ec7-aa36a6cad623
+                      type: text
                       text:
-                        html: null
-                        text: Don't Panic!
-                    - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad635
-                      type: Rich Text
+                        html: <h1>The Hitchhiker's Guide to the Galaxy</h1>
+                        text: The Hitchhiker's Guide to the Galaxy
+                      attributes: {}
+                    - id: a245c12d-995b-55ee-5ec7-aa36a6cad627
+                      type: text
                       text:
-                        html: <div><p>Always know where your towel is.</p></div>
-                        text: null
+                        html: <div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>
+                        text:
+                      attributes:
+                        number: forty two
+                    - id: a245c12d-995b-55ee-5ec7-aa36a6cad629
+                      type: image
+                      image:
+                        alt: Marvin, the Paranoid Android
+                        assetId: 659595234426a9fcbad57043
+                      attributes: {}
+                    - id: 6e468d51-8942-f7be-34cc-347b0e24e118
+                      type: text-input
+                      placeholder: Search…
+                      attributes: {}
+                    - id: 82cdcd0b-b9c7-0ddc-0519-bc1fa02de26e
+                      type: select
+                      choices:
+                        - text: Magrathea
+                          value: Magrathea
+                        - text: Earth
+                          value: mostly-harmless
+                        - text: Vogsphere
+                          value: Vogsphere
+                      attributes: {}
+                    - id: 9fa3a9c4-87d4-19b0-95f7-1b0b099f82ab
+                      type: submit-button
+                      waitingText: Please wait...
+                      value: Subscribe
+                      attributes: {}
+                    - id: a245c12d-995b-55ee-5ec7-aa36a6cad631
+                      type: component-instance
+                      componentId: 6258612d1ee792848f805dcf
+                      propertyOverrides:
+                        - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad633
+                          type: Plain Text
+                          text:
+                            html:
+                            text: Don't Panic!
+                        - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad635
+                          type: Rich Text
+                          text:
+                            html: <div><p>Always know where your towel is.</p></div>
+                            text:
                   pagination:
                     limit: 7
                     offset: 0
@@ -700,328 +692,315 @@ paths:
                   nodes:
                     type: array
                     items:
-                      description: 'A generic representation of a content element within the Document Object Model (DOM).
-                        Each node has a unique identifier and a specific type that determines its content structure and attributes.
+                      description: 'A generic representation of a content element within the Document Object Model (DOM). Each node has a unique identifier and a specific type that determines its content structure and attributes.
 
                         '
                       type: object
-                      properties: null
+                      properties:
                       oneOf:
-                      - title: Text Node DOM
-                        description: 'Represents text content within the DOM. It contains both the raw text and its HTML representation.
-                          Additional attributes can be associated with the text for styling or other purposes.
+                        - title: Text Node DOM
+                          description: 'Represents text content within the DOM. It contains both the raw text and its HTML representation. Additional attributes can be associated with the text for styling or other purposes.
 
-                          '
-                        type: object
-                        required:
-                        - id
-                        - type
-                        - text
-                        properties:
-                          id:
-                            type: string
-                            description: Node UUID
-                          type:
-                            description: The type of the node
-                            type: string
-                            enum:
+                            '
+                          type: object
+                          required:
+                            - id
+                            - type
                             - text
-                            default: text
-                          text:
-                            description: The text content of the node
-                            properties:
-                              html:
-                                description: The HTML content of the text node.
-                                type: string
-                                nullable: true
-                              text:
-                                description: The raw text content of the text node.
-                                type: string
-                                nullable: true
-                          attributes:
-                            type: object
-                            description: The custom attributes of the node
-                            additionalProperties:
+                          properties:
+                            id:
                               type: string
-                      - title: Image Node
-                        description: 'Represents an image within the DOM. It contains details about the image, such as its
-                          alternative text (alt) for accessibility and an asset identifier for fetching the actual image resource.
-                          Additional attributes can be associated with the image for styling or other purposes.
+                              description: Node UUID
+                            type:
+                              description: The type of the node
+                              type: string
+                              enum:
+                                - text
+                              default: text
+                            text:
+                              description: The text content of the node
+                              properties:
+                                html:
+                                  description: The HTML content of the text node.
+                                  type: string
+                                  nullable: true
+                                text:
+                                  description: The raw text content of the text node.
+                                  type: string
+                                  nullable: true
+                            attributes:
+                              type: object
+                              description: The custom attributes of the node
+                              additionalProperties:
+                                type: string
+                        - title: Image Node
+                          description: 'Represents an image within the DOM. It contains details about the image, such as its alternative text (alt) for accessibility and an asset identifier for fetching the actual image resource. Additional attributes can be associated with the image for styling or other purposes.
 
-                          '
-                        type: object
-                        required:
-                        - id
-                        - type
-                        - image
-                        properties:
-                          id:
-                            type: string
-                            description: Node UUID
-                          type:
-                            type: string
-                            description: The type of the node
-                            enum:
+                            '
+                          type: object
+                          required:
+                            - id
+                            - type
                             - image
-                            default: image
-                          image:
-                            description: The image details of the node
-                            properties:
-                              alt:
-                                type: string
-                                nullable: true
-                              assetId:
-                                type: string
-                          attributes:
-                            type: object
-                            description: The custom attributes of the node
-                            additionalProperties:
+                          properties:
+                            id:
                               type: string
-                      - title: Component Node
-                        description: 'Represents a component instance within the DOM. It contains details about the component
-                          instance, such as its type and properties.
-
-                          '
-                        type: object
-                        required:
-                        - id
-                        - type
-                        - componentId
-                        - propertyOverrides
-                        properties:
-                          id:
-                            type: string
-                            description: The unique identifier of the component instance node
-                          type:
-                            description: The type of the node
-                            type: string
-                            enum:
-                            - component-instance
-                            default: component-instance
-                          componentId:
-                            type: string
-                            description: The unique identifier of the component
-                          propertyOverrides:
-                            description: List of component properties with overrides for a component instance.
-                            type: array
-                            items:
-                              description: 'Represents a property of a component instance in the DOM. A property contains
-                                a list of both the raw text and the HTML representation, allowing for flexibility in rendering
-                                and processing. Additional attributes can be associated with the text for styling or other
-                                purposes.
-
-                                '
-                              type: object
+                              description: Node UUID
+                            type:
+                              type: string
+                              description: The type of the node
+                              enum:
+                                - image
+                              default: image
+                            image:
+                              description: The image details of the node
                               properties:
-                                propertyId:
+                                alt:
                                   type: string
-                                  description: The ID of the property.
-                                  example: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f0
-                                type:
-                                  description: The type of the property.
+                                  nullable: true
+                                assetId:
                                   type: string
-                                  enum:
-                                  - Plain Text
-                                  - Rich Text
-                                  - Alt Text
-                                label:
-                                  description: The label of the property in the UI.
-                                  type: string
-                                text:
-                                  description: Represents text content within the DOM. It contains both the raw text and its
-                                    HTML representation.
-                                  properties:
-                                    html:
-                                      description: The HTML content of the text node.
-                                      type: string
-                                      nullable: true
-                                    text:
-                                      description: The raw text content of the text node.
-                                      type: string
-                                      nullable: true
-                      - title: Text Input Node
-                        description: 'Represents text input and textarea elements within the DOM. It contains the placeholder
-                          text in the input. Additional attributes can be associated with the text for styling or other purposes.
-
-                          '
-                        type: object
-                        required:
-                        - id
-                        - type
-                        - placeholder
-                        properties:
-                          id:
-                            type: string
-                            description: Node UUID
-                          type:
-                            description: The type of the node
-                            type: string
-                            enum:
-                            - text-input
-                            default: text-input
-                          placeholder:
-                            description: The placeholder text of the input node
-                            type: string
-                          attributes:
-                            type: object
-                            description: The custom attributes of the node
-                            additionalProperties:
-                              type: string
-                      - title: Select Node
-                        description: 'Represents select elements within the DOM. It contains the list of choices in the select.
-                          Additional attributes can be associated with the text for styling or other purposes.
-
-                          '
-                        type: object
-                        required:
-                        - id
-                        - type
-                        - choices
-                        properties:
-                          id:
-                            type: string
-                            description: Node UUID
-                          type:
-                            description: The type of the node
-                            type: string
-                            enum:
-                            - select
-                            default: select
-                          choices:
-                            description: The list of choices in this select node.
-                            type: array
-                            items:
+                            attributes:
                               type: object
-                              required:
-                              - value
-                              - text
-                              properties:
-                                value:
-                                  description: The value of the choice when selected.
-                                  type: string
-                                text:
-                                  description: The text to display for the choice.
-                                  type: string
-                          attributes:
-                            type: object
-                            description: The custom attributes of the node
-                            additionalProperties:
-                              type: string
-                      - title: Submit Button Node
-                        description: 'Represents submit button elements within the DOM. It contains the text and waiting text
-                          of the button. Additional attributes can be associated with the text for styling or other purposes.
+                              description: The custom attributes of the node
+                              additionalProperties:
+                                type: string
+                        - title: Component Node
+                          description: 'Represents a component instance within the DOM. It contains details about the component instance, such as its type and properties.
 
-                          '
-                        type: object
-                        required:
-                        - id
-                        - type
-                        - value
-                        - waitingText
-                        properties:
-                          id:
-                            type: string
-                            description: Node UUID
-                          type:
-                            description: The type of the node
-                            type: string
-                            enum:
-                            - submit-button
-                            default: submit-button
-                          value:
-                            description: The text content of the submit button.
-                            type: string
-                          waitingText:
-                            description: The text to show while the form is submitting.
-                            type: string
-                          attributes:
-                            type: object
-                            description: The custom attributes of the node
-                            additionalProperties:
+                            '
+                          type: object
+                          required:
+                            - id
+                            - type
+                            - componentId
+                            - propertyOverrides
+                          properties:
+                            id:
                               type: string
-                      - title: Search Button Node
-                        description: 'Represents search button elements within the DOM. It contains the text of the button.
-                          Additional attributes can be associated with the text for styling or other purposes.
+                              description: The unique identifier of the component instance node
+                            type:
+                              description: The type of the node
+                              type: string
+                              enum:
+                                - component-instance
+                              default: component-instance
+                            componentId:
+                              type: string
+                              description: The unique identifier of the component
+                            propertyOverrides:
+                              description: List of component properties with overrides for a component instance.
+                              type: array
+                              items:
+                                description: 'Represents a property of a component instance in the DOM. A property contains a list of both the raw text and the HTML representation, allowing for flexibility in rendering and processing. Additional attributes can be associated with the text for styling or other purposes.
 
-                          '
-                        type: object
-                        required:
-                        - id
-                        - type
-                        - value
-                        properties:
-                          id:
-                            type: string
-                            description: Node UUID
-                          type:
-                            description: The type of the node
-                            type: string
-                            enum:
-                            - search-button
-                            default: search-button
-                          value:
-                            description: The text content of the search button.
-                            type: string
-                          attributes:
-                            type: object
-                            description: The custom attributes of the node
-                            additionalProperties:
+                                  '
+                                type: object
+                                properties:
+                                  propertyId:
+                                    type: string
+                                    description: The ID of the property.
+                                    example: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f0
+                                  type:
+                                    description: The type of the property.
+                                    type: string
+                                    enum:
+                                      - Plain Text
+                                      - Rich Text
+                                      - Alt Text
+                                  label:
+                                    description: The label of the property in the UI.
+                                    type: string
+                                  text:
+                                    description: Represents text content within the DOM. It contains both the raw text and its HTML representation.
+                                    properties:
+                                      html:
+                                        description: The HTML content of the text node.
+                                        type: string
+                                        nullable: true
+                                      text:
+                                        description: The raw text content of the text node.
+                                        type: string
+                                        nullable: true
+                        - title: Text Input Node
+                          description: 'Represents text input and textarea elements within the DOM. It contains the placeholder text in the input. Additional attributes can be associated with the text for styling or other purposes.
+
+                            '
+                          type: object
+                          required:
+                            - id
+                            - type
+                            - placeholder
+                          properties:
+                            id:
                               type: string
+                              description: Node UUID
+                            type:
+                              description: The type of the node
+                              type: string
+                              enum:
+                                - text-input
+                              default: text-input
+                            placeholder:
+                              description: The placeholder text of the input node
+                              type: string
+                            attributes:
+                              type: object
+                              description: The custom attributes of the node
+                              additionalProperties:
+                                type: string
+                        - title: Select Node
+                          description: 'Represents select elements within the DOM. It contains the list of choices in the select. Additional attributes can be associated with the text for styling or other purposes.
+
+                            '
+                          type: object
+                          required:
+                            - id
+                            - type
+                            - choices
+                          properties:
+                            id:
+                              type: string
+                              description: Node UUID
+                            type:
+                              description: The type of the node
+                              type: string
+                              enum:
+                                - select
+                              default: select
+                            choices:
+                              description: The list of choices in this select node.
+                              type: array
+                              items:
+                                type: object
+                                required:
+                                  - value
+                                  - text
+                                properties:
+                                  value:
+                                    description: The value of the choice when selected.
+                                    type: string
+                                  text:
+                                    description: The text to display for the choice.
+                                    type: string
+                            attributes:
+                              type: object
+                              description: The custom attributes of the node
+                              additionalProperties:
+                                type: string
+                        - title: Submit Button Node
+                          description: 'Represents submit button elements within the DOM. It contains the text and waiting text of the button. Additional attributes can be associated with the text for styling or other purposes.
+
+                            '
+                          type: object
+                          required:
+                            - id
+                            - type
+                            - value
+                            - waitingText
+                          properties:
+                            id:
+                              type: string
+                              description: Node UUID
+                            type:
+                              description: The type of the node
+                              type: string
+                              enum:
+                                - submit-button
+                              default: submit-button
+                            value:
+                              description: The text content of the submit button.
+                              type: string
+                            waitingText:
+                              description: The text to show while the form is submitting.
+                              type: string
+                            attributes:
+                              type: object
+                              description: The custom attributes of the node
+                              additionalProperties:
+                                type: string
+                        - title: Search Button Node
+                          description: 'Represents search button elements within the DOM. It contains the text of the button. Additional attributes can be associated with the text for styling or other purposes.
+
+                            '
+                          type: object
+                          required:
+                            - id
+                            - type
+                            - value
+                          properties:
+                            id:
+                              type: string
+                              description: Node UUID
+                            type:
+                              description: The type of the node
+                              type: string
+                              enum:
+                                - search-button
+                              default: search-button
+                            value:
+                              description: The text content of the search button.
+                              type: string
+                            attributes:
+                              type: object
+                              description: The custom attributes of the node
+                              additionalProperties:
+                                type: string
                       example:
                         pageId: 658205daa3e8206a523b5ad4
                         nodes:
-                        - id: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                          type: text
-                          text:
-                            html: <h1>The Hitchhiker's Guide to the Galaxy</h1>
-                            text: The Hitchhiker's Guide to the Galaxy
-                          attributes: {}
-                        - id: a245c12d-995b-55ee-5ec7-aa36a6cad627
-                          type: text
-                          text:
-                            html: <div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>
-                            text: null
-                          attributes:
-                            number: forty two
-                        - id: a245c12d-995b-55ee-5ec7-aa36a6cad629
-                          type: image
-                          image:
-                            alt: Marvin, the Paranoid Android
-                            assetId: 659595234426a9fcbad57043
-                          attributes: {}
-                        - id: a245c12d-995b-55ee-5ec7-aa36a6cad635
-                          type: select
-                          choices:
-                          - value: choice-1
-                            text: First choice
-                          - value: choice-2
-                            text: Second choice
-                          attributes: {}
-                        - id: a245c12d-995b-55ee-5ec7-aa36a6cad642
-                          type: text-input
-                          placeholder: Enter something here...
-                          attributes: {}
-                        - id: a245c12d-995b-55ee-5ec7-aa36a6cad671
-                          type: submit
-                          value: Submit
-                          waitingText: Submitting...
-                          attributes: {}
-                        - id: a245c12d-995b-55ee-5ec7-aa36a6cad631
-                          type: component-instance
-                          componentId: 6258612d1ee792848f805dcf
-                          propertyOverrides:
-                          - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad633
-                            type: Plain Text
-                            label: Catchphrase
+                          - id: a245c12d-995b-55ee-5ec7-aa36a6cad623
+                            type: text
                             text:
-                              html: null
-                              text: Don't Panic!
-                          - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad635
-                            type: Rich Text
-                            label: Tagline
+                              html: <h1>The Hitchhiker's Guide to the Galaxy</h1>
+                              text: The Hitchhiker's Guide to the Galaxy
+                            attributes: {}
+                          - id: a245c12d-995b-55ee-5ec7-aa36a6cad627
+                            type: text
                             text:
-                              html: <div><p>Always know where your towel is.</p></div>
-                              text: null
+                              html: <div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>
+                              text:
+                            attributes:
+                              number: forty two
+                          - id: a245c12d-995b-55ee-5ec7-aa36a6cad629
+                            type: image
+                            image:
+                              alt: Marvin, the Paranoid Android
+                              assetId: 659595234426a9fcbad57043
+                            attributes: {}
+                          - id: a245c12d-995b-55ee-5ec7-aa36a6cad635
+                            type: select
+                            choices:
+                              - value: choice-1
+                                text: First choice
+                              - value: choice-2
+                                text: Second choice
+                            attributes: {}
+                          - id: a245c12d-995b-55ee-5ec7-aa36a6cad642
+                            type: text-input
+                            placeholder: Enter something here...
+                            attributes: {}
+                          - id: a245c12d-995b-55ee-5ec7-aa36a6cad671
+                            type: submit
+                            value: Submit
+                            waitingText: Submitting...
+                            attributes: {}
+                          - id: a245c12d-995b-55ee-5ec7-aa36a6cad631
+                            type: component-instance
+                            componentId: 6258612d1ee792848f805dcf
+                            propertyOverrides:
+                              - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad633
+                                type: Plain Text
+                                label: Catchphrase
+                                text:
+                                  html:
+                                  text: Don't Panic!
+                              - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad635
+                                type: Rich Text
+                                label: Tagline
+                                text:
+                                  html: <div><p>Always know where your towel is.</p></div>
+                                  text:
                         pagination:
                           limit: 4
                           offset: 0
@@ -1031,9 +1010,9 @@ paths:
                     description: Pagination object
                     type: object
                     required:
-                    - limit
-                    - offset
-                    - total
+                      - limit
+                      - offset
+                      - total
                     properties:
                       limit:
                         type: integer
@@ -1060,7 +1039,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -1068,35 +1047,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1109,19 +1088,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: bad_request
                 message: 'Bad Request: Request is malformed'
-                externalReference: null
+                externalReference:
                 details: []
         '401':
           description: Provided access token is invalid or does not have access to requested resource
@@ -1133,7 +1112,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -1141,35 +1120,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1182,19 +1161,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: not_authorized
                 message: Request not authorized
-                externalReference: null
+                externalReference:
                 details: []
         '404':
           description: Requested resource not found
@@ -1206,7 +1185,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -1214,35 +1193,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1255,23 +1234,22 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: resource_not_found
                 message: 'Requested resource not found: The site cannot be found'
-                externalReference: null
+                externalReference:
                 details: []
         '429':
-          description: The rate limit of the provided access_token has been reached. Please have your application respect
-            the X-RateLimit-Remaining header we include on API responses.
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
           x-logErrorCode: 429
           headers:
             X-RateLimit-Remaining:
@@ -1289,7 +1267,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -1297,35 +1275,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1338,19 +1316,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: too_many_requests
                 message: Too many requests
-                externalReference: null
+                externalReference:
                 details: []
         '500':
           description: We had a problem with our server. Try again later.
@@ -1362,7 +1340,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -1370,35 +1348,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1411,84 +1389,75 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: internal_error
                 message: An Internal Error occurred
-                externalReference: null
+                externalReference:
                 details: []
     post:
       x-fern-sdk-group-name: components
       x-fern-sdk-method-name: update-content
       security:
-      - OAuth2:
-        - components:write
-      summary: Update Component Content
-      description: "This endpoint updates content within a component defintion for **secondary locales**. It supports updating\
-        \ up to 1000 nodes in a single request.\n\nBefore making updates:\n1. Use the [get component content](/data/reference/pages-and-components/components/get-content)\
-        \ endpoint to identify available content nodes and their types.\n2. If your component definition has a component instance\
-        \ nested within it, retrieve the nested component instance's properties that you'll override using the [get component\
-        \ properties](/data/reference/pages-and-components/components/get-properties) endpoint.\n3. DOM elements may include\
-        \ a `data-w-id` attribute. This attribute is used by Webflow to maintain custom attributes and links across locales.\
-        \ Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.\n\
-        \n<Note>\n  This endpoint is specifically for localizing component definitions. Ensure that the specified `localeId`\
-        \ is a valid **secondary locale** for the site otherwise the request will fail.\n</Note>\n\nRequired scope | `components:write`\n"
+        - OAuth2:
+            - components:write
+      summary: Webflow Update Component Content
+      description: "This endpoint updates content within a component defintion for **secondary locales**. It supports updating up to 1000 nodes in a single request.\n\nBefore making updates:\n1. Use the [get component content](/data/reference/pages-and-components/components/get-content) endpoint to identify available content nodes and their types.\n2. If your component definition has a component instance nested within it, retrieve the nested component instance's properties that you'll override using the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.\n3. DOM elements may include a `data-w-id` attribute. This attribute is used by Webflow to maintain custom attributes and links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.\n\n<Note>\n  This endpoint is specifically for localizing component definitions. Ensure that the specified `localeId` is a valid **secondary locale** for the site otherwise the request will fail.\n</Note>\n\nRequired scope | `components:write`\n"
       operationId: update-component-content
       tags:
-      - Components
+        - Components
       parameters:
-      - name: site_id
-        in: path
-        description: Unique identifier for a Site
-        example: 580e63e98c9a982ac9b8b741
-        required: true
-        schema:
-          type: string
-          format: objectid
-          default: null
-      - name: component_id
-        in: path
-        description: Unique identifier for a Component
-        example: 8505ba55-ef72-629e-f85c-33e4b703d48b
-        required: true
-        schema:
-          type: string
-          default: null
-      - name: localeId
-        in: query
-        allowEmptyValue: true
-        example: 65427cf400e02b306eaa04a0
-        description: 'Unique identifier for a specific Locale.
+        - name: site_id
+          in: path
+          description: Unique identifier for a Site
+          example: 580e63e98c9a982ac9b8b741
+          required: true
+          schema:
+            type: string
+            format: objectid
+            default:
+        - name: component_id
+          in: path
+          description: Unique identifier for a Component
+          example: 8505ba55-ef72-629e-f85c-33e4b703d48b
+          required: true
+          schema:
+            type: string
+            default:
+        - name: localeId
+          in: query
+          allowEmptyValue: true
+          example: 65427cf400e02b306eaa04a0
+          description: 'Unique identifier for a specific Locale.
 
 
-          [Lear more about localization.](/data/v2.0.0/docs/working-with-localization)
+            [Lear more about localization.](/data/v2.0.0/docs/working-with-localization)
 
-          '
-        schema:
-          type: string
-      - name: branchId
-        in: query
-        allowEmptyValue: true
-        description: Scope the operation to work on a specific branch.
-        example: 68026fa68ef6dc744c75b833
-        required: false
-        schema:
-          type: string
-          format: objectid
+            '
+          schema:
+            type: string
+        - name: branchId
+          in: query
+          allowEmptyValue: true
+          description: Scope the operation to work on a specific branch.
+          example: 68026fa68ef6dc744c75b833
+          required: false
+          schema:
+            type: string
+            format: objectid
       requestBody:
         content:
           application/json:
             schema:
-              description: 'The body for which to update the Component DOM nodes. Nodes can be of type text, select or text
-                input, submit button, or component instances.
+              description: 'The body for which to update the Component DOM nodes. Nodes can be of type text, select or text input, submit button, or component instances.
 
                 '
               type: object
@@ -1499,171 +1468,168 @@ paths:
                   items:
                     type: object
                     oneOf:
-                    - type: object
-                      title: Text Node
-                      description: Update a text node
-                      properties:
-                        nodeId:
-                          type: string
-                          description: Node UUID
-                          example: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                        text:
-                          type: string
-                          description: HTML content of the node, including the HTML tag. The HTML tags must be the same as
-                            what's returned from the Get Content endpoint.
-                          example: <h1>Hello world</h1>
-                      required:
-                      - nodeId
-                      - text
-                      example:
-                        nodes:
-                        - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                          text: <h1>The Hitchhiker's Guide to the Galaxy</h1>
-                        - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad627
-                          text: <div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>
-                    - type: object
-                      title: Component Instance
-                      description: Update text property overrides of a component instance
-                      properties:
-                        nodeId:
-                          type: string
-                          description: Node UUID
-                          example: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                        propertyOverrides:
-                          description: A list of component instance properties to override within the specified secondary
-                            locale.
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              propertyId:
-                                type: string
-                                description: The ID of the property.
-                                example: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f0
-                              text:
-                                type: string
-                                description: 'The new string or HTML value used to override the component instance property
-                                  value.
-
-                                  The provided value must be compatible with the type of the component instance property.
-
-                                  For example, attempting to override a single-line plain-text property with a multi-line
-
-                                  value will result in an error.
-
-                                  '
-                                example: <div><h1>Property with <em>Rich Text</em></h1></div>
-                            required:
-                            - propertyId
-                            - text
-                      required:
-                      - nodeId
-                      - propertyOverrides
-                      example:
-                        nodes:
-                        - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad629
+                      - type: object
+                        title: Text Node
+                        description: Update a text node
+                        properties:
+                          nodeId:
+                            type: string
+                            description: Node UUID
+                            example: a245c12d-995b-55ee-5ec7-aa36a6cad623
+                          text:
+                            type: string
+                            description: HTML content of the node, including the HTML tag. The HTML tags must be the same as what's returned from the Get Content endpoint.
+                            example: <h1>Hello world</h1>
+                        required:
+                          - nodeId
+                          - text
+                        example:
+                          nodes:
+                            - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad623
+                              text: <h1>The Hitchhiker's Guide to the Galaxy</h1>
+                            - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad627
+                              text: <div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>
+                      - type: object
+                        title: Component Instance
+                        description: Update text property overrides of a component instance
+                        properties:
+                          nodeId:
+                            type: string
+                            description: Node UUID
+                            example: a245c12d-995b-55ee-5ec7-aa36a6cad623
                           propertyOverrides:
-                          - propertyId: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f0
-                            text: <div><h1>Time is an <em>illusion</em></h1></div>
-                          - propertyId: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f1
-                            text: Life, the Universe and Everything
-                    - type: object
-                      title: Select
-                      description: Update choices on a select node
-                      properties:
-                        nodeId:
-                          type: string
-                          description: Node UUID
-                          example: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                        choices:
-                          type: array
-                          description: The list of choices to set on the select node.
-                          items:
-                            type: object
-                            required:
-                            - value
-                            - text
-                            properties:
-                              value:
-                                description: The value of the choice when selected.
-                                type: string
-                              text:
-                                description: The text to display for the choice.
-                                type: string
-                      required:
-                      - nodeId
-                      - choices
-                    - type: object
-                      title: Text Input
-                      description: Update placeholder text on a text input node
-                      properties:
-                        nodeId:
-                          type: string
-                          description: Node UUID
-                          example: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                        placeholder:
-                          description: The placeholder text of the input node
-                          type: string
-                      required:
-                      - nodeId
-                      - placeholder
-                    - type: object
-                      title: Submit Button
-                      description: Update a submit button node
-                      properties:
-                        nodeId:
-                          type: string
-                          description: Node UUID
-                          example: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                        value:
-                          description: The text content of the submit button.
-                          type: string
-                        waitingText:
-                          description: The text to show while the form is submitting.
-                          type: string
-                      required:
-                      - nodeId
-                    - type: object
-                      title: Search Button
-                      description: Update a search button node
-                      properties:
-                        nodeId:
-                          type: string
-                          description: Node UUID
-                          example: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                        value:
-                          description: The text content of the search button.
-                          type: string
-                      required:
-                      - nodeId
-                      - value
+                            description: A list of component instance properties to override within the specified secondary locale.
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                propertyId:
+                                  type: string
+                                  description: The ID of the property.
+                                  example: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f0
+                                text:
+                                  type: string
+                                  description: 'The new string or HTML value used to override the component instance property value.
+
+                                    The provided value must be compatible with the type of the component instance property.
+
+                                    For example, attempting to override a single-line plain-text property with a multi-line
+
+                                    value will result in an error.
+
+                                    '
+                                  example: <div><h1>Property with <em>Rich Text</em></h1></div>
+                              required:
+                                - propertyId
+                                - text
+                        required:
+                          - nodeId
+                          - propertyOverrides
+                        example:
+                          nodes:
+                            - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad629
+                              propertyOverrides:
+                                - propertyId: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f0
+                                  text: <div><h1>Time is an <em>illusion</em></h1></div>
+                                - propertyId: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f1
+                                  text: Life, the Universe and Everything
+                      - type: object
+                        title: Select
+                        description: Update choices on a select node
+                        properties:
+                          nodeId:
+                            type: string
+                            description: Node UUID
+                            example: a245c12d-995b-55ee-5ec7-aa36a6cad623
+                          choices:
+                            type: array
+                            description: The list of choices to set on the select node.
+                            items:
+                              type: object
+                              required:
+                                - value
+                                - text
+                              properties:
+                                value:
+                                  description: The value of the choice when selected.
+                                  type: string
+                                text:
+                                  description: The text to display for the choice.
+                                  type: string
+                        required:
+                          - nodeId
+                          - choices
+                      - type: object
+                        title: Text Input
+                        description: Update placeholder text on a text input node
+                        properties:
+                          nodeId:
+                            type: string
+                            description: Node UUID
+                            example: a245c12d-995b-55ee-5ec7-aa36a6cad623
+                          placeholder:
+                            description: The placeholder text of the input node
+                            type: string
+                        required:
+                          - nodeId
+                          - placeholder
+                      - type: object
+                        title: Submit Button
+                        description: Update a submit button node
+                        properties:
+                          nodeId:
+                            type: string
+                            description: Node UUID
+                            example: a245c12d-995b-55ee-5ec7-aa36a6cad623
+                          value:
+                            description: The text content of the submit button.
+                            type: string
+                          waitingText:
+                            description: The text to show while the form is submitting.
+                            type: string
+                        required:
+                          - nodeId
+                      - type: object
+                        title: Search Button
+                        description: Update a search button node
+                        properties:
+                          nodeId:
+                            type: string
+                            description: Node UUID
+                            example: a245c12d-995b-55ee-5ec7-aa36a6cad623
+                          value:
+                            description: The text content of the search button.
+                            type: string
+                        required:
+                          - nodeId
+                          - value
                   minItems: 1
                   maxItems: 1000
               required:
-              - nodes
+                - nodes
               example:
                 nodes:
-                - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                  text: <h1>The Hitchhiker's Guide to the Galaxy</h1>
-                - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad627
-                  text: <div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>
-                - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad635
-                  choices:
-                  - value: choice-1
-                    text: First choice
-                  - value: choice-2
-                    text: Second choice
-                - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad642
-                  placeholder: Enter something here...
-                - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad671
-                  value: Submit
-                  waitingText: Submitting...
-                - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad629
-                  propertyOverrides:
-                  - propertyId: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f0
-                    text: <div><h1>Time is an <em>illusion</em></h1></div>
-                  - propertyId: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f1
-                    text: Life, the Universe and Everything
+                  - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad623
+                    text: <h1>The Hitchhiker's Guide to the Galaxy</h1>
+                  - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad627
+                    text: <div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>
+                  - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad635
+                    choices:
+                      - value: choice-1
+                        text: First choice
+                      - value: choice-2
+                        text: Second choice
+                  - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad642
+                    placeholder: Enter something here...
+                  - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad671
+                    value: Submit
+                    waitingText: Submitting...
+                  - nodeId: a245c12d-995b-55ee-5ec7-aa36a6cad629
+                    propertyOverrides:
+                      - propertyId: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f0
+                        text: <div><h1>Time is an <em>illusion</em></h1></div>
+                      - propertyId: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f1
+                        text: Life, the Universe and Everything
       responses:
         '200':
           description: Request was successful
@@ -1679,7 +1645,7 @@ paths:
                       type: string
                     example: []
                 required:
-                - errors
+                  - errors
         '400':
           description: Request body was incorrectly formatted.
           x-logErrorCode: 400
@@ -1690,7 +1656,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -1698,35 +1664,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1739,19 +1705,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: bad_request
                 message: 'Bad Request: Request is malformed'
-                externalReference: null
+                externalReference:
                 details: []
         '401':
           description: Provided access token is invalid or does not have access to requested resource
@@ -1763,7 +1729,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -1771,35 +1737,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1812,19 +1778,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: not_authorized
                 message: Request not authorized
-                externalReference: null
+                externalReference:
                 details: []
         '403':
           description: Forbidden
@@ -1836,7 +1802,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -1844,35 +1810,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1885,19 +1851,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: forbidden
                 message: User is not authorized to perform this action
-                externalReference: null
+                externalReference:
                 details: []
         '404':
           description: Requested resource not found
@@ -1909,7 +1875,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -1917,35 +1883,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1958,23 +1924,22 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: resource_not_found
                 message: 'Requested resource not found: The site cannot be found'
-                externalReference: null
+                externalReference:
                 details: []
         '429':
-          description: The rate limit of the provided access_token has been reached. Please have your application respect
-            the X-RateLimit-Remaining header we include on API responses.
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
           x-logErrorCode: 429
           headers:
             X-RateLimit-Remaining:
@@ -1992,7 +1957,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -2000,35 +1965,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -2041,19 +2006,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: too_many_requests
                 message: Too many requests
-                externalReference: null
+                externalReference:
                 details: []
         '500':
           description: We had a problem with our server. Try again later.
@@ -2065,7 +2030,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -2073,35 +2038,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -2114,123 +2079,120 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: internal_error
                 message: An Internal Error occurred
-                externalReference: null
+                externalReference:
                 details: []
   /sites/{site_id}/components/{component_id}/properties:
     get:
       x-fern-sdk-group-name: components
       x-fern-sdk-method-name: get-properties
       security:
-      - OAuth2:
-        - components:read
+        - OAuth2:
+            - components:read
       operationId: get-component-properties
-      summary: Get Component Properties
+      summary: Webflow Get Component Properties
       description: 'Get the default property values of a component definition.
 
 
-        <Note>If you do not include a `localeId` in your request, the response will return any properties that can be localized
-        from the Primary locale.</Note>
+        <Note>If you do not include a `localeId` in your request, the response will return any properties that can be localized from the Primary locale.</Note>
 
 
         Required scope | `components:read`
 
         '
       tags:
-      - Components
+        - Components
       parameters:
-      - name: site_id
-        in: path
-        description: Unique identifier for a Site
-        example: 580e63e98c9a982ac9b8b741
-        required: true
-        schema:
-          type: string
-          format: objectid
-          default: null
-      - name: component_id
-        in: path
-        description: Unique identifier for a Component
-        example: 8505ba55-ef72-629e-f85c-33e4b703d48b
-        required: true
-        schema:
-          type: string
-          default: null
-      - name: localeId
-        in: query
-        allowEmptyValue: true
-        example: 65427cf400e02b306eaa04a0
-        description: 'Unique identifier for a specific Locale.
+        - name: site_id
+          in: path
+          description: Unique identifier for a Site
+          example: 580e63e98c9a982ac9b8b741
+          required: true
+          schema:
+            type: string
+            format: objectid
+            default:
+        - name: component_id
+          in: path
+          description: Unique identifier for a Component
+          example: 8505ba55-ef72-629e-f85c-33e4b703d48b
+          required: true
+          schema:
+            type: string
+            default:
+        - name: localeId
+          in: query
+          allowEmptyValue: true
+          example: 65427cf400e02b306eaa04a0
+          description: 'Unique identifier for a specific Locale.
 
 
-          [Lear more about localization.](/data/v2.0.0/docs/working-with-localization)
+            [Lear more about localization.](/data/v2.0.0/docs/working-with-localization)
 
-          '
-        schema:
-          type: string
-      - name: branchId
-        in: query
-        allowEmptyValue: true
-        description: Scope the operation to work on a specific branch.
-        example: 68026fa68ef6dc744c75b833
-        required: false
-        schema:
-          type: string
-          format: objectid
-      - in: query
-        allowEmptyValue: true
-        name: limit
-        example: 100
-        description: 'Maximum number of records to be returned (max limit: 100)'
-        required: false
-        schema:
-          type: integer
-      - in: query
-        example: 0
-        allowEmptyValue: true
-        name: offset
-        description: Offset used for pagination if the results have more than limit records
-        required: false
-        schema:
-          type: integer
+            '
+          schema:
+            type: string
+        - name: branchId
+          in: query
+          allowEmptyValue: true
+          description: Scope the operation to work on a specific branch.
+          example: 68026fa68ef6dc744c75b833
+          required: false
+          schema:
+            type: string
+            format: objectid
+        - in: query
+          allowEmptyValue: true
+          name: limit
+          example: 100
+          description: 'Maximum number of records to be returned (max limit: 100)'
+          required: false
+          schema:
+            type: integer
+        - in: query
+          example: 0
+          allowEmptyValue: true
+          name: offset
+          description: Offset used for pagination if the results have more than limit records
+          required: false
+          schema:
+            type: integer
       responses:
         '200':
           description: Request was successful
           content:
             application/json:
               schema:
-                description: 'The Component Properties schema represents a list of properties that store text content. Each
-                  property has a unique identifier and can be of different types like plain text or rich text. The schema
-                  also provides pagination details for scenarios where there more properties than the limit.
+                description: 'The Component Properties schema represents a list of properties that store text content. Each property has a unique identifier and can be of different types like plain text or rich text. The schema also provides pagination details for scenarios where there more properties than the limit.
 
                   '
                 type: object
                 example:
                   componentId: 658205daa3e8206a523b5ad4
                   properties:
-                  - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                    label: Title
-                    type: Plain Text
-                    text:
-                      html: null
-                      text: The Hitchhiker's Guide to the Galaxy
-                  - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad627
-                    label: Content
-                    type: Rich Text
-                    text:
-                      html: <div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>
-                      text: null
+                    - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad623
+                      label: Title
+                      type: Plain Text
+                      text:
+                        html:
+                        text: The Hitchhiker's Guide to the Galaxy
+                    - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad627
+                      label: Content
+                      type: Rich Text
+                      text:
+                        html: <div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>
+                        text:
                   pagination:
                     limit: 2
                     offset: 0
@@ -2243,9 +2205,7 @@ paths:
                   properties:
                     type: array
                     items:
-                      description: 'Represents a property of a component instance in the DOM. A property contains a list of
-                        both the raw text and the HTML representation, allowing for flexibility in rendering and processing.
-                        Additional attributes can be associated with the text for styling or other purposes.
+                      description: 'Represents a property of a component instance in the DOM. A property contains a list of both the raw text and the HTML representation, allowing for flexibility in rendering and processing. Additional attributes can be associated with the text for styling or other purposes.
 
                         '
                       type: object
@@ -2258,15 +2218,14 @@ paths:
                           description: The type of the property.
                           type: string
                           enum:
-                          - Plain Text
-                          - Rich Text
-                          - Alt Text
+                            - Plain Text
+                            - Rich Text
+                            - Alt Text
                         label:
                           description: The label of the property in the UI.
                           type: string
                         text:
-                          description: Represents text content within the DOM. It contains both the raw text and its HTML
-                            representation.
+                          description: Represents text content within the DOM. It contains both the raw text and its HTML representation.
                           properties:
                             html:
                               description: The HTML content of the text node.
@@ -2280,9 +2239,9 @@ paths:
                     description: Pagination object
                     type: object
                     required:
-                    - limit
-                    - offset
-                    - total
+                      - limit
+                      - offset
+                      - total
                     properties:
                       limit:
                         type: integer
@@ -2309,7 +2268,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -2317,35 +2276,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -2358,19 +2317,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: bad_request
                 message: 'Bad Request: Request is malformed'
-                externalReference: null
+                externalReference:
                 details: []
         '401':
           description: Provided access token is invalid or does not have access to requested resource
@@ -2382,7 +2341,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -2390,35 +2349,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -2431,19 +2390,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: not_authorized
                 message: Request not authorized
-                externalReference: null
+                externalReference:
                 details: []
         '404':
           description: Requested resource not found
@@ -2455,7 +2414,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -2463,35 +2422,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -2504,23 +2463,22 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: resource_not_found
                 message: 'Requested resource not found: The site cannot be found'
-                externalReference: null
+                externalReference:
                 details: []
         '429':
-          description: The rate limit of the provided access_token has been reached. Please have your application respect
-            the X-RateLimit-Remaining header we include on API responses.
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
           x-logErrorCode: 429
           headers:
             X-RateLimit-Remaining:
@@ -2538,7 +2496,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -2546,35 +2504,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -2587,19 +2545,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: too_many_requests
                 message: Too many requests
-                externalReference: null
+                externalReference:
                 details: []
         '500':
           description: We had a problem with our server. Try again later.
@@ -2611,7 +2569,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -2619,35 +2577,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -2660,89 +2618,85 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: internal_error
                 message: An Internal Error occurred
-                externalReference: null
+                externalReference:
                 details: []
     post:
       x-fern-sdk-group-name: components
       x-fern-sdk-method-name: update-properties
       security:
-      - OAuth2:
-        - components:write
+        - OAuth2:
+            - components:write
       operationId: update-component-properties
-      summary: Update Component Properties
+      summary: Webflow Update Component Properties
       description: 'Update the default property values of a component definition in a specificed locale.
 
 
         Before making updates:
 
-        1. Use the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint to
-        identify properties that can be updated in a secondary locale.
+        1. Use the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint to identify properties that can be updated in a secondary locale.
 
-        2. Rich Text properties may include a `data-w-id` attribute. This attribute is used by Webflow to maintain links across
-        locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across
-        all locales.
+        2. Rich Text properties may include a `data-w-id` attribute. This attribute is used by Webflow to maintain links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.
 
 
-        <Note>The request requires a secondary locale ID. If a `localeId` is missing, the request will not be processed and
-        will result in an error.</Note>
+        <Note>The request requires a secondary locale ID. If a `localeId` is missing, the request will not be processed and will result in an error.</Note>
 
 
         Required scope | `components:write`
 
         '
       tags:
-      - Components
+        - Components
       parameters:
-      - name: site_id
-        in: path
-        description: Unique identifier for a Site
-        example: 580e63e98c9a982ac9b8b741
-        required: true
-        schema:
-          type: string
-          format: objectid
-          default: null
-      - name: component_id
-        in: path
-        description: Unique identifier for a Component
-        example: 8505ba55-ef72-629e-f85c-33e4b703d48b
-        required: true
-        schema:
-          type: string
-          default: null
-      - name: localeId
-        in: query
-        allowEmptyValue: true
-        example: 65427cf400e02b306eaa04a0
-        description: 'Unique identifier for a specific Locale.
+        - name: site_id
+          in: path
+          description: Unique identifier for a Site
+          example: 580e63e98c9a982ac9b8b741
+          required: true
+          schema:
+            type: string
+            format: objectid
+            default:
+        - name: component_id
+          in: path
+          description: Unique identifier for a Component
+          example: 8505ba55-ef72-629e-f85c-33e4b703d48b
+          required: true
+          schema:
+            type: string
+            default:
+        - name: localeId
+          in: query
+          allowEmptyValue: true
+          example: 65427cf400e02b306eaa04a0
+          description: 'Unique identifier for a specific Locale.
 
 
-          [Lear more about localization.](/data/v2.0.0/docs/working-with-localization)
+            [Lear more about localization.](/data/v2.0.0/docs/working-with-localization)
 
-          '
-        schema:
-          type: string
-      - name: branchId
-        in: query
-        allowEmptyValue: true
-        description: Scope the operation to work on a specific branch.
-        example: 68026fa68ef6dc744c75b833
-        required: false
-        schema:
-          type: string
-          format: objectid
+            '
+          schema:
+            type: string
+        - name: branchId
+          in: query
+          allowEmptyValue: true
+          description: Scope the operation to work on a specific branch.
+          example: 68026fa68ef6dc744c75b833
+          required: false
+          schema:
+            type: string
+            format: objectid
       requestBody:
         content:
           application/json:
@@ -2762,8 +2716,7 @@ paths:
                         example: 7dd14c08-2e96-8d3d-2b19-b5c03642a0f0
                       text:
                         type: string
-                        description: 'The new string or HTML value used to update the component property in the secondary
-                          locale.
+                        description: 'The new string or HTML value used to update the component property in the secondary locale.
 
 
                           The provided value must be compatible with the type of the component property.
@@ -2776,16 +2729,16 @@ paths:
                           '
                         example: <div><h1>Property with <em>Rich Text</em></h1></div>
                     required:
-                    - propertyId
-                    - text
+                      - propertyId
+                      - text
               required:
-              - properties
+                - properties
               example:
                 properties:
-                - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad623
-                  text: The Hitchhiker’s Guide to the Galaxy
-                - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad627
-                  text: <div><h3>Dont Panic!</h3><p>Always know where your towel is.</p></div>
+                  - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad623
+                    text: The Hitchhiker’s Guide to the Galaxy
+                  - propertyId: a245c12d-995b-55ee-5ec7-aa36a6cad627
+                    text: <div><h3>Dont Panic!</h3><p>Always know where your towel is.</p></div>
       responses:
         '200':
           description: Request was successful
@@ -2801,7 +2754,7 @@ paths:
                       type: string
                     example: []
                 required:
-                - errors
+                  - errors
         '400':
           description: Request body was incorrectly formatted.
           x-logErrorCode: 400
@@ -2812,7 +2765,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -2820,35 +2773,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -2861,19 +2814,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: bad_request
                 message: 'Bad Request: Request is malformed'
-                externalReference: null
+                externalReference:
                 details: []
         '401':
           description: Provided access token is invalid or does not have access to requested resource
@@ -2885,7 +2838,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -2893,35 +2846,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -2934,19 +2887,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: not_authorized
                 message: Request not authorized
-                externalReference: null
+                externalReference:
                 details: []
         '404':
           description: Requested resource not found
@@ -2958,7 +2911,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -2966,35 +2919,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -3007,23 +2960,22 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: resource_not_found
                 message: 'Requested resource not found: The site cannot be found'
-                externalReference: null
+                externalReference:
                 details: []
         '429':
-          description: The rate limit of the provided access_token has been reached. Please have your application respect
-            the X-RateLimit-Remaining header we include on API responses.
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
           x-logErrorCode: 429
           headers:
             X-RateLimit-Remaining:
@@ -3041,7 +2993,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -3049,35 +3001,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -3090,19 +3042,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: too_many_requests
                 message: Too many requests
-                externalReference: null
+                externalReference:
                 details: []
         '500':
           description: We had a problem with our server. Try again later.
@@ -3114,7 +3066,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference: null
+                  externalReference:
                   details: []
                 properties:
                   code:
@@ -3122,35 +3074,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                    - bad_request
-                    - collection_not_found
-                    - conflict
-                    - duplicate_collection
-                    - duplicate_user_email
-                    - ecommerce_not_enabled
-                    - forbidden
-                    - forms_require_republish
-                    - incompatible_webhook_filter
-                    - internal_error
-                    - invalid_auth_version
-                    - invalid_credentials
-                    - invalid_domain
-                    - invalid_user_email
-                    - item_not_found
-                    - missing_scopes
-                    - no_domains
-                    - not_authorized
-                    - not_enterprise_plan_site
-                    - not_enterprise_plan_workspace
-                    - order_not_found
-                    - resource_not_found
-                    - too_many_requests
-                    - unsupported_version
-                    - unsupported_webhook_trigger_type
-                    - user_limit_reached
-                    - user_not_found
-                    - users_not_enabled
-                    - validation_error
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
                   message:
                     type: string
                     description: Error message
@@ -3163,19 +3115,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                    - type: string
-                      example: Invalid email address
-                      description: Error message
-                    - type: object
-                      example:
-                        field: email
-                        message: Invalid email address
-                      description: Error message
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
                     example: []
               example:
                 code: internal_error
                 message: An Internal Error occurred
-                externalReference: null
+                externalReference:
                 details: []
 components:
   securitySchemes:
