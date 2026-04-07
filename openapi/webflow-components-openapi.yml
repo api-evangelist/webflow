@@ -18,7 +18,8 @@ servers:
 security:
   - OAuth2: []
   - ApiKey: []
-tags: []
+tags:
+  - name: Components
 paths:
   /sites/{site_id}/components:
     get:

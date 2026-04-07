@@ -19,6 +19,7 @@ security:
   - OAuth2: []
   - ApiKey: []
 tags:
+  - name: Comments
   - name: Sites
     description: Sites are the sites in your Webflow workspace.
 paths:

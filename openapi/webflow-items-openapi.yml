@@ -44,8 +44,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -695,8 +695,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -1554,8 +1554,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -2481,8 +2481,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -2989,8 +2989,8 @@ paths:
       summary: Webflow List Live Collection Items
       description: "List all published items in a collection.\n\n<Tip title=\"Serve data with the Content Delivery API\">\n  Serving data to applications in real-time? Use the Content Delivery API at `api-cdn.webflow.com` for better performance. The CDN-backed endpoint is optimized for high-volume reads, while the Data API is designed for writes and management operations.\n</Tip>\n\nRequired scope | `CMS:read`\n"
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -3641,8 +3641,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -4455,8 +4455,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -5341,8 +5341,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -5772,8 +5772,8 @@ paths:
       summary: Webflow Create Collection Items
       description: "Create an item or multiple items in a CMS Collection across multiple corresponding locales.\n\n<Note>\n  - This endpoint can create up to 100 items in a request.\n  - If the `cmsLocaleIds` parameter is not included in the request, an item will only be created in the primary locale.\n</Note>\n\nRequired scope | `CMS:write`\n"
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -6541,8 +6541,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -7073,8 +7073,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -7698,8 +7698,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -8119,8 +8119,8 @@ paths:
       summary: Webflow Get Live Collection Item
       description: "Get details of a selected Collection live Item.\n\n<Tip title=\"Serve data with the Content Delivery API\">\n  Serving data to applications in real-time? Use the Content Delivery API at `api-cdn.webflow.com` for better performance. The CDN-backed endpoint is optimized for high-volume reads, while the Data API is designed for writes and management operations.\n</Tip>\n\nRequired scope | `CMS:read`\n"
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -8651,8 +8651,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -9361,8 +9361,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -9782,8 +9782,8 @@ paths:
 
         '
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id

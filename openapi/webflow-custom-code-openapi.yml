@@ -25,6 +25,7 @@ tags:
     description: Custom code for pages.
   - name: Custom Code - Sites
     description: Custom code for sites.
+  - name: Registered Scripts
   - name: Sites
     description: Sites are the sites in your Webflow workspace.
 paths:
@@ -46,8 +47,8 @@ paths:
 
         '
       tags:
-        - Custom Code - Pages
         - Custom Code
+        - Custom Code - Pages
         - Sites
       parameters:
         - name: page_id
@@ -529,8 +530,8 @@ paths:
 
         '
       tags:
-        - Custom Code - Pages
         - Custom Code
+        - Custom Code - Pages
         - Sites
       parameters:
         - name: page_id
@@ -931,8 +932,8 @@ paths:
       summary: Webflow Add/Update Custom Code
       description: "Apply registered scripts to a page. If you have multiple scripts your App needs to apply or maintain on a page, ensure they are always included in the request body for this endpoint. To remove individual scripts, simply call this endpoint without the script in the request body.\n\n<Note title=\"Script Registration\">\n  To apply a script to a page, the script must first be registered to a Site via the [Register Script](/data/reference/custom-code/custom-code/register-hosted) endpoints. Once registered, the script can be applied to a Site or Page using the appropriate endpoints. See the documentation on [working with Custom Code](/data/docs/custom-code) for more information.\n</Note>\n\nRequired scope | `custom_code:write`\n"
       tags:
-        - Custom Code - Pages
         - Custom Code
+        - Custom Code - Pages
         - Sites
       parameters:
         - name: page_id
@@ -1533,8 +1534,8 @@ paths:
       summary: Webflow Get Custom Code
       description: "Get all scripts applied to a site by the App.\n\n<Note title=\"Script Registration\">\n  To apply a script to a site or page, the script must first be registered to a site via the [Register Script](/data/reference/custom-code/custom-code/register-hosted) endpoints. Once registered, the script can be applied to a Site or Page using the appropriate endpoints. See the documentation on [working with Custom Code](/data/docs/custom-code) for more information.\n</Note>\n\nRequired scope | `custom_code:read`\n"
       tags:
-        - Custom Code - Sites
         - Custom Code
+        - Custom Code - Sites
         - Sites
       parameters:
         - name: site_id
@@ -2015,8 +2016,8 @@ paths:
 
         '
       tags:
-        - Custom Code - Sites
         - Custom Code
+        - Custom Code - Sites
         - Sites
       parameters:
         - name: site_id
@@ -2417,8 +2418,8 @@ paths:
       summary: Webflow Add/Update Custom Code
       description: "Apply registered scripts to a site. If you have multiple scripts your App needs to apply or maintain on a site, ensure they are always included in the request body for this endpoint. To remove individual scripts, simply call this endpoint without the script in the request body.\n\n<Note title=\"Script Registration\">\n  To apply a script to a site or page, the script must first be registered to a site via the [Register Script](/data/reference/custom-code/custom-code/register-hosted) endpoints. Once registered, the script can be applied to a Site or Page using the appropriate endpoints. See the documentation on [working with Custom Code](/data/docs/custom-code) for more information.\n</Note>\n\nRequired scope | `custom_code:write`\n"
       tags:
-        - Custom Code - Sites
         - Custom Code
+        - Custom Code - Sites
         - Sites
       parameters:
         - name: site_id

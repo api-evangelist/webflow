@@ -19,8 +19,11 @@ security:
   - OAuth2: []
   - ApiKey: []
 tags:
+  - name: Site Activity
+  - name: Site Administration
   - name: Sites
     description: Sites are the sites in your Webflow workspace.
+  - name: Workspce Audit Logs
 paths:
   /workspaces/{workspace_id}/sites:
     post:
@@ -9699,8 +9702,8 @@ paths:
       summary: Webflow Set a well-known file
       description: "Upload a supported well-known file to a site.\n\nThe current restrictions on well-known files are as follows:\n  - Each file must be smaller than 100kb\n  - Less than 30 total files\n  - Have one of the following file extensions (or no extension): `.txt`, `.json`, `.noext`\n\n  <Note title=\".noext\">\n    `.noext` is a special file extension that removes other extensions. For example, `apple-app-site-association.noext.txt` will be uploaded as `apple-app-site-association`. Use this extension for tools that have trouble uploading extensionless files.\n  </Note>\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `site_config:write`\n"
       tags:
-        - Sites
         - Site Administration
+        - Sites
       parameters:
         - name: site_id
           in: path
@@ -10158,8 +10161,8 @@ paths:
 
         '
       tags:
-        - Sites
         - Site Administration
+        - Sites
       parameters:
         - name: site_id
           in: path

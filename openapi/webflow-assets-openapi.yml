@@ -19,6 +19,7 @@ security:
   - OAuth2: []
   - ApiKey: []
 tags:
+  - name: Asset Folders
   - name: Assets
     description: Assets are files that are uploaded to your Webflow account.
 paths:

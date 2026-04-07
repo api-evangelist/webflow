@@ -23,10 +23,13 @@ security:
   - ApiKey: []
 
 tags:
+  - name: Asset Folders
   - name: Assets
     description: Assets are files that are uploaded to your Webflow account.
   - name: Collections
     description: Collections are CMS collections of items.
+  - name: Comments
+  - name: Components
   - name: Custom Code
     description: Custom code is JavaScript that is added to your Webflow site.
   - name: Custom Code - Pages
@@ -47,13 +50,17 @@ tags:
     description: Pages are the pages in your Webflow site.
   - name: Products & SKUs
     description: Products & SKUs are the products and SKUs in your Webflow e-commerce site.
+  - name: Registered Scripts
   - name: Settings
     description: Settings are the e-commerce settings for your Webflow site.
+  - name: Site Activity
+  - name: Site Administration
   - name: Sites
     description: Sites are the sites in your Webflow workspace.
   - name: Webhooks
     description: Webhooks are the webhooks in your Webflow site.
 
+  - name: Workspce Audit Logs
 paths:
   /token/authorized_by:
     get:
@@ -10365,8 +10372,8 @@ paths:
 
         Required scope: `site_config:write`
       tags:
-        - Sites
         - Site Administration
+        - Sites
       parameters:
         - name: site_id
           in: path
@@ -10853,8 +10860,8 @@ paths:
 
         Required scope: `site_config:write`
       tags:
-        - Sites
         - Site Administration
+        - Sites
       parameters:
         - name: site_id
           in: path
@@ -16438,8 +16445,8 @@ paths:
 
         Required scope | `CMS:read`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -17082,8 +17089,8 @@ paths:
 
         Required scope | `CMS:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -17925,8 +17932,8 @@ paths:
 
         Required scope | `CMS:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -18840,8 +18847,8 @@ paths:
 
         Required scope | `CMS:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -19355,8 +19362,8 @@ paths:
 
         Required scope | `CMS:read`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -20000,8 +20007,8 @@ paths:
 
         Required scope | `CMS:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -20799,8 +20806,8 @@ paths:
 
         Required scope | `CMS:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -21677,8 +21684,8 @@ paths:
 
         Required scope | `CMS:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -22116,8 +22123,8 @@ paths:
 
         Required scope | `CMS:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -22878,8 +22885,8 @@ paths:
 
         Required scope | `CMS:read`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -23404,8 +23411,8 @@ paths:
 
         Required scope | `CMS:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -24022,8 +24029,8 @@ paths:
 
         Required scope | `CMS:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -24450,8 +24457,8 @@ paths:
 
         Required scope | `CMS:read`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -24976,8 +24983,8 @@ paths:
 
         Required scope | `CMS:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -25678,8 +25685,8 @@ paths:
 
         Required scope | `CMS:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -26097,8 +26104,8 @@ paths:
 
         Required scope | `cms:write`
       tags:
-        - Items
         - Collections
+        - Items
         - Sites
       parameters:
         - name: collection_id
@@ -35069,8 +35076,8 @@ paths:
 
         Required scope | `custom_code:read`
       tags:
-        - Custom Code - Pages
         - Custom Code
+        - Custom Code - Pages
         - Sites
       parameters:
         - name: page_id
@@ -35548,8 +35555,8 @@ paths:
 
         Required scope | `custom_code:write`
       tags:
-        - Custom Code - Pages
         - Custom Code
+        - Custom Code - Pages
         - Sites
       parameters:
         - name: page_id
@@ -35957,8 +35964,8 @@ paths:
 
         Required scope | `custom_code:write`
       tags:
-        - Custom Code - Pages
         - Custom Code
+        - Custom Code - Pages
         - Sites
       parameters:
         - name: page_id
@@ -36566,8 +36573,8 @@ paths:
 
         Required scope | `custom_code:read`
       tags:
-        - Custom Code - Sites
         - Custom Code
+        - Custom Code - Sites
         - Sites
       parameters:
         - name: site_id
@@ -37044,8 +37051,8 @@ paths:
 
         Required scope | `custom_code:write`
       tags:
-        - Custom Code - Sites
         - Custom Code
+        - Custom Code - Sites
         - Sites
       parameters:
         - name: site_id
@@ -37453,8 +37460,8 @@ paths:
 
         Required scope | `custom_code:write`
       tags:
-        - Custom Code - Sites
         - Custom Code
+        - Custom Code - Sites
         - Sites
       parameters:
         - name: site_id
