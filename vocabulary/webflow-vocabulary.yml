@@ -1,0 +1,315 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Webflow"
+  description: >-
+    Unified vocabulary for Webflow APIs, mapping CMS resources, site management
+    actions, ecommerce entities, webhook events, and async event-driven capabilities.
+    Covers both the Data API (REST) and Webhooks AsyncAPI specifications.
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - name: Webflow Data API
+      namespace: webflow-data
+      version: "v2"
+      baseUrl: https://api.webflow.com/v2
+      status: active
+    - name: Webflow Sites API
+      namespace: webflow-sites
+      version: "v2"
+      baseUrl: https://api.webflow.com/v2
+      status: active
+    - name: Webflow Collections API
+      namespace: webflow-collections
+      version: "v2"
+      baseUrl: https://api.webflow.com/v2
+      status: active
+    - name: Webflow CMS Items API
+      namespace: webflow-items
+      version: "v2"
+      baseUrl: https://api.webflow.com/v2
+      status: active
+    - name: Webflow Webhooks API
+      namespace: webflow-webhooks
+      version: "v2"
+      baseUrl: https://api.webflow.com/v2
+      status: active
+    - name: Webflow Webhooks Events (AsyncAPI)
+      namespace: webflow-webhooks-async
+      version: "2.6.0"
+      baseUrl: https://webflow.com
+      status: active
+    - name: Webflow Assets API
+      namespace: webflow-assets
+      version: "v2"
+      baseUrl: https://api.webflow.com/v2
+      status: active
+    - name: Webflow Forms API
+      namespace: webflow-forms
+      version: "v2"
+      baseUrl: https://api.webflow.com/v2
+      status: active
+    - name: Webflow Products API
+      namespace: webflow-products
+      version: "v2"
+      baseUrl: https://api.webflow.com/v2
+      status: active
+    - name: Webflow Orders API
+      namespace: webflow-orders
+      version: "v2"
+      baseUrl: https://api.webflow.com/v2
+      status: active
+
+  resources:
+    - name: sites
+      description: Webflow sites within a workspace
+      apis: [webflow-data, webflow-sites]
+      actions: [list, get, create, update, delete, publish]
+    - name: pages
+      description: Static and dynamic pages within a Webflow site
+      apis: [webflow-data]
+      actions: [list, get, update]
+    - name: collections
+      description: CMS content type definitions within a site
+      apis: [webflow-collections]
+      actions: [list, get, create, delete]
+    - name: items
+      description: Individual CMS content entries within a collection
+      apis: [webflow-items]
+      actions: [list, get, create, update, delete, publish, unpublish]
+    - name: components
+      description: Reusable design components within a Webflow site
+      apis: [webflow-data]
+      actions: [list, get, update]
+    - name: assets
+      description: Images and file uploads for Webflow sites
+      apis: [webflow-assets]
+      actions: [list, create, update, delete]
+    - name: forms
+      description: Form definitions and submission data
+      apis: [webflow-forms]
+      actions: [list, get-submissions]
+    - name: products
+      description: Ecommerce product catalog items
+      apis: [webflow-products]
+      actions: [list, get, create, update, delete]
+    - name: orders
+      description: Ecommerce order management
+      apis: [webflow-orders]
+      actions: [list, get, update, fulfill, refund]
+    - name: inventory
+      description: Ecommerce product inventory management
+      apis: [webflow-data]
+      actions: [list, update]
+    - name: webhooks
+      description: HTTP event callbacks for Webflow site events
+      apis: [webflow-webhooks]
+      actions: [list, get, create, delete]
+    - name: custom-code
+      description: Custom JavaScript on sites and pages
+      apis: [webflow-data]
+      actions: [add, update, delete, register]
+    - name: comments
+      description: Editorial comments within a Webflow site
+      apis: [webflow-data]
+      actions: [list, get-replies]
+
+  actions:
+    - name: list
+      description: Retrieve a collection of resources
+      pattern: read
+      methods: [GET]
+    - name: get
+      description: Retrieve a single resource by ID
+      pattern: read
+      methods: [GET]
+    - name: create
+      description: Create a new resource
+      pattern: write
+      methods: [POST]
+    - name: update
+      description: Update an existing resource
+      pattern: write
+      methods: [PATCH, PUT]
+    - name: delete
+      description: Remove a resource
+      pattern: destructive
+      methods: [DELETE]
+    - name: publish
+      description: Make a site or item live to visitors
+      pattern: write
+      methods: [POST]
+    - name: unpublish
+      description: Remove a published item from public view
+      pattern: write
+      methods: [POST, DELETE]
+    - name: fulfill
+      description: Mark an ecommerce order as fulfilled
+      pattern: write
+      methods: [POST]
+    - name: refund
+      description: Process a refund for an ecommerce order
+      pattern: write
+      methods: [POST]
+
+  schemas:
+    cms:
+      - name: Site
+        properties: [id, displayName, shortName, lastPublished, previewUrl, timeZone, createdOn]
+      - name: Collection
+        properties: [id, displayName, singularName, slug, fields, createdOn, lastUpdated]
+      - name: CollectionItem
+        properties: [id, cmsLocaleId, lastPublished, lastUpdated, createdOn, isArchived, isDraft, fieldData]
+    ecommerce:
+      - name: Product
+        properties: [id, cmsLocaleId, fieldData, skus]
+      - name: Order
+        properties: [orderId, status, acceptedOn, customerInfo, purchasedItemsCount]
+    webhooks:
+      - name: Webhook
+        properties: [id, triggerType, url, siteId, lastTriggered, createdOn]
+      - name: WebhookEvent
+        properties: [triggerType, payload, site, account]
+    assets:
+      - name: Asset
+        properties: [id, displayName, contentType, size, url, createdOn]
+
+  parameters:
+    pagination:
+      - name: limit
+        description: Maximum number of items to return per page
+      - name: offset
+        description: Number of items to skip for pagination
+    identifiers:
+      - name: site_id
+        description: Unique identifier for a Webflow site
+      - name: collection_id
+        description: Unique identifier for a CMS collection
+      - name: item_id
+        description: Unique identifier for a CMS item
+      - name: workspace_id
+        description: Unique identifier for a Webflow workspace
+    filters:
+      - name: isDraft
+        description: Filter items by draft status
+      - name: isArchived
+        description: Filter to include archived items
+
+  enums:
+    webhookTriggers:
+      - form_submission
+      - site_publish
+      - page_created
+      - page_metadata_updated
+      - page_deleted
+      - ecomm_new_order
+      - ecomm_order_changed
+      - ecomm_inventory_changed
+      - collection_item_created
+      - collection_item_changed
+      - collection_item_deleted
+      - collection_item_unpublished
+    orderStatuses:
+      - pending
+      - unfulfilled
+      - fulfilled
+      - disputed
+      - refunded
+    paymentStatuses:
+      - pending
+      - paid
+      - manual
+
+  authentication:
+    - type: apikey
+      description: API key (personal access token or site token) from Webflow workspace settings
+      headerName: Authorization
+      format: "Bearer {api_token}"
+    - type: oauth2
+      description: OAuth 2.0 authorization code flow for Webflow App integrations
+      authorizationUrl: https://webflow.com/oauth/authorize
+      tokenUrl: https://api.webflow.com/oauth/access_token
+
+capability:
+  workflows:
+    - name: CMS and Ecommerce
+      file: capabilities/cms-and-ecommerce.yaml
+      description: CMS content management, site publishing, and ecommerce automation
+      apis: [webflow-data]
+      toolCount: 10
+      personas: [content-manager, developer, ecommerce-manager]
+      domains: [CMS, Publishing, Ecommerce, Webhooks]
+
+  personas:
+    - id: content-manager
+      name: Content Manager
+      description: Creates, edits, and publishes CMS content across Webflow sites
+      workflows: [CMS and Ecommerce]
+    - id: developer
+      name: Developer
+      description: Builds Webflow integrations, manages webhooks, and automates publishing
+      workflows: [CMS and Ecommerce]
+    - id: ecommerce-manager
+      name: Ecommerce Manager
+      description: Manages products, orders, and inventory through the Webflow API
+      workflows: [CMS and Ecommerce]
+    - id: marketing-automation
+      name: Marketing Automation Engineer
+      description: Automates content creation and publishing for marketing campaigns
+      workflows: [CMS and Ecommerce]
+    - id: no-code-builder
+      name: No-Code Builder
+      description: Uses Webflow's visual builder and extends functionality via the API
+      workflows: []
+
+  domains:
+    - name: CMS
+      description: Content management system collections and items
+    - name: Publishing
+      description: Site and content publishing workflows
+    - name: Ecommerce
+      description: Product catalog, orders, and inventory management
+    - name: Webhooks
+      description: Real-time event notifications via HTTP callbacks
+    - name: Sites
+      description: Webflow site configuration and domain management
+    - name: Assets
+      description: Digital asset management for site media and files
+    - name: Forms
+      description: Form submission capture and management
+    - name: Custom Code
+      description: Custom JavaScript injection and script management
+
+  namespaces:
+    - namespace: webflow-data
+      type: consumed
+      baseUri: https://api.webflow.com/v2
+    - namespace: webflow-cms-ecommerce-api
+      type: rest-exposed
+      port: 8080
+    - namespace: webflow-cms-ecommerce-mcp
+      type: mcp-exposed
+      port: 9080
+
+  binds:
+    - WEBFLOW_API_KEY: "Webflow API key from app.webflow.com/account/integrations or workspace settings"
+
+crossReference:
+  - resource: sites
+    operations: [list-sites, get-site, publish-site]
+    workflows: [CMS and Ecommerce]
+    personas: [content-manager, developer, marketing-automation]
+  - resource: collections
+    operations: [list-collections, get-collection]
+    workflows: [CMS and Ecommerce]
+    personas: [content-manager, developer]
+  - resource: items
+    operations: [list-items, create-item, update-item, delete-item, publish-item]
+    workflows: [CMS and Ecommerce]
+    personas: [content-manager, developer, marketing-automation]
+  - resource: webhooks
+    operations: [list-webhooks, create-webhook]
+    workflows: [CMS and Ecommerce]
+    personas: [developer]

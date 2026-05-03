@@ -16,7 +16,7 @@ Webflow is a visual web development platform that lets teams design, build, and 
 ## Timestamps
 
 - **Created:** 2026-03-16
-- **Modified:** 2026-03-17
+- **Modified:** 2026-05-03
 
 ## APIs
 
@@ -24,7 +24,6 @@ Webflow is a visual web development platform that lets teams design, build, and 
 The Webflow Data API is a RESTful API that provides access to Webflow sites, pages, CMS collections, ecommerce products and orders, assets, users, and forms. All V2 API endpoints start with https://api.webflow.com/v2 and use OAuth 2.0 for authentication.
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
-
 
 #### Tags:
 
@@ -46,7 +45,6 @@ The Webflow Designer Extension API allows developers to build extensions that ru
 
 **Human URL:** [https://developers.webflow.com/designer/reference/introduction](https://developers.webflow.com/designer/reference/introduction)
 
-
 #### Tags:
 
  - Designer, Extensions, Plugins
@@ -61,7 +59,6 @@ The Webflow Meta API provides endpoints for retrieving information about the aut
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
 
-
 #### Tags:
 
  - Authentication, Tokens, Meta
@@ -74,7 +71,6 @@ The Webflow Meta API provides endpoints for retrieving information about the aut
 The Webflow Sites API provides endpoints for managing Webflow sites within a workspace, including creating, updating, publishing, and deleting sites, as well as managing custom domains, redirects, robots.txt, and site activity logs.
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
-
 
 #### Tags:
 
@@ -89,7 +85,6 @@ The Webflow Pages API provides endpoints for listing, retrieving, and updating p
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
 
-
 #### Tags:
 
  - Pages, Content, DOM
@@ -102,7 +97,6 @@ The Webflow Pages API provides endpoints for listing, retrieving, and updating p
 The Webflow Collections API provides endpoints for managing CMS collections, including creating, listing, and deleting collections, as well as managing collection fields and their configurations.
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
-
 
 #### Tags:
 
@@ -117,7 +111,6 @@ The Webflow CMS Items API provides endpoints for creating, reading, updating, de
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
 
-
 #### Tags:
 
  - CMS, Items, Content Management
@@ -130,7 +123,6 @@ The Webflow CMS Items API provides endpoints for creating, reading, updating, de
 The Webflow Components API provides endpoints for listing components within a site, and retrieving or updating component content and properties.
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
-
 
 #### Tags:
 
@@ -145,7 +137,6 @@ The Webflow Assets API provides endpoints for uploading, listing, updating, and 
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
 
-
 #### Tags:
 
  - Assets, Files, Media
@@ -158,7 +149,6 @@ The Webflow Assets API provides endpoints for uploading, listing, updating, and 
 The Webflow Forms API provides endpoints for listing forms, retrieving form schemas, and managing form submissions including listing, modifying, and deleting submissions.
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
-
 
 #### Tags:
 
@@ -173,7 +163,6 @@ The Webflow Products and SKUs API provides endpoints for managing ecommerce prod
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
 
-
 #### Tags:
 
  - Ecommerce, Products, SKUs
@@ -186,7 +175,6 @@ The Webflow Products and SKUs API provides endpoints for managing ecommerce prod
 The Webflow Orders API provides endpoints for listing, retrieving, and updating ecommerce orders, as well as fulfilling, unfulfilling, and refunding orders.
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
-
 
 #### Tags:
 
@@ -201,7 +189,6 @@ The Webflow Inventory API provides endpoints for listing and updating inventory 
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
 
-
 #### Tags:
 
  - Ecommerce, Inventory, Stock
@@ -214,7 +201,6 @@ The Webflow Inventory API provides endpoints for listing and updating inventory 
 The Webflow Ecommerce Settings API provides an endpoint for retrieving the ecommerce configuration settings for a Webflow site.
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
-
 
 #### Tags:
 
@@ -229,7 +215,6 @@ The Webflow Webhooks API provides endpoints for registering, listing, retrieving
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
 
-
 #### Tags:
 
  - Webhooks, Events, Notifications
@@ -243,7 +228,6 @@ The Webflow Custom Code API provides endpoints for adding, updating, and deletin
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
 
-
 #### Tags:
 
  - Custom Code, JavaScript, Scripts
@@ -256,7 +240,6 @@ The Webflow Custom Code API provides endpoints for adding, updating, and deletin
 The Webflow Comments API provides endpoints for listing comment threads and retrieving comment replies within a Webflow site.
 
 **Human URL:** [https://developers.webflow.com/data/reference/rest-introduction](https://developers.webflow.com/data/reference/rest-introduction)
-
 
 #### Tags:
 
@@ -288,6 +271,115 @@ The Webflow Comments API provides endpoints for listing comment threads and retr
 - [Change Log](https://developers.webflow.com/data/v2.0.0/changelog)
 - [SDKs](https://developers.webflow.com/data/reference/sdks)
 - [Webhooks](https://developers.webflow.com/data/docs/working-with-webhooks)
+
+## Features
+
+| Name | Description |
+|------|-------------|
+| Visual Web Builder | Drag-and-drop visual design with clean, production-ready HTML/CSS/JS output. |
+| CMS API | Programmatic management of CMS collections and items for dynamic content publishing. |
+| Ecommerce API | Complete ecommerce API for products, SKUs, orders, inventory, and payment integration. |
+| OAuth 2.0 | Secure OAuth 2.0 authorization for building Webflow App integrations. |
+| Webhooks | Real-time event notifications for form submissions, publishing, ecommerce events, and CMS changes. |
+| AsyncAPI Webhooks | AsyncAPI specification documenting all Webflow webhook event schemas. |
+| Designer Extensions | Build custom panels and tools that run inside the Webflow Designer application. |
+| Site Publishing API | Programmatically publish Webflow sites to staging or custom production domains. |
+
+## Use Cases
+
+| Name | Description |
+|------|-------------|
+| Headless CMS | Use Webflow as a headless CMS, managing content via the API with any frontend framework. |
+| Content Automation | Automatically create, update, and publish CMS items from external databases or APIs. |
+| Ecommerce Integration | Sync Webflow product catalog and orders with ERP, PIM, or inventory management systems. |
+| Multi-Site Management | Manage content and publishing across multiple Webflow sites from a centralized platform. |
+| Form Processing | Process form submissions via webhooks to integrate with CRM or marketing automation. |
+| Site Deployment Pipeline | Trigger Webflow site publishing as part of automated content approval or CI/CD workflows. |
+
+## Integrations
+
+| Name | Description |
+|------|-------------|
+| Zapier | No-code Webflow integration for automating workflows with 5,000+ apps. |
+| Make (Integromat) | Visual automation platform for complex Webflow workflow automation. |
+| Airtable | Connect Airtable as a data source for Webflow CMS content. |
+| HubSpot | Sync Webflow form submissions and data with HubSpot CRM. |
+| Shopify | Import Shopify product catalog into Webflow ecommerce. |
+| Memberstack | Add membership and authentication features to Webflow sites. |
+
+## Artifacts
+
+Machine-readable API specifications and schemas organized by format.
+
+### OpenAPI
+
+- [Webflow Data API](openapi/webflow-data-api-openapi.yml)
+- [Webflow Meta API](openapi/webflow-meta-openapi.yml)
+- [Webflow Sites API](openapi/webflow-sites-openapi.yml)
+- [Webflow Pages API](openapi/webflow-pages-openapi.yml)
+- [Webflow Collections API](openapi/webflow-collections-openapi.yml)
+- [Webflow CMS Items API](openapi/webflow-items-openapi.yml)
+- [Webflow Components API](openapi/webflow-components-openapi.yml)
+- [Webflow Assets API](openapi/webflow-assets-openapi.yml)
+- [Webflow Forms API](openapi/webflow-forms-openapi.yml)
+- [Webflow Products and SKUs API](openapi/webflow-products-openapi.yml)
+- [Webflow Orders API](openapi/webflow-orders-openapi.yml)
+- [Webflow Inventory API](openapi/webflow-inventory-openapi.yml)
+- [Webflow Ecommerce Settings API](openapi/webflow-ecommerce-settings-openapi.yml)
+- [Webflow Webhooks API](openapi/webflow-webhooks-openapi.yml)
+- [Webflow Custom Code API](openapi/webflow-custom-code-openapi.yml)
+- [Webflow Comments API](openapi/webflow-comments-openapi.yml)
+
+### AsyncAPI
+
+- [Webflow Webhooks Events](asyncapi/webflow-webhooks-asyncapi.yml)
+
+### JSON Schema
+
+- [Webflow Site](json-schema/webflow-site-schema.json)
+- [Webflow Collection Item](json-schema/webflow-collection-item-schema.json)
+- [Webflow Order](json-schema/webflow-order-schema.json)
+- [Webflow Webhook](json-schema/webflow-webhook-schema.json)
+
+### JSON Structure
+
+- [Webflow Site](json-structure/webflow-site-structure.json)
+- [Webflow Collection Item](json-structure/webflow-collection-item-structure.json)
+- [Webflow Order](json-structure/webflow-order-structure.json)
+- [Webflow Webhook](json-structure/webflow-webhook-structure.json)
+
+### JSON-LD
+
+- [Webflow Context](json-ld/webflow-context.jsonld)
+
+### Examples
+
+- [Webflow Site](examples/webflow-site-example.json)
+- [Webflow Collection Item](examples/webflow-collection-item-example.json)
+- [Webflow Order](examples/webflow-order-example.json)
+- [Webflow Webhook](examples/webflow-webhook-example.json)
+
+## Capabilities
+
+Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
+
+### Shared Per-API Definitions
+
+- [Webflow Data API](capabilities/shared/data-api.yaml) — 12 operations for sites, collections, items, and webhooks
+
+### Workflow Capabilities
+
+| Workflow | APIs Combined | Tools | Persona |
+|----------|--------------|-------|---------|
+| [CMS and Ecommerce](capabilities/cms-and-ecommerce.yaml) | Data API | 10 | Content Manager, Developer, Ecommerce Manager |
+
+## Vocabulary
+
+- [Webflow Vocabulary](vocabulary/webflow-vocabulary.yml) — Unified taxonomy mapping 10 APIs, 13 resources, 9 actions, 1 workflow, and 5 personas
+
+## Rules
+
+- [Webflow Spectral Rules](rules/webflow-spectral-rules.yml) — 26 rules across 13 categories enforcing Webflow API conventions
 
 ## Maintainers
 

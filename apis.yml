@@ -15,7 +15,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/webflow/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-03-17'
+modified: '2026-05-03'
 specificationVersion: '0.19'
 apis:
   - aid: webflow:data-api
@@ -393,8 +393,63 @@ common:
     url: json-schema/webflow-order-schema.json
   - type: JSONSchema
     url: json-schema/webflow-webhook-schema.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/webflow-context.jsonld
+  - type: SpectralRules
+    url: rules/webflow-spectral-rules.yml
+  - type: NaftikoCapability
+    url: capabilities/cms-and-ecommerce.yaml
+  - type: Vocabulary
+    url: vocabulary/webflow-vocabulary.yml
+  - name: Webflow Features
+    type: Features
+    data:
+      - name: Visual Web Builder
+        description: Drag-and-drop visual design with clean, production-ready HTML/CSS/JS output.
+      - name: CMS API
+        description: Programmatic management of CMS collections and items for dynamic content publishing.
+      - name: Ecommerce API
+        description: Complete ecommerce API for products, SKUs, orders, inventory, and payment integration.
+      - name: OAuth 2.0
+        description: Secure OAuth 2.0 authorization for building Webflow App integrations.
+      - name: Webhooks
+        description: Real-time event notifications for form submissions, publishing, ecommerce events, and CMS changes.
+      - name: AsyncAPI Webhooks
+        description: AsyncAPI specification documenting all Webflow webhook event schemas.
+      - name: Designer Extensions
+        description: Build custom panels and tools that run inside the Webflow Designer application.
+      - name: Site Publishing API
+        description: Programmatically publish Webflow sites to staging or custom production domains.
+  - name: Webflow Use Cases
+    type: UseCases
+    data:
+      - name: Headless CMS
+        description: Use Webflow as a headless CMS, managing content via the API with any frontend framework.
+      - name: Content Automation
+        description: Automatically create, update, and publish CMS items from external databases or APIs.
+      - name: Ecommerce Integration
+        description: Sync Webflow product catalog and orders with ERP, PIM, or inventory management systems.
+      - name: Multi-Site Management
+        description: Manage content and publishing across multiple Webflow sites from a centralized platform.
+      - name: Form Processing
+        description: Process form submissions via webhooks to integrate with CRM or marketing automation.
+      - name: Site Deployment Pipeline
+        description: Trigger Webflow site publishing as part of automated content approval or CI/CD workflows.
+  - name: Webflow Integrations
+    type: Integrations
+    data:
+      - name: Zapier
+        description: No-code Webflow integration for automating workflows with 5,000+ apps.
+      - name: Make (Integromat)
+        description: Visual automation platform for complex Webflow workflow automation.
+      - name: Airtable
+        description: Connect Airtable as a data source for Webflow CMS content.
+      - name: HubSpot
+        description: Sync Webflow form submissions and data with HubSpot CRM.
+      - name: Shopify
+        description: Import Shopify product catalog into Webflow ecommerce.
+      - name: Memberstack
+        description: Add membership and authentication features to Webflow sites.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
