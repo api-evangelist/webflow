@@ -1,0 +1,13 @@
+{
+  "repo": "webflow",
+  "feeds": [
+    {
+      "source": "https://webflow.com/blog",
+      "feed_url": "https://webflow.com/blog/rss.xml",
+      "saved": 10,
+      "title": "Webflow Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:38:16Z"
+}
