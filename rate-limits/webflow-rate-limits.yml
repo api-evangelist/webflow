@@ -4,165 +4,67 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Webflow
 providerId: webflow
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - CMS
   - Ecommerce
   - No-Code
   - Web Development
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Webflow API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
+description: Webflow's Data API enforces a per-API-key, per-minute rate limit that scales with the
+  site's subscription tier. Limits are scoped to the API key (each key has its own budget); cached
+  reads against the content-delivery API are effectively unlimited. The Site Publish endpoint adds
+  a hard "one successful publish per minute" limit on top of the per-minute call budget.
+sources:
+  - https://developers.webflow.com/data/reference/rate-limits
+  - https://webflow.com/pricing
 headers:
   limit: X-RateLimit-Limit
   remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
   retryAfter: Retry-After
-  policy: RateLimit-Policy
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
+  - name: Starter / Basic Site Plans
+    scope: key
     metric: requests_per_minute
-    limit: 10
-    burst: 20
+    limit: 60
     timeFrame: minute
-    applies:
-      - Webflow Data API
-      - Webflow Designer Extension API
-      - Webflow Meta API
-      - Webflow Sites API
-      - Webflow Pages API
-      - Webflow Collections API
-      - Webflow CMS Items API
-      - Webflow Components API
-      - Webflow Assets API
-      - Webflow Forms API
-      - Webflow Products and SKUs API
-      - Webflow Orders API
-      - Webflow Inventory API
-      - Webflow Ecommerce Settings API
-      - Webflow Webhooks API
-      - Webflow Custom Code API
-      - Webflow Comments API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Webflow Data API
-      - Webflow Designer Extension API
-      - Webflow Meta API
-      - Webflow Sites API
-      - Webflow Pages API
-      - Webflow Collections API
-      - Webflow CMS Items API
-      - Webflow Components API
-      - Webflow Assets API
-      - Webflow Forms API
-      - Webflow Products and SKUs API
-      - Webflow Orders API
-      - Webflow Inventory API
-      - Webflow Ecommerce Settings API
-      - Webflow Webhooks API
-      - Webflow Custom Code API
-      - Webflow Comments API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
+    notes: Per API key, on Starter and Basic Site plans.
+  - name: CMS / Ecommerce / Business Site Plans
+    scope: key
     metric: requests_per_minute
-    limit: 100
-    burst: 200
+    limit: 120
     timeFrame: minute
-    applies:
-      - Webflow Data API
-      - Webflow Designer Extension API
-      - Webflow Meta API
-      - Webflow Sites API
-      - Webflow Pages API
-      - Webflow Collections API
-      - Webflow CMS Items API
-      - Webflow Components API
-      - Webflow Assets API
-      - Webflow Forms API
-      - Webflow Products and SKUs API
-      - Webflow Orders API
-      - Webflow Inventory API
-      - Webflow Ecommerce Settings API
-      - Webflow Webhooks API
-      - Webflow Custom Code API
-      - Webflow Comments API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Webflow Data API
-      - Webflow Designer Extension API
-      - Webflow Meta API
-      - Webflow Sites API
-      - Webflow Pages API
-      - Webflow Collections API
-      - Webflow CMS Items API
-      - Webflow Components API
-      - Webflow Assets API
-      - Webflow Forms API
-      - Webflow Products and SKUs API
-      - Webflow Orders API
-      - Webflow Inventory API
-      - Webflow Ecommerce Settings API
-      - Webflow Webhooks API
-      - Webflow Custom Code API
-      - Webflow Comments API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
+    notes: Per API key, on CMS, Ecommerce, and Business Site plans.
+  - name: Enterprise Site Plans
+    scope: key
     metric: requests_per_minute
-    limit: 1000
-    burst: 5000
+    limit: -1
+    notes: Custom rate limit negotiated as part of the Enterprise contract.
+  - name: Site Publish
+    scope: site
+    metric: requests_per_minute
+    limit: 1
     timeFrame: minute
-    applies:
-      - Webflow Data API
-      - Webflow Designer Extension API
-      - Webflow Meta API
-      - Webflow Sites API
-      - Webflow Pages API
-      - Webflow Collections API
-      - Webflow CMS Items API
-      - Webflow Components API
-      - Webflow Assets API
-      - Webflow Forms API
-      - Webflow Products and SKUs API
-      - Webflow Orders API
-      - Webflow Inventory API
-      - Webflow Ecommerce Settings API
-      - Webflow Webhooks API
-      - Webflow Custom Code API
-      - Webflow Comments API
+    notes: At most one successful publish per site per minute, regardless of plan.
+  - name: Cached Content-Delivery Reads
+    scope: key
+    metric: varies
+    limit: effectively unlimited
+    notes: Cached requests served by the content-delivery API are not subject to the per-minute API
+      rate limit.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Per-Key Scoping
+    description: Rate limits are applied per API key. Different keys on the same site have independent
+      budgets, so per-environment / per-app keys can be used to isolate noisy clients.
+  - name: 429 Handling
+    description: When throttled, the API returns 429 with a Retry-After header (typically 60 seconds).
+      The official Webflow SDK implements exponential backoff automatically.
+  - name: Webhooks Over Polling
+    description: Webflow recommends webhook subscriptions for change notifications instead of polling
+      to keep within the per-minute budget.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
