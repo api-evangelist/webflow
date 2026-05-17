@@ -34,13 +34,13 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.webflow.com/data/reference/rest-introduction
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developers.webflow.com/data/reference/rest-introduction/quick-start
       - type: Authentication
         url: https://developers.webflow.com/data/reference/authentication
-      - type: Rate Limits
+      - type: RateLimits
         url: https://developers.webflow.com/data/reference/rate-limits
-      - type: Change Log
+      - type: ChangeLog
         url: https://developers.webflow.com/data/v2.0.0/changelog
       - type: SDKs
         url: https://developers.webflow.com/data/reference/sdks
@@ -62,7 +62,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.webflow.com/designer/reference/introduction
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developers.webflow.com/designer/docs/getting-started-designer-extensions
   - aid: webflow:meta-api
     name: Webflow Meta API
@@ -311,7 +311,7 @@ common:
     description: 'null'
   - url: https://developers.webflow.com/data/reference/rest-introduction/quick-start
     name: Getting Started | Webflow Developer Documentation
-    type: Getting Started
+    type: GettingStarted
     description: 'null'
   - url: https://webflow.com/
     name: Webflow - Website Builder
@@ -347,7 +347,7 @@ common:
     description: 'null'
   - url: https://status.webflow.com/
     name: Webflow Status
-    type: Status
+    type: StatusPage
     description: 'null'
   - url: https://webflow.com/login
     name: Webflow Login
@@ -355,7 +355,7 @@ common:
     description: 'null'
   - url: https://webflow.com/signup
     name: Webflow Sign Up
-    type: Sign Up
+    type: SignUp
     description: 'null'
   - url: https://webflow.com/marketplace
     name: Webflow Marketplace
@@ -363,7 +363,7 @@ common:
     description: 'null'
   - url: https://developers.webflow.com/apps/data/docs/register-an-app
     name: Register an App
-    type: Getting Started
+    type: GettingStarted
     description: 'null'
   - url: https://developers.webflow.com/data/reference/authentication
     name: Webflow Authentication
@@ -371,11 +371,11 @@ common:
     description: 'null'
   - url: https://developers.webflow.com/data/reference/rate-limits
     name: Webflow Rate Limits
-    type: Rate Limits
+    type: RateLimits
     description: 'null'
   - url: https://developers.webflow.com/data/v2.0.0/changelog
     name: Webflow API Changelog
-    type: Change Log
+    type: ChangeLog
     description: 'null'
   - url: https://developers.webflow.com/data/reference/sdks
     name: Webflow SDKs
