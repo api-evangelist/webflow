@@ -522,6 +522,8 @@ common:
   - name: Agent Skills
     url: https://github.com/webflow/webflow-skills
     type: AgentSkill
+  - type: LLMsTxt
+    url: https://webflow.com/llms.txt
 integrations:
   - name: Ideo
   - name: Monday.com
