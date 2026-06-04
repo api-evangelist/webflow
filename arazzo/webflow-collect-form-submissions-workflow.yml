@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Collect Form Submissions
+  summary: Resolve a site, pick a form, read its schema, and page through that form's submissions.
+  description: >-
+    A form-data harvesting flow. It resolves the target site, lists the site's
+    forms, branches on whether any forms exist, reads the chosen form's schema
+    so the field structure is known, and then retrieves a page of submissions
+    for that form across the whole site. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sitesApi
+  url: ../openapi/webflow-sites-openapi.yml
+  type: openapi
+- name: formsApi
+  url: ../openapi/webflow-forms-openapi.yml
+  type: openapi
+workflows:
+- workflowId: collect-form-submissions
+  summary: Read a form's schema and retrieve a page of its submissions.
+  description: >-
+    Lists sites, lists forms on the chosen site, confirms a form exists, fetches
+    that form's schema, and pulls a page of submissions for the form.
+  inputs:
+    type: object
+    properties:
+      siteId:
+        type: string
+        description: Optional site id; when omitted the first accessible site is used.
+      limit:
+        type: integer
+        description: Maximum number of submissions to return in a page.
+        default: 10
+  steps:
+  - stepId: listSites
+    description: List accessible sites to resolve a target site id.
+    operationId: list-sites
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstSiteId: $response.body#/sites/0/id
+  - stepId: listForms
+    description: >-
+      List the forms on the resolved site and branch on whether any forms exist
+      before reading submissions.
+    operationId: list-forms
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstFormId: $response.body#/forms/0/id
+    onSuccess:
+    - name: hasForms
+      type: goto
+      stepId: getFormSchema
+      criteria:
+      - context: $response.body
+        condition: $.forms.length > 0
+        type: jsonpath
+    - name: noForms
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.forms.length == 0
+        type: jsonpath
+  - stepId: getFormSchema
+    description: >-
+      Read the schema of the chosen form so the submission field structure is
+      understood before pulling submissions.
+    operationId: get-form-schema
+    parameters:
+    - name: form_id
+      in: path
+      value: $steps.listForms.outputs.firstFormId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      formId: $response.body#/id
+      displayName: $response.body#/displayName
+  - stepId: listSubmissions
+    description: >-
+      Retrieve a page of submissions for the chosen form across the whole site.
+    operationId: list-submissions-by-site
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    - name: elementId
+      in: query
+      value: $steps.getFormSchema.outputs.formId
+    - name: limit
+      in: query
+      value: $inputs.limit
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      submissions: $response.body#/formSubmissions
+      total: $response.body#/total
+  outputs:
+    siteId: $steps.listSites.outputs.firstSiteId
+    formId: $steps.getFormSchema.outputs.formId
+    submissions: $steps.listSubmissions.outputs.submissions

@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Fulfill an Order
+  summary: Find the most recent unfulfilled order on a site, read its detail, and mark it fulfilled.
+  description: >-
+    An order operations flow. It lists unfulfilled orders for a site, branches
+    on whether any unfulfilled orders exist, reads the full detail of the most
+    recent one, and then marks that order fulfilled while sending the customer
+    the order-fulfilled email. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ordersApi
+  url: ../openapi/webflow-orders-openapi.yml
+  type: openapi
+workflows:
+- workflowId: fulfill-order
+  summary: Locate an unfulfilled order on a site and mark it fulfilled.
+  description: >-
+    Lists unfulfilled orders for the supplied site, confirms at least one
+    exists, fetches its detail, and fulfills it with a customer email.
+  inputs:
+    type: object
+    required:
+    - siteId
+    properties:
+      siteId:
+        type: string
+        description: The site whose orders are being fulfilled.
+  steps:
+  - stepId: listUnfulfilledOrders
+    description: >-
+      List unfulfilled orders for the site and branch on whether any exist
+      before attempting to fulfill one.
+    operationId: list-orders
+    parameters:
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    - name: status
+      in: query
+      value: unfulfilled
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstOrderId: $response.body#/orders/0/orderId
+    onSuccess:
+    - name: hasOrders
+      type: goto
+      stepId: getOrder
+      criteria:
+      - context: $response.body
+        condition: $.orders.length > 0
+        type: jsonpath
+    - name: noOrders
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.orders.length == 0
+        type: jsonpath
+  - stepId: getOrder
+    description: >-
+      Read the full detail of the most recent unfulfilled order to confirm it
+      before fulfilling.
+    operationId: get-order
+    parameters:
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    - name: order_id
+      in: path
+      value: $steps.listUnfulfilledOrders.outputs.firstOrderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      orderId: $response.body#/orderId
+      status: $response.body#/status
+  - stepId: fulfillOrder
+    description: >-
+      Mark the order fulfilled and send the customer the order-fulfilled email.
+    operationId: fulfill-order
+    parameters:
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    - name: order_id
+      in: path
+      value: $steps.getOrder.outputs.orderId
+    requestBody:
+      contentType: application/json
+      payload:
+        sendOrderFulfilledEmail: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      orderId: $response.body#/orderId
+      status: $response.body#/status
+  outputs:
+    orderId: $steps.fulfillOrder.outputs.orderId
+    status: $steps.fulfillOrder.outputs.status

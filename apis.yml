@@ -365,6 +365,36 @@ apis:
     - type: NaftikoCapability
       url: capabilities/comments-sites.yaml
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/webflow-add-item-to-existing-collection-workflow.yml
+      name: Webflow Add Item to an Existing Collection
+      summary: Resolve a site, find an existing Collection by slug, then create a new item in it.
+    - url: arazzo/webflow-collect-form-submissions-workflow.yml
+      name: Webflow Collect Form Submissions
+      summary: Resolve a site, pick a form, read its schema, and page through that form's submissions.
+    - url: arazzo/webflow-deploy-site-custom-code-workflow.yml
+      name: Webflow Deploy Custom Code to a Site
+      summary: Resolve a site, register a hosted script, then apply it to the site's header.
+    - url: arazzo/webflow-fulfill-order-workflow.yml
+      name: Webflow Fulfill an Order
+      summary: Find the most recent unfulfilled order on a site, read its detail, and mark it fulfilled.
+    - url: arazzo/webflow-launch-ecommerce-product-workflow.yml
+      name: Webflow Launch an Ecommerce Product
+      summary: Resolve a site, create a product with its default SKU, then publish the site to go live.
+    - url: arazzo/webflow-publish-collection-item-workflow.yml
+      name: Webflow Create and Publish a Collection Item
+      summary: Create a live Collection item then publish it so it appears on the live site.
+    - url: arazzo/webflow-publish-site-workflow.yml
+      name: Webflow Publish a Site
+      summary: Resolve a site, read its custom domains, and publish to those domains plus the Webflow subdomain.
+    - url: arazzo/webflow-register-form-webhook-workflow.yml
+      name: Webflow Register a Form-Submission Webhook
+      summary: Resolve a site, confirm it has at least one form, then register a form_submission webhook.
+    - url: arazzo/webflow-scaffold-cms-collection-workflow.yml
+      name: Webflow Scaffold a CMS Collection
+      summary: Pick a site, create a Collection, add a custom field, then seed it with a first item.
   - type: LinkedIn
     url: https://www.linkedin.com/company/webflow-inc-
   - url: https://developers.webflow.com/

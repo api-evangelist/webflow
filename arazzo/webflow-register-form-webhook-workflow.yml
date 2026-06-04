@@ -1,0 +1,96 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Register a Form-Submission Webhook
+  summary: Resolve a site, confirm it has at least one form, then register a form_submission webhook.
+  description: >-
+    A webhook bootstrapping flow for form integrations. It resolves the target
+    site, lists the site's forms, branches on whether any forms exist, and then
+    registers a webhook that fires on every form submission to a supplied
+    callback URL. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sitesApi
+  url: ../openapi/webflow-sites-openapi.yml
+  type: openapi
+- name: formsApi
+  url: ../openapi/webflow-forms-openapi.yml
+  type: openapi
+- name: webhooksApi
+  url: ../openapi/webflow-webhooks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: register-form-webhook
+  summary: Register a form_submission webhook on a site that has forms.
+  description: >-
+    Lists sites, lists the forms on the chosen site, confirms at least one form
+    exists, and registers a form_submission webhook pointing at the callback
+    URL.
+  inputs:
+    type: object
+    required:
+    - callbackUrl
+    properties:
+      siteId:
+        type: string
+        description: Optional site id; when omitted the first accessible site is used.
+      callbackUrl:
+        type: string
+        description: The HTTPS URL Webflow should POST form submissions to.
+  steps:
+  - stepId: listSites
+    description: List accessible sites to resolve a target site id.
+    operationId: list-sites
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstSiteId: $response.body#/sites/0/id
+  - stepId: listForms
+    description: >-
+      List the forms on the resolved site and branch on whether any forms exist
+      before registering a webhook.
+    operationId: list-forms
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstFormId: $response.body#/forms/0/id
+    onSuccess:
+    - name: hasForms
+      type: goto
+      stepId: registerWebhook
+      criteria:
+      - context: $response.body
+        condition: $.forms.length > 0
+        type: jsonpath
+    - name: noForms
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.forms.length == 0
+        type: jsonpath
+  - stepId: registerWebhook
+    description: >-
+      Register a webhook that fires on every form submission for the site,
+      delivering the payload to the supplied callback URL.
+    operationId: create-webhook
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    requestBody:
+      contentType: application/json
+      payload:
+        triggerType: form_submission
+        url: $inputs.callbackUrl
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      webhookId: $response.body#/id
+      triggerType: $response.body#/triggerType
+  outputs:
+    siteId: $steps.listSites.outputs.firstSiteId
+    webhookId: $steps.registerWebhook.outputs.webhookId

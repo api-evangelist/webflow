@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Scaffold a CMS Collection
+  summary: Pick a site, create a Collection, add a custom field, then seed it with a first item.
+  description: >-
+    A from-scratch CMS scaffolding flow. It resolves the first accessible site,
+    creates a new Collection on that site, adds a custom field to the
+    Collection's schema, and then creates an initial item inside the new
+    Collection. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sitesApi
+  url: ../openapi/webflow-sites-openapi.yml
+  type: openapi
+- name: collectionsApi
+  url: ../openapi/webflow-collections-openapi.yml
+  type: openapi
+- name: itemsApi
+  url: ../openapi/webflow-items-openapi.yml
+  type: openapi
+workflows:
+- workflowId: scaffold-cms-collection
+  summary: Create a Collection on a site, add a field, and seed a first item.
+  description: >-
+    Lists the sites the token can access, creates a Collection on the chosen
+    site, extends the Collection schema with a custom field, and writes a first
+    item into the Collection as a draft.
+  inputs:
+    type: object
+    required:
+    - collectionDisplayName
+    - collectionSingularName
+    - fieldDisplayName
+    - itemName
+    - itemSlug
+    properties:
+      siteId:
+        type: string
+        description: Optional site id to target; when omitted the first accessible site is used.
+      collectionDisplayName:
+        type: string
+        description: Name of the new Collection (e.g. "Blog Posts").
+      collectionSingularName:
+        type: string
+        description: Singular name of each item in the Collection (e.g. "Blog Post").
+      fieldDisplayName:
+        type: string
+        description: Display name of the custom field to add to the Collection.
+      itemName:
+        type: string
+        description: Name of the first item to create.
+      itemSlug:
+        type: string
+        description: URL slug of the first item.
+  steps:
+  - stepId: listSites
+    description: >-
+      List all sites the access token can reach so a target site is available
+      when none was explicitly provided.
+    operationId: list-sites
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstSiteId: $response.body#/sites/0/id
+  - stepId: createCollection
+    description: >-
+      Create a new Collection on the target site with the supplied display and
+      singular names.
+    operationId: create-collection
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.collectionDisplayName
+        singularName: $inputs.collectionSingularName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      collectionId: $response.body#/id
+  - stepId: addField
+    description: >-
+      Add a plain-text custom field to the new Collection's schema so items can
+      carry an extra value beyond name and slug.
+    operationId: create-field
+    parameters:
+    - name: collection_id
+      in: path
+      value: $steps.createCollection.outputs.collectionId
+    requestBody:
+      contentType: application/json
+      payload:
+        type: PlainText
+        displayName: $inputs.fieldDisplayName
+        isRequired: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      fieldId: $response.body#/id
+  - stepId: seedItem
+    description: >-
+      Create the first item in the new Collection as a draft using the supplied
+      name and slug.
+    operationId: create-item
+    parameters:
+    - name: collection_id
+      in: path
+      value: $steps.createCollection.outputs.collectionId
+    requestBody:
+      contentType: application/json
+      payload:
+        isArchived: false
+        isDraft: true
+        fieldData:
+          name: $inputs.itemName
+          slug: $inputs.itemSlug
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      itemId: $response.body#/id
+  outputs:
+    siteId: $steps.listSites.outputs.firstSiteId
+    collectionId: $steps.createCollection.outputs.collectionId
+    fieldId: $steps.addField.outputs.fieldId
+    itemId: $steps.seedItem.outputs.itemId

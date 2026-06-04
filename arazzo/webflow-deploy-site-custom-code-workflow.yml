@@ -1,0 +1,96 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Deploy Custom Code to a Site
+  summary: Resolve a site, register a hosted script, then apply it to the site's header.
+  description: >-
+    A custom-code deployment flow. It resolves the target site, registers an
+    externally hosted script against the site so it becomes available, and then
+    applies that registered script to the site by referencing its id and
+    version in the header. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sitesApi
+  url: ../openapi/webflow-sites-openapi.yml
+  type: openapi
+- name: customCodeApi
+  url: ../openapi/webflow-custom-code-openapi.yml
+  type: openapi
+workflows:
+- workflowId: deploy-site-custom-code
+  summary: Register a hosted script and apply it to a site's header.
+  description: >-
+    Lists sites, registers an externally hosted script for the chosen site, and
+    applies the registered script to the site header by id and version.
+  inputs:
+    type: object
+    required:
+    - displayName
+    - version
+    - hostedLocation
+    properties:
+      siteId:
+        type: string
+        description: Optional site id; when omitted the first accessible site is used.
+      displayName:
+        type: string
+        description: A human-readable name for the registered script.
+      version:
+        type: string
+        description: Semantic Version (SemVer) string for the script (e.g. 1.0.0).
+      hostedLocation:
+        type: string
+        description: The externally hosted URL of the script to register.
+  steps:
+  - stepId: listSites
+    description: List accessible sites to resolve a target site id.
+    operationId: list-sites
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstSiteId: $response.body#/sites/0/id
+  - stepId: registerScript
+    description: >-
+      Register an externally hosted script against the site so it can later be
+      applied. Returns HTTP 201 on creation.
+    operationId: post-hosted-script
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.displayName
+        version: $inputs.version
+        hostedLocation: $inputs.hostedLocation
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      scriptId: $response.body#/id
+      scriptVersion: $response.body#/version
+  - stepId: applyScript
+    description: >-
+      Apply the registered script to the site, placing it in the header by
+      referencing the registered script id and version.
+    operationId: add-custom-code-tosite
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    requestBody:
+      contentType: application/json
+      payload:
+        scripts:
+        - id: $steps.registerScript.outputs.scriptId
+          version: $steps.registerScript.outputs.scriptVersion
+          location: header
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      scripts: $response.body#/scripts
+  outputs:
+    siteId: $steps.listSites.outputs.firstSiteId
+    scriptId: $steps.registerScript.outputs.scriptId
+    appliedScripts: $steps.applyScript.outputs.scripts

@@ -1,0 +1,80 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Create and Publish a Collection Item
+  summary: Create a live Collection item then publish it so it appears on the live site.
+  description: >-
+    The standard "author and go live" CMS flow. It creates a Collection item
+    directly against the live CMS and then publishes that item so the content is
+    visible on the published site. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: itemsApi
+  url: ../openapi/webflow-items-openapi.yml
+  type: openapi
+workflows:
+- workflowId: publish-collection-item
+  summary: Create a live item in a Collection and publish it.
+  description: >-
+    Creates an item against the live CMS endpoint and then publishes the
+    returned item id so the item goes live on the site.
+  inputs:
+    type: object
+    required:
+    - collectionId
+    - itemName
+    - itemSlug
+    properties:
+      collectionId:
+        type: string
+        description: The Collection to create and publish the item in.
+      itemName:
+        type: string
+        description: Name of the item to create.
+      itemSlug:
+        type: string
+        description: URL slug of the item.
+  steps:
+  - stepId: createLiveItem
+    description: >-
+      Create the item directly against the live CMS so it is staged for
+      publishing.
+    operationId: create-item-live
+    parameters:
+    - name: collection_id
+      in: path
+      value: $inputs.collectionId
+    requestBody:
+      contentType: application/json
+      payload:
+        isArchived: false
+        isDraft: false
+        fieldData:
+          name: $inputs.itemName
+          slug: $inputs.itemSlug
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      itemId: $response.body#/id
+  - stepId: publishItem
+    description: >-
+      Publish the newly created item so it becomes visible on the live site.
+    operationId: publish-item
+    parameters:
+    - name: collection_id
+      in: path
+      value: $inputs.collectionId
+    requestBody:
+      contentType: application/json
+      payload:
+        itemIds:
+        - $steps.createLiveItem.outputs.itemId
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      publishedItemIds: $response.body#/publishedItemIds
+      errors: $response.body#/errors
+  outputs:
+    itemId: $steps.createLiveItem.outputs.itemId
+    publishedItemIds: $steps.publishItem.outputs.publishedItemIds

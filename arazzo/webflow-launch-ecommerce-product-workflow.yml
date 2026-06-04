@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Launch an Ecommerce Product
+  summary: Resolve a site, create a product with its default SKU, then publish the site to go live.
+  description: >-
+    An end-to-end ecommerce launch. It resolves the target site, creates a new
+    product along with its required default SKU and price, and then publishes
+    the site so the product is live in the store. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sitesApi
+  url: ../openapi/webflow-sites-openapi.yml
+  type: openapi
+- name: productsApi
+  url: ../openapi/webflow-products-openapi.yml
+  type: openapi
+workflows:
+- workflowId: launch-ecommerce-product
+  summary: Create a product and default SKU on a site and publish the site.
+  description: >-
+    Lists sites, creates a product with a default SKU and price on the chosen
+    site, and publishes the site to the Webflow subdomain so the new product is
+    live.
+  inputs:
+    type: object
+    required:
+    - productName
+    - productSlug
+    - skuName
+    - skuSlug
+    - priceValue
+    properties:
+      siteId:
+        type: string
+        description: Optional site id; when omitted the first accessible site is used.
+      productName:
+        type: string
+        description: Name of the product.
+      productSlug:
+        type: string
+        description: URL slug of the product.
+      skuName:
+        type: string
+        description: Name of the default SKU.
+      skuSlug:
+        type: string
+        description: URL slug of the default SKU.
+      priceValue:
+        type: integer
+        description: Price of the default SKU in the smallest currency unit (e.g. cents).
+  steps:
+  - stepId: listSites
+    description: List accessible sites to resolve a target site id.
+    operationId: list-sites
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstSiteId: $response.body#/sites/0/id
+  - stepId: createProduct
+    description: >-
+      Create a new product and its required default SKU with a USD price on the
+      resolved site.
+    operationId: create-product
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    requestBody:
+      contentType: application/json
+      payload:
+        publishStatus: staging
+        product:
+          fieldData:
+            name: $inputs.productName
+            slug: $inputs.productSlug
+        sku:
+          fieldData:
+            name: $inputs.skuName
+            slug: $inputs.skuSlug
+            price:
+              value: $inputs.priceValue
+              unit: USD
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      productId: $response.body#/product/id
+      skuId: $response.body#/skus/0/id
+  - stepId: publishSite
+    description: >-
+      Publish the site to the default Webflow subdomain so the new product is
+      live in the store. Returns HTTP 202 because publishing is queued.
+    operationId: site-publish
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    requestBody:
+      contentType: application/json
+      payload:
+        publishToWebflowSubdomain: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      publishToWebflowSubdomain: $response.body#/publishToWebflowSubdomain
+  outputs:
+    siteId: $steps.listSites.outputs.firstSiteId
+    productId: $steps.createProduct.outputs.productId
+    skuId: $steps.createProduct.outputs.skuId

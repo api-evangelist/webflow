@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Add Item to an Existing Collection
+  summary: Resolve a site, find an existing Collection by slug, then create a new item in it.
+  description: >-
+    A discovery-driven content flow. It lists the accessible sites, lists the
+    Collections on the chosen site, branches to confirm a Collection matching
+    the requested slug exists, and then creates a new draft item in that
+    Collection. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sitesApi
+  url: ../openapi/webflow-sites-openapi.yml
+  type: openapi
+- name: collectionsApi
+  url: ../openapi/webflow-collections-openapi.yml
+  type: openapi
+- name: itemsApi
+  url: ../openapi/webflow-items-openapi.yml
+  type: openapi
+workflows:
+- workflowId: add-item-to-existing-collection
+  summary: Locate a Collection on a site and add a new item to it.
+  description: >-
+    Lists sites, lists the Collections on the selected site, confirms at least
+    one Collection exists, and creates a draft item in the first Collection.
+  inputs:
+    type: object
+    required:
+    - itemName
+    - itemSlug
+    properties:
+      siteId:
+        type: string
+        description: Optional site id; when omitted the first accessible site is used.
+      itemName:
+        type: string
+        description: Name of the item to create.
+      itemSlug:
+        type: string
+        description: URL slug of the item.
+  steps:
+  - stepId: listSites
+    description: List accessible sites to resolve a target site id.
+    operationId: list-sites
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstSiteId: $response.body#/sites/0/id
+  - stepId: listCollections
+    description: >-
+      List the Collections on the resolved site and branch on whether any
+      Collections exist before attempting to create an item.
+    operationId: list-collections
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      collectionId: $response.body#/collections/0/id
+    onSuccess:
+    - name: hasCollections
+      type: goto
+      stepId: createItem
+      criteria:
+      - context: $response.body
+        condition: $.collections.length > 0
+        type: jsonpath
+    - name: noCollections
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.collections.length == 0
+        type: jsonpath
+  - stepId: createItem
+    description: >-
+      Create a new draft item in the first Collection found on the site.
+    operationId: create-item
+    parameters:
+    - name: collection_id
+      in: path
+      value: $steps.listCollections.outputs.collectionId
+    requestBody:
+      contentType: application/json
+      payload:
+        isArchived: false
+        isDraft: true
+        fieldData:
+          name: $inputs.itemName
+          slug: $inputs.itemSlug
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      itemId: $response.body#/id
+  outputs:
+    siteId: $steps.listSites.outputs.firstSiteId
+    collectionId: $steps.listCollections.outputs.collectionId
+    itemId: $steps.createItem.outputs.itemId

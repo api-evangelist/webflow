@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Publish a Site
+  summary: Resolve a site, read its custom domains, and publish to those domains plus the Webflow subdomain.
+  description: >-
+    A controlled site-publish flow. It resolves the target site, reads the
+    site's registered custom domains, branches on whether any custom domains
+    exist, and then publishes the site either to the discovered custom domains
+    or to the default Webflow subdomain. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sitesApi
+  url: ../openapi/webflow-sites-openapi.yml
+  type: openapi
+workflows:
+- workflowId: publish-site
+  summary: Publish a site to its custom domains or the Webflow subdomain.
+  description: >-
+    Lists sites, fetches the custom domains for the chosen site, and branches:
+    when custom domains exist it publishes to the first one, otherwise it
+    publishes to the default Webflow subdomain.
+  inputs:
+    type: object
+    properties:
+      siteId:
+        type: string
+        description: Optional site id; when omitted the first accessible site is used.
+  steps:
+  - stepId: listSites
+    description: List accessible sites to resolve a target site id.
+    operationId: list-sites
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstSiteId: $response.body#/sites/0/id
+  - stepId: getCustomDomains
+    description: >-
+      Read the custom domains registered for the site and branch on whether any
+      exist.
+    operationId: get-custom-domains
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstDomainId: $response.body#/customDomains/0/id
+    onSuccess:
+    - name: hasCustomDomain
+      type: goto
+      stepId: publishToCustomDomain
+      criteria:
+      - context: $response.body
+        condition: $.customDomains.length > 0
+        type: jsonpath
+    - name: noCustomDomain
+      type: goto
+      stepId: publishToSubdomain
+      criteria:
+      - context: $response.body
+        condition: $.customDomains.length == 0
+        type: jsonpath
+  - stepId: publishToCustomDomain
+    description: >-
+      Publish the site to the first registered custom domain. Returns HTTP 202
+      because publishing is queued asynchronously.
+    operationId: site-publish
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    requestBody:
+      contentType: application/json
+      payload:
+        customDomains:
+        - $steps.getCustomDomains.outputs.firstDomainId
+        publishToWebflowSubdomain: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      publishedDomains: $response.body#/customDomains
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: publishToSubdomain
+    description: >-
+      Publish the site to the default Webflow subdomain when no custom domains
+      are registered. Returns HTTP 202 because publishing is queued.
+    operationId: site-publish
+    parameters:
+    - name: site_id
+      in: path
+      value: $steps.listSites.outputs.firstSiteId
+    requestBody:
+      contentType: application/json
+      payload:
+        publishToWebflowSubdomain: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      publishToWebflowSubdomain: $response.body#/publishToWebflowSubdomain
+  outputs:
+    siteId: $steps.listSites.outputs.firstSiteId
+    publishedDomains: $steps.publishToCustomDomain.outputs.publishedDomains
