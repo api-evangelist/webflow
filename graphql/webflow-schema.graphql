@@ -1,0 +1,1150 @@
+# Webflow Conceptual GraphQL Schema
+# Derived from the Webflow Data API v2 (REST) OpenAPI specification.
+# No live GraphQL endpoint exists as of June 2026. This is a conceptual SDL.
+# Source: https://developers.webflow.com/data/reference/rest-introduction
+
+# ─────────────────────────────────────────────
+# Scalars
+# ─────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+scalar URL
+
+# ─────────────────────────────────────────────
+# Enums
+# ─────────────────────────────────────────────
+
+enum PublishStatus {
+  LIVE
+  STAGED
+  DRAFT
+}
+
+enum FieldType {
+  PLAIN_TEXT
+  RICH_TEXT
+  IMAGE
+  MULTI_IMAGE
+  VIDEO_LINK
+  LINK
+  EMAIL
+  PHONE
+  NUMBER
+  DATE_TIME
+  SWITCH
+  COLOR
+  FILE
+  REFERENCE
+  MULTI_REFERENCE
+  OPTION
+  SET
+}
+
+enum ItemStatus {
+  LIVE
+  STAGED
+  ARCHIVED
+}
+
+enum OrderStatus {
+  UNFULFILLED
+  FULFILLED
+  PARTIALLY_FULFILLED
+  REFUNDED
+  DISPUTED
+  CANCELED
+}
+
+enum WebhookTriggerType {
+  FORM_SUBMISSION
+  SITE_PUBLISH
+  ECOMM_NEW_ORDER
+  ECOMM_ORDER_CHANGED
+  ECOMM_INVENTORY_CHANGED
+  COLLECTION_ITEM_CREATED
+  COLLECTION_ITEM_CHANGED
+  COLLECTION_ITEM_DELETED
+  COLLECTION_ITEM_PUBLISHED
+  COLLECTION_ITEM_UNPUBLISHED
+  PAGE_CREATED
+  PAGE_METADATA_UPDATED
+  PAGE_DELETED
+  COMMENT_CREATED
+}
+
+enum ScriptLocation {
+  HEADER
+  FOOTER
+}
+
+enum ScriptVersion {
+  LATEST
+  PINNED
+}
+
+enum InventoryType {
+  FINITE
+  INFINITE
+}
+
+enum AssetVariantType {
+  ORIGINAL
+  OPTIMIZED
+  THUMBNAIL
+}
+
+enum AuditLogAction {
+  CREATE
+  UPDATE
+  DELETE
+  PUBLISH
+  UNPUBLISH
+  INVITE
+  REVOKE
+}
+
+# ─────────────────────────────────────────────
+# Meta / Auth
+# ─────────────────────────────────────────────
+
+type AuthorizedUser {
+  id: ID!
+  email: String!
+  firstName: String
+  lastName: String
+  workspaces: [Workspace!]!
+}
+
+type TokenInfo {
+  token: String!
+  userId: ID!
+  email: String!
+  scopes: [String!]!
+  workspaces: [WorkspacePermission!]!
+  sites: [SitePermission!]!
+  rateLimit: RateLimit
+}
+
+type WorkspacePermission {
+  workspaceId: ID!
+  workspaceName: String
+  scopes: [String!]!
+}
+
+type SitePermission {
+  siteId: ID!
+  siteName: String
+  scopes: [String!]!
+}
+
+type RateLimit {
+  limit: Int!
+  remaining: Int!
+  resetAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Workspace
+# ─────────────────────────────────────────────
+
+type Workspace {
+  id: ID!
+  name: String!
+  slug: String
+  sites: [Site!]!
+  auditLogs(limit: Int, offset: Int): AuditLogPage!
+}
+
+type WorkspacePlan {
+  workspaceId: ID!
+  tier: String!
+  maxSites: Int
+  maxMembers: Int
+}
+
+# ─────────────────────────────────────────────
+# Audit Log
+# ─────────────────────────────────────────────
+
+type AuditLog {
+  id: ID!
+  workspaceId: ID!
+  userId: ID!
+  userEmail: String
+  action: AuditLogAction!
+  resourceType: String!
+  resourceId: String
+  resourceName: String
+  createdAt: DateTime!
+  metadata: JSON
+}
+
+type AuditLogPage {
+  items: [AuditLog!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+# ─────────────────────────────────────────────
+# Site
+# ─────────────────────────────────────────────
+
+type Site {
+  id: ID!
+  workspaceId: ID!
+  displayName: String!
+  shortName: String!
+  previewUrl: URL
+  timezone: String
+  createdAt: DateTime!
+  lastUpdated: DateTime!
+  lastPublished: DateTime
+  domains: [CustomDomain!]!
+  publishedDomains: [String!]!
+  locales: [Locale!]!
+  collections(limit: Int, offset: Int): CollectionPage!
+  pages(limit: Int, offset: Int): PageListPage!
+  assets(limit: Int, offset: Int): AssetPage!
+  forms(limit: Int, offset: Int): FormPage!
+  webhooks: [Webhook!]!
+  components(limit: Int, offset: Int): ComponentPage!
+  scripts: [RegisteredScript!]!
+  redirects: [Redirect!]!
+  robotsTxt: RobotsTxt
+  plan: SitePlan
+  activityLogs(limit: Int, offset: Int): ActivityLogPage!
+  ecommerceSettings: EcommerceSettings
+}
+
+type SitePlan {
+  siteId: ID!
+  tier: String!
+  maxCmsItems: Int
+  maxBandwidthGb: Int
+  ecommerceEnabled: Boolean!
+}
+
+type Locale {
+  id: ID!
+  tag: String!
+  displayName: String!
+  enabled: Boolean!
+  primary: Boolean!
+}
+
+type SitePage {
+  sites: [Site!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+# ─────────────────────────────────────────────
+# Custom Domain
+# ─────────────────────────────────────────────
+
+type CustomDomain {
+  id: ID!
+  url: URL!
+  lastUpdated: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Redirect
+# ─────────────────────────────────────────────
+
+type Redirect {
+  id: ID!
+  siteId: ID!
+  fromPath: String!
+  toPath: String!
+  statusCode: Int!
+  createdAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Robots.txt
+# ─────────────────────────────────────────────
+
+type RobotsTxt {
+  siteId: ID!
+  content: String!
+  updatedAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Activity Log
+# ─────────────────────────────────────────────
+
+type ActivityLog {
+  id: ID!
+  siteId: ID!
+  userId: ID!
+  userEmail: String
+  event: String!
+  createdAt: DateTime!
+  metadata: JSON
+}
+
+type ActivityLogPage {
+  items: [ActivityLog!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+# ─────────────────────────────────────────────
+# Publish
+# ─────────────────────────────────────────────
+
+type PublishResult {
+  siteId: ID!
+  publishedAt: DateTime!
+  domains: [String!]!
+}
+
+# ─────────────────────────────────────────────
+# Page
+# ─────────────────────────────────────────────
+
+type Page {
+  id: ID!
+  siteId: ID!
+  title: String!
+  slug: String!
+  draft: Boolean!
+  archived: Boolean!
+  seo: PageSeo
+  openGraph: PageOpenGraph
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  publishedAt: DateTime
+  domContent: PageDomContent
+}
+
+type PageSeo {
+  title: String
+  description: String
+  noIndex: Boolean
+}
+
+type PageOpenGraph {
+  title: String
+  description: String
+  image: URL
+}
+
+type PageDomContent {
+  nodes: [DomNode!]!
+}
+
+type DomNode {
+  nodeId: String!
+  type: String!
+  attributes: JSON
+  children: [DomNode!]
+  text: String
+}
+
+type PageListPage {
+  items: [Page!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+# ─────────────────────────────────────────────
+# Component
+# ─────────────────────────────────────────────
+
+type Component {
+  id: ID!
+  siteId: ID!
+  displayName: String!
+  domContent: PageDomContent
+  properties: [ComponentProperty!]!
+}
+
+type ComponentProperty {
+  id: ID!
+  name: String!
+  type: String!
+  defaultValue: JSON
+}
+
+type ComponentPage {
+  items: [Component!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+# ─────────────────────────────────────────────
+# Collection
+# ─────────────────────────────────────────────
+
+type Collection {
+  id: ID!
+  siteId: ID!
+  displayName: String!
+  singularName: String!
+  slug: String!
+  createdAt: DateTime!
+  lastUpdated: DateTime!
+  fields: [CollectionField!]!
+  items(limit: Int, offset: Int, status: ItemStatus): CollectionItemPage!
+}
+
+type CollectionPage {
+  items: [Collection!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+# ─────────────────────────────────────────────
+# Collection Field
+# ─────────────────────────────────────────────
+
+type CollectionField {
+  id: ID!
+  collectionId: ID!
+  displayName: String!
+  slug: String!
+  type: FieldType!
+  required: Boolean!
+  editable: Boolean!
+  validations: FieldValidations
+  helpText: String
+}
+
+type FieldValidations {
+  minimum: Float
+  maximum: Float
+  minLength: Int
+  maxLength: Int
+  pattern: String
+  options: [FieldOption!]
+  collectionId: ID
+  precision: Int
+  allowNegative: Boolean
+  format: String
+  singleLine: Boolean
+}
+
+type FieldOption {
+  id: ID!
+  name: String!
+}
+
+# ─────────────────────────────────────────────
+# Collection Item
+# ─────────────────────────────────────────────
+
+type CollectionItem {
+  id: ID!
+  cmsLocaleId: ID
+  collectionId: ID!
+  siteId: ID!
+  fieldData: JSON!
+  status: ItemStatus!
+  draft: Boolean!
+  archived: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  publishedAt: DateTime
+  lastUpdated: DateTime!
+}
+
+type CollectionItemPage {
+  items: [CollectionItem!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+type BulkOperationResult {
+  publishedItemIds: [ID!]!
+  errors: [BulkOperationError!]!
+}
+
+type BulkOperationError {
+  itemId: ID!
+  message: String!
+}
+
+# ─────────────────────────────────────────────
+# Asset
+# ─────────────────────────────────────────────
+
+type Asset {
+  id: ID!
+  siteId: ID!
+  hostedUrl: URL!
+  originalFileName: String!
+  displayName: String!
+  size: Int!
+  mimeType: String!
+  altText: String
+  folderId: ID
+  variants: [AssetVariant!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type AssetVariant {
+  url: URL!
+  type: AssetVariantType!
+  width: Int
+  height: Int
+}
+
+type AssetFolder {
+  id: ID!
+  siteId: ID!
+  displayName: String!
+  parentFolderId: ID
+  assets: [Asset!]!
+  subfolders: [AssetFolder!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type AssetPage {
+  items: [Asset!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+type AssetUploadUrl {
+  uploadUrl: URL!
+  uploadDetails: JSON!
+}
+
+# ─────────────────────────────────────────────
+# Form
+# ─────────────────────────────────────────────
+
+type Form {
+  id: ID!
+  siteId: ID!
+  displayName: String!
+  fields: [FormField!]!
+  submissions(limit: Int, offset: Int): FormSubmissionPage!
+}
+
+type FormField {
+  id: ID!
+  displayName: String!
+  type: String!
+  required: Boolean!
+  placeholder: String
+}
+
+type FormSubmission {
+  id: ID!
+  formId: ID!
+  siteId: ID!
+  data: JSON!
+  submittedAt: DateTime!
+  metadata: FormSubmissionMetadata
+}
+
+type FormSubmissionMetadata {
+  pageId: ID
+  pagePath: String
+  userAgent: String
+  ipAddress: String
+}
+
+type FormPage {
+  items: [Form!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+type FormSubmissionPage {
+  items: [FormSubmission!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+# ─────────────────────────────────────────────
+# Ecommerce — Product & SKU
+# ─────────────────────────────────────────────
+
+type Product {
+  id: ID!
+  siteId: ID!
+  fieldData: ProductFieldData!
+  skus: [Sku!]!
+  publishedOn: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ProductFieldData {
+  name: String!
+  slug: String!
+  description: String
+  shippable: Boolean!
+  taxable: Boolean!
+  categories: [String!]
+  mainImage: ProductImage
+  moreImages: [ProductImage!]
+  customFields: JSON
+}
+
+type ProductImage {
+  url: URL!
+  alt: String
+  width: Int
+  height: Int
+}
+
+type Sku {
+  id: ID!
+  productId: ID!
+  fieldData: SkuFieldData!
+  inventory: Inventory
+}
+
+type SkuFieldData {
+  name: String!
+  slug: String!
+  price: Money!
+  compareAtPrice: Money
+  sku: String
+  weight: Float
+  width: Float
+  height: Float
+  length: Float
+  mainImage: ProductImage
+}
+
+type Money {
+  value: String!
+  unit: String!
+}
+
+type ProductPage {
+  items: [Product!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+# ─────────────────────────────────────────────
+# Ecommerce — Inventory
+# ─────────────────────────────────────────────
+
+type Inventory {
+  skuId: ID!
+  inventoryType: InventoryType!
+  quantity: Int
+  quantityReserved: Int
+  updatedAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Ecommerce — Order
+# ─────────────────────────────────────────────
+
+type Order {
+  id: ID!
+  siteId: ID!
+  orderId: String!
+  status: OrderStatus!
+  customer: OrderCustomer!
+  purchasedItems: [PurchasedItem!]!
+  totals: OrderTotals!
+  shippingAddress: Address
+  billingAddress: Address
+  shippingProvider: String
+  shippingTracking: String
+  shippingTrackingUrl: URL
+  statusComment: String
+  acceptedOn: DateTime
+  fulfilledOn: DateTime
+  refundedOn: DateTime
+  disputedOn: DateTime
+  disputeUpdatedOn: DateTime
+  disputeLastStatus: String
+  customerPaid: Money
+  netAmount: Money
+  customData: [OrderCustomField!]
+  stripeDetails: StripeOrderDetails
+  paypalDetails: PaypalOrderDetails
+  metadata: JSON
+}
+
+type OrderCustomer {
+  fullName: String!
+  email: String!
+}
+
+type PurchasedItem {
+  productId: ID!
+  productName: String!
+  productSlug: String!
+  skuId: ID!
+  skuName: String!
+  count: Int!
+  rowTotal: Money!
+  weight: Float
+  width: Float
+  height: Float
+  length: Float
+  variantImage: ProductImage
+}
+
+type OrderTotals {
+  subtotal: Money!
+  extras: [OrderExtra!]!
+  total: Money!
+}
+
+type OrderExtra {
+  type: String!
+  name: String!
+  description: String
+  price: Money!
+}
+
+type Address {
+  fullName: String
+  line1: String
+  line2: String
+  city: String
+  state: String
+  country: String
+  postalCode: String
+  phone: String
+}
+
+type OrderCustomField {
+  textInput: String
+  name: String!
+}
+
+type StripeOrderDetails {
+  subscriptionId: String
+  paymentIntentId: String
+  customerId: String
+  chargeId: String
+  refundId: String
+  refundReason: String
+  disputeId: String
+}
+
+type PaypalOrderDetails {
+  orderId: String
+  payerId: String
+  captureId: String
+  refundId: String
+  disputeId: String
+}
+
+type OrderPage {
+  items: [Order!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+# ─────────────────────────────────────────────
+# Ecommerce — Settings
+# ─────────────────────────────────────────────
+
+type EcommerceSettings {
+  siteId: ID!
+  defaultCurrency: String!
+  supportedCurrencies: [String!]!
+  stripeEnabled: Boolean!
+  paypalEnabled: Boolean!
+  taxEnabled: Boolean!
+  shippingEnabled: Boolean!
+}
+
+# ─────────────────────────────────────────────
+# Custom Code / Scripts
+# ─────────────────────────────────────────────
+
+type RegisteredScript {
+  id: ID!
+  siteId: ID!
+  displayName: String!
+  hostedLocation: URL
+  inlineContent: String
+  version: String
+  integrityHash: String
+  canCopy: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type AppliedScript {
+  id: ID!
+  location: ScriptLocation!
+  version: ScriptVersion!
+  attributes: JSON
+}
+
+type CustomCodeBlock {
+  siteId: ID
+  pageId: ID
+  scripts: [AppliedScript!]!
+  updatedAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Webhook
+# ─────────────────────────────────────────────
+
+type Webhook {
+  id: ID!
+  siteId: ID!
+  triggerType: WebhookTriggerType!
+  url: URL!
+  filter: WebhookFilter
+  lastTriggered: DateTime
+  createdAt: DateTime!
+}
+
+type WebhookFilter {
+  name: String
+}
+
+# ─────────────────────────────────────────────
+# Comment
+# ─────────────────────────────────────────────
+
+type CommentThread {
+  id: ID!
+  siteId: ID!
+  pageId: ID
+  author: CommentAuthor!
+  body: String!
+  resolved: Boolean!
+  replies: [Comment!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Comment {
+  id: ID!
+  threadId: ID!
+  author: CommentAuthor!
+  body: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CommentAuthor {
+  userId: ID!
+  displayName: String
+  email: String
+}
+
+type CommentThreadPage {
+  items: [CommentThread!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+# ─────────────────────────────────────────────
+# Input Types
+# ─────────────────────────────────────────────
+
+input CreateCollectionInput {
+  siteId: ID!
+  displayName: String!
+  singularName: String!
+  slug: String
+}
+
+input CreateCollectionFieldInput {
+  collectionId: ID!
+  displayName: String!
+  type: FieldType!
+  required: Boolean
+  helpText: String
+  validations: FieldValidationsInput
+}
+
+input FieldValidationsInput {
+  minimum: Float
+  maximum: Float
+  minLength: Int
+  maxLength: Int
+  pattern: String
+  options: [FieldOptionInput!]
+  collectionId: ID
+  precision: Int
+  allowNegative: Boolean
+  singleLine: Boolean
+}
+
+input FieldOptionInput {
+  name: String!
+}
+
+input CreateCollectionItemInput {
+  collectionId: ID!
+  fieldData: JSON!
+  draft: Boolean
+  archived: Boolean
+  cmsLocaleId: ID
+}
+
+input UpdateCollectionItemInput {
+  id: ID!
+  collectionId: ID!
+  fieldData: JSON
+  draft: Boolean
+  archived: Boolean
+}
+
+input CreateProductInput {
+  siteId: ID!
+  fieldData: ProductFieldDataInput!
+  sku: CreateSkuInput
+}
+
+input ProductFieldDataInput {
+  name: String!
+  slug: String
+  description: String
+  shippable: Boolean
+  taxable: Boolean
+}
+
+input CreateSkuInput {
+  fieldData: SkuFieldDataInput!
+}
+
+input SkuFieldDataInput {
+  name: String!
+  slug: String
+  price: MoneyInput!
+  compareAtPrice: MoneyInput
+  sku: String
+}
+
+input MoneyInput {
+  value: String!
+  unit: String!
+}
+
+input UpdateInventoryInput {
+  skuId: ID!
+  inventoryType: InventoryType!
+  quantity: Int
+}
+
+input CreateWebhookInput {
+  siteId: ID!
+  triggerType: WebhookTriggerType!
+  url: URL!
+  filter: WebhookFilterInput
+}
+
+input WebhookFilterInput {
+  name: String
+}
+
+input CreateRedirectInput {
+  siteId: ID!
+  fromPath: String!
+  toPath: String!
+  statusCode: Int
+}
+
+input RegisterScriptInput {
+  siteId: ID!
+  displayName: String!
+  hostedLocation: URL
+  inlineContent: String
+  version: String
+  integrityHash: String
+  canCopy: Boolean
+}
+
+input ApplyScriptInput {
+  scriptId: ID!
+  location: ScriptLocation!
+  version: ScriptVersion
+  attributes: JSON
+}
+
+input PublishSiteInput {
+  siteId: ID!
+  domains: [String!]
+}
+
+input UpdateOrderInput {
+  orderId: ID!
+  comment: String
+  shippingProvider: String
+  shippingTracking: String
+}
+
+# ─────────────────────────────────────────────
+# Query
+# ─────────────────────────────────────────────
+
+type Query {
+  # Meta
+  me: AuthorizedUser!
+  tokenInfo: TokenInfo!
+
+  # Workspaces
+  workspace(id: ID!): Workspace
+  workspaces: [Workspace!]!
+
+  # Sites
+  site(id: ID!): Site
+  sites(workspaceId: ID): SitePage!
+
+  # Pages
+  page(siteId: ID!, pageId: ID!): Page
+  pages(siteId: ID!, limit: Int, offset: Int): PageListPage!
+
+  # Components
+  component(siteId: ID!, componentId: ID!): Component
+  components(siteId: ID!, limit: Int, offset: Int): ComponentPage!
+
+  # Collections
+  collection(id: ID!): Collection
+  collections(siteId: ID!, limit: Int, offset: Int): CollectionPage!
+
+  # Items
+  collectionItem(collectionId: ID!, itemId: ID!): CollectionItem
+  collectionItems(collectionId: ID!, limit: Int, offset: Int, status: ItemStatus): CollectionItemPage!
+  liveCollectionItem(collectionId: ID!, itemId: ID!): CollectionItem
+  liveCollectionItems(collectionId: ID!, limit: Int, offset: Int): CollectionItemPage!
+
+  # Assets
+  asset(siteId: ID!, assetId: ID!): Asset
+  assets(siteId: ID!, limit: Int, offset: Int): AssetPage!
+  assetFolder(siteId: ID!, folderId: ID!): AssetFolder
+  assetFolders(siteId: ID!): [AssetFolder!]!
+
+  # Forms
+  form(siteId: ID!, formId: ID!): Form
+  forms(siteId: ID!, limit: Int, offset: Int): FormPage!
+  formSubmissions(formId: ID!, limit: Int, offset: Int): FormSubmissionPage!
+
+  # Ecommerce
+  product(siteId: ID!, productId: ID!): Product
+  products(siteId: ID!, limit: Int, offset: Int): ProductPage!
+  order(siteId: ID!, orderId: ID!): Order
+  orders(siteId: ID!, status: OrderStatus, limit: Int, offset: Int): OrderPage!
+  inventory(skuId: ID!): Inventory
+  ecommerceSettings(siteId: ID!): EcommerceSettings
+
+  # Webhooks
+  webhook(siteId: ID!, webhookId: ID!): Webhook
+  webhooks(siteId: ID!): [Webhook!]!
+
+  # Custom Code
+  siteCustomCode(siteId: ID!): CustomCodeBlock
+  pageCustomCode(siteId: ID!, pageId: ID!): CustomCodeBlock
+  registeredScripts(siteId: ID!): [RegisteredScript!]!
+
+  # Comments
+  commentThread(siteId: ID!, threadId: ID!): CommentThread
+  commentThreads(siteId: ID!, pageId: ID, limit: Int, offset: Int): CommentThreadPage!
+
+  # Custom Domains
+  customDomains(siteId: ID!): [CustomDomain!]!
+
+  # Redirects
+  redirect(siteId: ID!, redirectId: ID!): Redirect
+  redirects(siteId: ID!): [Redirect!]!
+
+  # Audit Logs
+  auditLogs(workspaceId: ID!, limit: Int, offset: Int): AuditLogPage!
+
+  # Activity Logs
+  activityLogs(siteId: ID!, limit: Int, offset: Int): ActivityLogPage!
+
+  # Site Plan
+  sitePlan(siteId: ID!): SitePlan
+
+  # Robots.txt
+  robotsTxt(siteId: ID!): RobotsTxt
+}
+
+# ─────────────────────────────────────────────
+# Mutation
+# ─────────────────────────────────────────────
+
+type Mutation {
+  # Collections
+  createCollection(input: CreateCollectionInput!): Collection!
+  deleteCollection(id: ID!): Boolean!
+  createCollectionField(input: CreateCollectionFieldInput!): CollectionField!
+  deleteCollectionField(collectionId: ID!, fieldId: ID!): Boolean!
+
+  # Items
+  createCollectionItem(input: CreateCollectionItemInput!): CollectionItem!
+  updateCollectionItem(input: UpdateCollectionItemInput!): CollectionItem!
+  deleteCollectionItem(collectionId: ID!, itemId: ID!): Boolean!
+  publishCollectionItems(collectionId: ID!, itemIds: [ID!]!): BulkOperationResult!
+  unpublishCollectionItems(collectionId: ID!, itemIds: [ID!]!): BulkOperationResult!
+  bulkCreateCollectionItems(collectionId: ID!, items: [CreateCollectionItemInput!]!): BulkOperationResult!
+  bulkUpdateCollectionItems(collectionId: ID!, items: [UpdateCollectionItemInput!]!): BulkOperationResult!
+  bulkDeleteCollectionItems(collectionId: ID!, itemIds: [ID!]!): BulkOperationResult!
+
+  # Sites
+  publishSite(input: PublishSiteInput!): PublishResult!
+  createRedirect(input: CreateRedirectInput!): Redirect!
+  updateRedirect(id: ID!, fromPath: String, toPath: String, statusCode: Int): Redirect!
+  deleteRedirect(siteId: ID!, redirectId: ID!): Boolean!
+  updateRobotsTxt(siteId: ID!, content: String!): RobotsTxt!
+
+  # Assets
+  createAssetUploadUrl(siteId: ID!, fileName: String!, fileHash: String!): AssetUploadUrl!
+  updateAsset(id: ID!, displayName: String, altText: String): Asset!
+  deleteAsset(id: ID!): Boolean!
+  createAssetFolder(siteId: ID!, displayName: String!, parentFolderId: ID): AssetFolder!
+  updateAssetFolder(id: ID!, displayName: String): AssetFolder!
+  deleteAssetFolder(id: ID!): Boolean!
+
+  # Products
+  createProduct(input: CreateProductInput!): Product!
+  updateProduct(id: ID!, fieldData: ProductFieldDataInput): Product!
+  createSku(productId: ID!, input: CreateSkuInput!): Sku!
+  updateSku(id: ID!, productId: ID!, fieldData: SkuFieldDataInput): Sku!
+
+  # Orders
+  updateOrder(input: UpdateOrderInput!): Order!
+  fulfillOrder(orderId: ID!, sendEmailNotification: Boolean): Order!
+  unfulfillOrder(orderId: ID!): Order!
+  refundOrder(orderId: ID!): Order!
+
+  # Inventory
+  updateInventory(input: UpdateInventoryInput!): Inventory!
+
+  # Form submissions
+  deleteFormSubmission(formId: ID!, submissionId: ID!): Boolean!
+
+  # Webhooks
+  createWebhook(input: CreateWebhookInput!): Webhook!
+  deleteWebhook(siteId: ID!, webhookId: ID!): Boolean!
+
+  # Custom Code
+  registerScript(input: RegisterScriptInput!): RegisteredScript!
+  deleteRegisteredScript(siteId: ID!, scriptId: ID!): Boolean!
+  applySiteCustomCode(siteId: ID!, scripts: [ApplyScriptInput!]!): CustomCodeBlock!
+  applyPageCustomCode(siteId: ID!, pageId: ID!, scripts: [ApplyScriptInput!]!): CustomCodeBlock!
+  deleteSiteCustomCode(siteId: ID!, scriptIds: [ID!]!): Boolean!
+  deletePageCustomCode(siteId: ID!, pageId: ID!, scriptIds: [ID!]!): Boolean!
+}
