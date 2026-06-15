@@ -1,0 +1,566 @@
+{
+  "info": {
+    "_postman_id": "f87e5a7d-d7bc-4888-9f7b-8aeb2339a029",
+    "name": "Webflow Ecommerce Settings API",
+    "description": "Webflow Data API v2 - Ecommerce Settings endpoints.\n\nContact Support:\n Name: Webflow Developer Relations\n Email: developers@webflow.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:36.000Z",
+    "updatedAt": "2026-06-05T15:21:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f87e5a7d-d7bc-4888-9f7b-8aeb2339a029"
+  },
+  "item": [
+    {
+      "name": "sites",
+      "item": [
+        {
+          "name": "{site_id}",
+          "item": [
+            {
+              "name": "ecommerce",
+              "item": [
+                {
+                  "name": "settings",
+                  "item": [
+                    {
+                      "name": "Webflow Get Ecommerce Settings",
+                      "id": "379b6a15-6bcf-4548-b2d2-5e8549219287",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.webflow.com/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://webflow.com/oauth/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/ecommerce/settings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "ecommerce",
+                            "settings"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d2a07bc1-9b09-45d4-b4a8-eb7503579a9f",
+                              "key": "site_id",
+                              "value": "",
+                              "description": "(Required) Unique identifier for a Site"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve ecommerce settings for a site.\n\nRequired scope | `ecommerce:read`\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0f98f918-8102-4da0-ac41-3287388075fd",
+                          "name": "Request was successful",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/ecommerce/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "ecommerce",
+                                "settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"siteId\": \"<string>\",\n  \"createdOn\": \"<dateTime>\",\n  \"defaultCurrency\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:21:36.000Z",
+                          "updatedAt": "2026-06-05T15:21:36.000Z",
+                          "uid": "35240-0f98f918-8102-4da0-ac41-3287388075fd"
+                        },
+                        {
+                          "id": "ea5b64fc-3d0a-44bb-83ed-c8f95182e245",
+                          "name": "Request body was incorrectly formatted.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/ecommerce/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "ecommerce",
+                                "settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"user_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consectetur ut pariatur elit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:36.000Z",
+                          "updatedAt": "2026-06-05T15:21:36.000Z",
+                          "uid": "35240-ea5b64fc-3d0a-44bb-83ed-c8f95182e245"
+                        },
+                        {
+                          "id": "7ad581b9-8a39-4d59-bb02-a643959d4954",
+                          "name": "Provided access token is invalid or does not have access to requested resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/ecommerce/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "ecommerce",
+                                "settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"user_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consectetur ut pariatur elit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:36.000Z",
+                          "updatedAt": "2026-06-05T15:21:36.000Z",
+                          "uid": "35240-7ad581b9-8a39-4d59-bb02-a643959d4954"
+                        },
+                        {
+                          "id": "03e66cbc-eb98-4ea4-8d25-8138beb2165a",
+                          "name": "Provided access token is valid, but is missing the required scopes.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/ecommerce/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "ecommerce",
+                                "settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"user_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consectetur ut pariatur elit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:36.000Z",
+                          "updatedAt": "2026-06-05T15:21:36.000Z",
+                          "uid": "35240-03e66cbc-eb98-4ea4-8d25-8138beb2165a"
+                        },
+                        {
+                          "id": "58a6a81e-f992-4eb5-8f64-f9c696f74cbe",
+                          "name": "Requested resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/ecommerce/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "ecommerce",
+                                "settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"user_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consectetur ut pariatur elit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:36.000Z",
+                          "updatedAt": "2026-06-05T15:21:36.000Z",
+                          "uid": "35240-58a6a81e-f992-4eb5-8f64-f9c696f74cbe"
+                        },
+                        {
+                          "id": "40c79c55-f157-493b-a927-9fdee871c666",
+                          "name": "The site does not have ecommerce enabled.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/ecommerce/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "ecommerce",
+                                "settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"user_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consectetur ut pariatur elit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:36.000Z",
+                          "updatedAt": "2026-06-05T15:21:36.000Z",
+                          "uid": "35240-40c79c55-f157-493b-a927-9fdee871c666"
+                        },
+                        {
+                          "id": "18db7859-2b92-41f8-b238-893bf3c3eaad",
+                          "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/ecommerce/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "ecommerce",
+                                "settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Contains the number of available requests remaining in the current minute",
+                                "type": "text/plain"
+                              },
+                              "key": "X-RateLimit-Remaining",
+                              "value": "<number>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Contains your current overall rate limit per minute",
+                                "type": "text/plain"
+                              },
+                              "key": "X-RateLimit-Limit",
+                              "value": "<number>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"user_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consectetur ut pariatur elit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:36.000Z",
+                          "updatedAt": "2026-06-05T15:21:36.000Z",
+                          "uid": "35240-18db7859-2b92-41f8-b238-893bf3c3eaad"
+                        },
+                        {
+                          "id": "09d8598a-77c5-40cf-a1b6-60ab620da39f",
+                          "name": "We had a problem with our server. Try again later.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/ecommerce/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "ecommerce",
+                                "settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"user_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consectetur ut pariatur elit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:36.000Z",
+                          "updatedAt": "2026-06-05T15:21:36.000Z",
+                          "uid": "35240-09d8598a-77c5-40cf-a1b6-60ab620da39f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:36.000Z",
+                      "updatedAt": "2026-06-05T15:21:36.000Z",
+                      "uid": "35240-379b6a15-6bcf-4548-b2d2-5e8549219287"
+                    }
+                  ],
+                  "id": "90e123c6-d725-490c-8877-8b6e9c7bffff",
+                  "createdAt": "2026-06-05T15:21:36.000Z",
+                  "updatedAt": "2026-06-05T15:21:36.000Z",
+                  "uid": "35240-90e123c6-d725-490c-8877-8b6e9c7bffff"
+                }
+              ],
+              "id": "ed8d7581-02ac-482e-9321-e18559730edc",
+              "createdAt": "2026-06-05T15:21:36.000Z",
+              "updatedAt": "2026-06-05T15:21:36.000Z",
+              "uid": "35240-ed8d7581-02ac-482e-9321-e18559730edc"
+            }
+          ],
+          "id": "3cfbfbf1-45d5-4a6e-a11c-c1edda823a9b",
+          "createdAt": "2026-06-05T15:21:36.000Z",
+          "updatedAt": "2026-06-05T15:21:36.000Z",
+          "uid": "35240-3cfbfbf1-45d5-4a6e-a11c-c1edda823a9b"
+        }
+      ],
+      "id": "c52a214f-0f49-4dc5-9ade-f24cea603ff8",
+      "createdAt": "2026-06-05T15:21:36.000Z",
+      "updatedAt": "2026-06-05T15:21:36.000Z",
+      "uid": "35240-c52a214f-0f49-4dc5-9ade-f24cea603ff8"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.webflow.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://webflow.com/oauth/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.webflow.com/v2"
+    }
+  ]
+}

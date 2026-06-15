@@ -1,0 +1,2692 @@
+{
+  "info": {
+    "_postman_id": "97a26b56-5aef-409c-97bc-6dfd0bf484d0",
+    "name": "Webflow Pages API",
+    "description": "Webflow Data API v2 - Pages endpoints.\n\nContact Support:\n Name: Webflow Developer Relations\n Email: developers@webflow.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:17.000Z",
+    "updatedAt": "2026-06-05T15:21:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-97a26b56-5aef-409c-97bc-6dfd0bf484d0"
+  },
+  "item": [
+    {
+      "name": "sites",
+      "item": [
+        {
+          "name": "{site_id}",
+          "item": [
+            {
+              "name": "pages",
+              "item": [
+                {
+                  "name": "Webflow List Pages",
+                  "id": "2078181b-29f1-45fd-be4f-1bb9374ef7bc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sites/:site_id/pages?localeId=<string>&limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sites",
+                        ":site_id",
+                        "pages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of records to be returned (max limit: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset used for pagination if the results have more than limit records",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "e95a79b7-bb47-47a4-9e4d-4fd9f39f7376",
+                          "key": "site_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Site"
+                        }
+                      ]
+                    },
+                    "description": "List of all pages for a site.\n\nRequired scope | `pages:read`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "1ff9baf5-8add-4c8a-bf54-e982780c4a13",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/pages?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "pages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"pages\": [\n    {\n      \"id\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"parentId\": \"<string>\",\n      \"collectionId\": \"<string>\",\n      \"createdOn\": \"<dateTime>\",\n      \"lastUpdated\": \"<dateTime>\",\n      \"archived\": false,\n      \"draft\": false,\n      \"canBranch\": false,\n      \"isBranch\": false,\n      \"branchId\": \"<string>\",\n      \"seo\": {\n        \"title\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"openGraph\": {\n        \"title\": \"<string>\",\n        \"titleCopied\": true,\n        \"description\": \"<string>\",\n        \"descriptionCopied\": true\n      },\n      \"localeId\": \"<string>\",\n      \"publishedPath\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"parentId\": \"<string>\",\n      \"collectionId\": \"<string>\",\n      \"createdOn\": \"<dateTime>\",\n      \"lastUpdated\": \"<dateTime>\",\n      \"archived\": false,\n      \"draft\": false,\n      \"canBranch\": false,\n      \"isBranch\": false,\n      \"branchId\": \"<string>\",\n      \"seo\": {\n        \"title\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"openGraph\": {\n        \"title\": \"<string>\",\n        \"titleCopied\": true,\n        \"description\": \"<string>\",\n        \"descriptionCopied\": true\n      },\n      \"localeId\": \"<string>\",\n      \"publishedPath\": \"<string>\"\n    }\n  ],\n  \"pagination\": {\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"total\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-1ff9baf5-8add-4c8a-bf54-e982780c4a13"
+                    },
+                    {
+                      "id": "ef5774ff-a95f-41b1-a878-d3ef5b77aed9",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/pages?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "pages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-ef5774ff-a95f-41b1-a878-d3ef5b77aed9"
+                    },
+                    {
+                      "id": "a5969705-feb7-4b64-8b02-be956f0871ee",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/pages?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "pages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-a5969705-feb7-4b64-8b02-be956f0871ee"
+                    },
+                    {
+                      "id": "3f79f398-ac37-4582-914d-b507956d817e",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/pages?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "pages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-3f79f398-ac37-4582-914d-b507956d817e"
+                    },
+                    {
+                      "id": "29d92eed-0852-4588-b7d5-3d6d4d1a86cd",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/pages?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "pages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-29d92eed-0852-4588-b7d5-3d6d4d1a86cd"
+                    },
+                    {
+                      "id": "4509c7f7-15d6-4afd-b778-4b23d4e5d2b0",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/pages?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "pages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-4509c7f7-15d6-4afd-b778-4b23d4e5d2b0"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-2078181b-29f1-45fd-be4f-1bb9374ef7bc"
+                }
+              ],
+              "id": "70c32294-828d-4ab4-98e2-ec2bc168f266",
+              "createdAt": "2026-06-05T15:21:18.000Z",
+              "updatedAt": "2026-06-05T15:21:18.000Z",
+              "uid": "35240-70c32294-828d-4ab4-98e2-ec2bc168f266"
+            }
+          ],
+          "id": "9e7f5e1b-b59a-47a3-a06b-d463cd7975ef",
+          "createdAt": "2026-06-05T15:21:18.000Z",
+          "updatedAt": "2026-06-05T15:21:18.000Z",
+          "uid": "35240-9e7f5e1b-b59a-47a3-a06b-d463cd7975ef"
+        }
+      ],
+      "id": "9525089f-ef3e-42e8-b181-9d37f278041a",
+      "createdAt": "2026-06-05T15:21:18.000Z",
+      "updatedAt": "2026-06-05T15:21:18.000Z",
+      "uid": "35240-9525089f-ef3e-42e8-b181-9d37f278041a"
+    },
+    {
+      "name": "pages",
+      "item": [
+        {
+          "name": "{page_id}",
+          "item": [
+            {
+              "name": "dom",
+              "item": [
+                {
+                  "name": "Webflow Get Page Content",
+                  "id": "a357b646-434e-4d3d-86fc-f2b7bd6fadcd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>&limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id",
+                        "dom"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of records to be returned (max limit: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset used for pagination if the results have more than limit records",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "ff067432-492e-48f2-a0de-3826a587bec7",
+                          "key": "page_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Page"
+                        }
+                      ]
+                    },
+                    "description": "Get text and component instance content from a static page.\n\n<Badge intent=\"info\">Localization</Badge>\n\nRequired scope | `pages:read`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "b69ca999-7269-44b9-9183-c55fba6118bf",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"pageId\": \"<string>\",\n  \"branchId\": \"<string>\",\n  \"nodes\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"text\",\n      \"text\": {\n        \"html\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      \"attributes\": {\n        \"in_69\": \"<string>\",\n        \"reprehenderit3e1\": \"<string>\",\n        \"Duis8\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"text\",\n      \"text\": {\n        \"html\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      \"attributes\": {\n        \"Duis1\": \"<string>\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"total\": \"<integer>\"\n  },\n  \"lastUpdated\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-b69ca999-7269-44b9-9183-c55fba6118bf"
+                    },
+                    {
+                      "id": "2aa3c81a-19a7-43da-9478-ccda5b8e9689",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-2aa3c81a-19a7-43da-9478-ccda5b8e9689"
+                    },
+                    {
+                      "id": "3726e8f2-a396-44ee-9843-57917b8c4ce5",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-3726e8f2-a396-44ee-9843-57917b8c4ce5"
+                    },
+                    {
+                      "id": "eccf547d-b691-4b5c-a359-9785571ccd93",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-eccf547d-b691-4b5c-a359-9785571ccd93"
+                    },
+                    {
+                      "id": "6da6ec16-0f38-432d-8cc4-3b5b9580ea62",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-6da6ec16-0f38-432d-8cc4-3b5b9580ea62"
+                    },
+                    {
+                      "id": "992c4ea8-c52c-4b41-9a89-7a7fd796cea0",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-992c4ea8-c52c-4b41-9a89-7a7fd796cea0"
+                    },
+                    {
+                      "id": "3b82b717-4037-467f-8da9-355aa3279414",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-3b82b717-4037-467f-8da9-355aa3279414"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-a357b646-434e-4d3d-86fc-f2b7bd6fadcd"
+                },
+                {
+                  "name": "Webflow Update Page Content",
+                  "id": "7558614b-f47a-4ec4-92d3-c9e3177d7b24",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id",
+                        "dom"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The locale identifier.",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "b2fea890-755a-458e-8a1f-407a8862e9ec",
+                          "key": "page_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Page"
+                        }
+                      ]
+                    },
+                    "description": "This endpoint updates content on a static page in **secondary locales**. It supports updating up to 1000 nodes in a single request.\n\nBefore making updates:\n1. Use the [get page content](/data/reference/pages-and-components/pages/get-content) endpoint to identify available content nodes and their types.\n2. If the page has component instances, retrieve the component's properties that you'll override using the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.\n3. DOM elements may include a `data-w-id` attribute. This attribute is used by Webflow to maintain custom attributes and links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.\n\n<Note>\n  This endpoint is specifically for localized pages. Ensure that the specified `localeId` is a valid **secondary locale** for the site otherwise the request will fail.\n</Note>\n\nRequired scope | `pages:write`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "07cab5b5-882f-4b55-b237-7c0623437e1f",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The locale identifier.",
+                              "key": "localeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-07cab5b5-882f-4b55-b237-7c0623437e1f"
+                    },
+                    {
+                      "id": "459c6ff6-f9fe-4600-ac95-cafdd15810ba",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The locale identifier.",
+                              "key": "localeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-459c6ff6-f9fe-4600-ac95-cafdd15810ba"
+                    },
+                    {
+                      "id": "5ec91cb4-c243-48ea-88b0-04db6b11ef6c",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The locale identifier.",
+                              "key": "localeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-5ec91cb4-c243-48ea-88b0-04db6b11ef6c"
+                    },
+                    {
+                      "id": "fdb72af1-1b2d-4895-893b-5e5599801d49",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The locale identifier.",
+                              "key": "localeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-fdb72af1-1b2d-4895-893b-5e5599801d49"
+                    },
+                    {
+                      "id": "a155322f-1fc8-4201-bf71-0091e3f7e71e",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The locale identifier.",
+                              "key": "localeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-a155322f-1fc8-4201-bf71-0091e3f7e71e"
+                    },
+                    {
+                      "id": "3b42249a-688b-410a-8a63-86597f7d1ca9",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The locale identifier.",
+                              "key": "localeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-3b42249a-688b-410a-8a63-86597f7d1ca9"
+                    },
+                    {
+                      "id": "498bd667-5b0b-4826-b87f-48b3930c530c",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pages/:page_id/dom?localeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pages",
+                            ":page_id",
+                            "dom"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The locale identifier.",
+                              "key": "localeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "page_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:18.000Z",
+                      "updatedAt": "2026-06-05T15:21:18.000Z",
+                      "uid": "35240-498bd667-5b0b-4826-b87f-48b3930c530c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-7558614b-f47a-4ec4-92d3-c9e3177d7b24"
+                }
+              ],
+              "id": "69a5540c-801b-4074-a137-e7866316c808",
+              "createdAt": "2026-06-05T15:21:18.000Z",
+              "updatedAt": "2026-06-05T15:21:18.000Z",
+              "uid": "35240-69a5540c-801b-4074-a137-e7866316c808"
+            },
+            {
+              "name": "Webflow Get Page Metadata",
+              "id": "2ec0a77d-4e21-4b2a-a42a-c6ed79c2b670",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.webflow.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://webflow.com/oauth/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pages",
+                    ":page_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                      "key": "localeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "f9ce3155-8b42-42f5-b9f9-f0645859b3c5",
+                      "key": "page_id",
+                      "value": "",
+                      "description": "(Required) Unique identifier for a Page"
+                    }
+                  ]
+                },
+                "description": "Get metadata information for a single page.\n\nRequired scope | `pages:read`\n"
+              },
+              "response": [
+                {
+                  "id": "0c882e33-e623-48b0-80e9-1609736aeabe",
+                  "name": "Request was successful",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"collectionId\": \"<string>\",\n  \"createdOn\": \"<dateTime>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"archived\": false,\n  \"draft\": false,\n  \"canBranch\": false,\n  \"isBranch\": false,\n  \"branchId\": \"<string>\",\n  \"seo\": {\n    \"title\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"openGraph\": {\n    \"title\": \"<string>\",\n    \"titleCopied\": true,\n    \"description\": \"<string>\",\n    \"descriptionCopied\": true\n  },\n  \"localeId\": \"<string>\",\n  \"publishedPath\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-0c882e33-e623-48b0-80e9-1609736aeabe"
+                },
+                {
+                  "id": "0f2c79c9-f70e-4a69-9a55-6f1c82d47320",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-0f2c79c9-f70e-4a69-9a55-6f1c82d47320"
+                },
+                {
+                  "id": "fbc81d4a-78c9-44a0-a1f2-a7ed88424ee9",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-fbc81d4a-78c9-44a0-a1f2-a7ed88424ee9"
+                },
+                {
+                  "id": "eff353a9-dd79-496b-b811-bc49defc4491",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-eff353a9-dd79-496b-b811-bc49defc4491"
+                },
+                {
+                  "id": "99acfc58-d24c-4e29-992b-f8b7bbe64b6f",
+                  "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains the number of available requests remaining in the current minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Remaining",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains your current overall rate limit per minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-99acfc58-d24c-4e29-992b-f8b7bbe64b6f"
+                },
+                {
+                  "id": "aa8e7568-b8b3-4ab2-85f2-985efb833d8a",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-aa8e7568-b8b3-4ab2-85f2-985efb833d8a"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:18.000Z",
+              "updatedAt": "2026-06-05T15:21:18.000Z",
+              "uid": "35240-2ec0a77d-4e21-4b2a-a42a-c6ed79c2b670"
+            },
+            {
+              "name": "Webflow Update Page Metadata",
+              "id": "d5a8c2ff-ee3c-4309-9672-1ce0c6de3510",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.webflow.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://webflow.com/oauth/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"seo\": {\n    \"title\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"openGraph\": {\n    \"title\": \"<string>\",\n    \"titleCopied\": \"<boolean>\",\n    \"description\": \"<string>\",\n    \"descriptionCopied\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pages",
+                    ":page_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                      "key": "localeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "6526d779-537a-4a5b-b5ae-f69109da6ed4",
+                      "key": "page_id",
+                      "value": "",
+                      "description": "(Required) Unique identifier for a Page"
+                    }
+                  ]
+                },
+                "description": "Update Page-level metadata, including SEO and Open Graph fields.\n\nRequired scope | `pages:write`\n"
+              },
+              "response": [
+                {
+                  "id": "4cad49d5-8143-4f4a-b313-ebc2d7e958be",
+                  "name": "Request was successful",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"seo\": {\n    \"title\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"openGraph\": {\n    \"title\": \"<string>\",\n    \"titleCopied\": \"<boolean>\",\n    \"description\": \"<string>\",\n    \"descriptionCopied\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"collectionId\": \"<string>\",\n  \"createdOn\": \"<dateTime>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"archived\": false,\n  \"draft\": false,\n  \"canBranch\": false,\n  \"isBranch\": false,\n  \"branchId\": \"<string>\",\n  \"seo\": {\n    \"title\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"openGraph\": {\n    \"title\": \"<string>\",\n    \"titleCopied\": true,\n    \"description\": \"<string>\",\n    \"descriptionCopied\": true\n  },\n  \"localeId\": \"<string>\",\n  \"publishedPath\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-4cad49d5-8143-4f4a-b313-ebc2d7e958be"
+                },
+                {
+                  "id": "7cc0fad4-26f0-4331-87bd-0111883f830a",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"seo\": {\n    \"title\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"openGraph\": {\n    \"title\": \"<string>\",\n    \"titleCopied\": \"<boolean>\",\n    \"description\": \"<string>\",\n    \"descriptionCopied\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-7cc0fad4-26f0-4331-87bd-0111883f830a"
+                },
+                {
+                  "id": "04261e04-1ef7-4075-8105-f3de29239354",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"seo\": {\n    \"title\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"openGraph\": {\n    \"title\": \"<string>\",\n    \"titleCopied\": \"<boolean>\",\n    \"description\": \"<string>\",\n    \"descriptionCopied\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-04261e04-1ef7-4075-8105-f3de29239354"
+                },
+                {
+                  "id": "a088bf5d-36aa-48e2-b7a3-5378e64ff9e2",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"seo\": {\n    \"title\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"openGraph\": {\n    \"title\": \"<string>\",\n    \"titleCopied\": \"<boolean>\",\n    \"description\": \"<string>\",\n    \"descriptionCopied\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-a088bf5d-36aa-48e2-b7a3-5378e64ff9e2"
+                },
+                {
+                  "id": "4af7dc4d-3435-447d-b1f8-75f16b1d5c51",
+                  "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"seo\": {\n    \"title\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"openGraph\": {\n    \"title\": \"<string>\",\n    \"titleCopied\": \"<boolean>\",\n    \"description\": \"<string>\",\n    \"descriptionCopied\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains the number of available requests remaining in the current minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Remaining",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains your current overall rate limit per minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-4af7dc4d-3435-447d-b1f8-75f16b1d5c51"
+                },
+                {
+                  "id": "e83c95a6-8b7b-40d0-a715-f216c9b6983e",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"seo\": {\n    \"title\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"openGraph\": {\n    \"title\": \"<string>\",\n    \"titleCopied\": \"<boolean>\",\n    \"description\": \"<string>\",\n    \"descriptionCopied\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pages/:page_id?localeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pages",
+                        ":page_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "page_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ad aute tempor\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:18.000Z",
+                  "updatedAt": "2026-06-05T15:21:18.000Z",
+                  "uid": "35240-e83c95a6-8b7b-40d0-a715-f216c9b6983e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:18.000Z",
+              "updatedAt": "2026-06-05T15:21:18.000Z",
+              "uid": "35240-d5a8c2ff-ee3c-4309-9672-1ce0c6de3510"
+            }
+          ],
+          "id": "ecc9fa7e-5ae1-49dc-b043-2c159ffcc84f",
+          "createdAt": "2026-06-05T15:21:18.000Z",
+          "updatedAt": "2026-06-05T15:21:18.000Z",
+          "uid": "35240-ecc9fa7e-5ae1-49dc-b043-2c159ffcc84f"
+        }
+      ],
+      "id": "70ccbf24-42b7-48e6-8e5d-7acc61c20089",
+      "createdAt": "2026-06-05T15:21:18.000Z",
+      "updatedAt": "2026-06-05T15:21:18.000Z",
+      "uid": "35240-70ccbf24-42b7-48e6-8e5d-7acc61c20089"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.webflow.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://webflow.com/oauth/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.webflow.com/v2"
+    }
+  ]
+}

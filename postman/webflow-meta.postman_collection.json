@@ -1,0 +1,548 @@
+{
+  "info": {
+    "_postman_id": "6cfad0ae-cac1-47d8-a20a-4bcfbf70488f",
+    "name": "Webflow Meta API",
+    "description": "Webflow Data API v2 - Meta endpoints.\n\nContact Support:\n Name: Webflow Developer Relations\n Email: developers@webflow.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:02.000Z",
+    "updatedAt": "2026-06-05T15:21:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6cfad0ae-cac1-47d8-a20a-4bcfbf70488f"
+  },
+  "item": [
+    {
+      "name": "token",
+      "item": [
+        {
+          "name": "authorized_by",
+          "item": [
+            {
+              "name": "Webflow Get Authorization User Info",
+              "id": "7b68020c-ee00-4350-b1f5-73d0cbb51c22",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.webflow.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://webflow.com/oauth/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/token/authorized_by",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "token",
+                    "authorized_by"
+                  ]
+                },
+                "description": "Information about the Authorized User\n\nRequired Scope | `authorized_user:read`\n"
+              },
+              "response": [
+                {
+                  "id": "b7be2d86-d78d-4907-9590-57a8dd123e7b",
+                  "name": "Request was successful",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/token/authorized_by",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "authorized_by"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:21:02.000Z",
+                  "updatedAt": "2026-06-05T15:21:02.000Z",
+                  "uid": "35240-b7be2d86-d78d-4907-9590-57a8dd123e7b"
+                },
+                {
+                  "id": "b857e4a8-279f-4e8f-a926-1452615c16db",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/token/authorized_by",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "authorized_by"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"forbidden\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"Ut ipsum enim non\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:02.000Z",
+                  "updatedAt": "2026-06-05T15:21:02.000Z",
+                  "uid": "35240-b857e4a8-279f-4e8f-a926-1452615c16db"
+                },
+                {
+                  "id": "6f958ba6-49ee-48cb-9ad5-b70a239b4616",
+                  "name": "Provided access token is valid, but is missing the required scopes.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/token/authorized_by",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "authorized_by"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"forbidden\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"Ut ipsum enim non\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:02.000Z",
+                  "updatedAt": "2026-06-05T15:21:02.000Z",
+                  "uid": "35240-6f958ba6-49ee-48cb-9ad5-b70a239b4616"
+                },
+                {
+                  "id": "8d839450-d551-4a53-abf9-72724edf1256",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/token/authorized_by",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "authorized_by"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"forbidden\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"Ut ipsum enim non\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:02.000Z",
+                  "updatedAt": "2026-06-05T15:21:02.000Z",
+                  "uid": "35240-8d839450-d551-4a53-abf9-72724edf1256"
+                },
+                {
+                  "id": "14bae2f1-2cd6-4a85-9f98-8806f656d538",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/token/authorized_by",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "authorized_by"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"forbidden\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"Ut ipsum enim non\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:02.000Z",
+                  "updatedAt": "2026-06-05T15:21:02.000Z",
+                  "uid": "35240-14bae2f1-2cd6-4a85-9f98-8806f656d538"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:02.000Z",
+              "updatedAt": "2026-06-05T15:21:02.000Z",
+              "uid": "35240-7b68020c-ee00-4350-b1f5-73d0cbb51c22"
+            }
+          ],
+          "id": "867aa6a3-0951-4054-b496-d8f897d1c04e",
+          "createdAt": "2026-06-05T15:21:02.000Z",
+          "updatedAt": "2026-06-05T15:21:02.000Z",
+          "uid": "35240-867aa6a3-0951-4054-b496-d8f897d1c04e"
+        },
+        {
+          "name": "introspect",
+          "item": [
+            {
+              "name": "Webflow Get Authorization Info",
+              "id": "b28dea6f-79b6-4430-b20a-95bde99e6dd3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/token/introspect",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "token",
+                    "introspect"
+                  ]
+                },
+                "description": "Information about the authorization token\n\n<Note>Access to this endpoint requires a bearer token from a [Data Client App](/data/docs/getting-started-data-clients).</Note>\n"
+              },
+              "response": [
+                {
+                  "id": "ec4a1f1b-6c6c-445d-b5d8-62ffa9d607a3",
+                  "name": "Request was successful",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/token/introspect",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "introspect"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"authorization\": {\n    \"id\": \"<string>\",\n    \"createdOn\": \"<dateTime>\",\n    \"lastUsed\": \"<dateTime>\",\n    \"grantType\": \"<string>\",\n    \"rateLimit\": \"<integer>\",\n    \"scope\": \"<string>\",\n    \"authorizedTo\": {\n      \"siteIds\": \"<array>\",\n      \"workspaceIds\": \"<array>\",\n      \"userIds\": \"<array>\"\n    }\n  },\n  \"application\": {\n    \"id\": \"<string>\",\n    \"description\": \"<string>\",\n    \"homepage\": \"<uri>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:21:02.000Z",
+                  "updatedAt": "2026-06-05T15:21:02.000Z",
+                  "uid": "35240-ec4a1f1b-6c6c-445d-b5d8-62ffa9d607a3"
+                },
+                {
+                  "id": "6ef4b655-c784-4e3c-a819-b90a88941988",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/token/introspect",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "introspect"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"forbidden\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"Ut ipsum enim non\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:02.000Z",
+                  "updatedAt": "2026-06-05T15:21:02.000Z",
+                  "uid": "35240-6ef4b655-c784-4e3c-a819-b90a88941988"
+                },
+                {
+                  "id": "8a671cd4-9d91-4dc9-9425-6a177054906f",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/token/introspect",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "introspect"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"forbidden\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"Ut ipsum enim non\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:02.000Z",
+                  "updatedAt": "2026-06-05T15:21:02.000Z",
+                  "uid": "35240-8a671cd4-9d91-4dc9-9425-6a177054906f"
+                },
+                {
+                  "id": "71a993cb-b62f-40a5-9660-d82b772745a6",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/token/introspect",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "introspect"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"forbidden\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"Ut ipsum enim non\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:02.000Z",
+                  "updatedAt": "2026-06-05T15:21:02.000Z",
+                  "uid": "35240-71a993cb-b62f-40a5-9660-d82b772745a6"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:02.000Z",
+              "updatedAt": "2026-06-05T15:21:02.000Z",
+              "uid": "35240-b28dea6f-79b6-4430-b20a-95bde99e6dd3"
+            }
+          ],
+          "id": "e59ea67e-bc3f-4108-95b1-52db1a95b8f1",
+          "createdAt": "2026-06-05T15:21:02.000Z",
+          "updatedAt": "2026-06-05T15:21:02.000Z",
+          "uid": "35240-e59ea67e-bc3f-4108-95b1-52db1a95b8f1"
+        }
+      ],
+      "id": "91eab764-0503-4864-a9a8-d696443d83f9",
+      "createdAt": "2026-06-05T15:21:02.000Z",
+      "updatedAt": "2026-06-05T15:21:02.000Z",
+      "uid": "35240-91eab764-0503-4864-a9a8-d696443d83f9"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.webflow.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://webflow.com/oauth/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.webflow.com/v2"
+    }
+  ]
+}

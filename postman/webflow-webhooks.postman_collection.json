@@ -1,0 +1,1577 @@
+{
+  "info": {
+    "_postman_id": "2b827e41-c355-4e44-a1be-95e055c7f90c",
+    "name": "Webflow Webhooks API",
+    "description": "Webflow Data API v2 - Webhooks endpoints.\n\nContact Support:\n Name: Webflow Developer Relations\n Email: developers@webflow.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:37.000Z",
+    "updatedAt": "2026-06-05T15:21:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2b827e41-c355-4e44-a1be-95e055c7f90c"
+  },
+  "item": [
+    {
+      "name": "sites",
+      "item": [
+        {
+          "name": "{site_id}",
+          "item": [
+            {
+              "name": "webhooks",
+              "item": [
+                {
+                  "name": "Webflow List Webhooks",
+                  "id": "f159b31a-c602-4840-ac91-0dbc77fba3c1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sites",
+                        ":site_id",
+                        "webhooks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9c1c2e47-2c4c-4e7a-b489-2d78de3f6bbf",
+                          "key": "site_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Site"
+                        }
+                      ]
+                    },
+                    "description": "List all App-created Webhooks registered for a given site\n\nRequired scope | `sites:read`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "30db0087-f828-40c8-a879-c8545dc660fe",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"webhooks\": [\n    {\n      \"id\": \"<string>\",\n      \"triggerType\": \"ecomm_order_changed\",\n      \"url\": \"<string>\",\n      \"workspaceId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"filter\": {\n        \"name\": \"<string>\"\n      },\n      \"lastTriggered\": \"<dateTime>\",\n      \"createdOn\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"triggerType\": \"collection_item_unpublished\",\n      \"url\": \"<string>\",\n      \"workspaceId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"filter\": {\n        \"name\": \"<string>\"\n      },\n      \"lastTriggered\": \"<dateTime>\",\n      \"createdOn\": \"<dateTime>\"\n    }\n  ],\n  \"pagination\": {\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"total\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-30db0087-f828-40c8-a879-c8545dc660fe"
+                    },
+                    {
+                      "id": "25e26193-9b5f-43b5-8311-6a270b89e60e",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-25e26193-9b5f-43b5-8311-6a270b89e60e"
+                    },
+                    {
+                      "id": "1593bb53-861f-4959-99cc-135c975b94e2",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-1593bb53-861f-4959-99cc-135c975b94e2"
+                    },
+                    {
+                      "id": "9f901011-d60f-40c7-a888-d40e02e16370",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-9f901011-d60f-40c7-a888-d40e02e16370"
+                    },
+                    {
+                      "id": "b67c613c-b9fd-4a6d-80b0-707c0b86a127",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-b67c613c-b9fd-4a6d-80b0-707c0b86a127"
+                    },
+                    {
+                      "id": "2c91c949-6c57-487d-b640-177234889cf5",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-2c91c949-6c57-487d-b640-177234889cf5"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:37.000Z",
+                  "updatedAt": "2026-06-05T15:21:37.000Z",
+                  "uid": "35240-f159b31a-c602-4840-ac91-0dbc77fba3c1"
+                },
+                {
+                  "name": "Webflow Create Webhook",
+                  "id": "9bc50d69-cd29-457c-b079-59c9abf2b739",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"triggerType\": \"ecomm_order_changed\",\n  \"url\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"filter\": {\n    \"name\": \"<string>\"\n  },\n  \"lastTriggered\": \"<dateTime>\",\n  \"createdOn\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sites",
+                        ":site_id",
+                        "webhooks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "cdc38789-299a-45b1-bf53-8523ea597a25",
+                          "key": "site_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Site"
+                        }
+                      ]
+                    },
+                    "description": "Create a new Webhook.\n\nLimit of 75 registrations per `triggerType`, per site.\n\n<Note>Access to this endpoint requires a bearer token from a [Data Client App](/data/docs/getting-started-data-clients).</Note>\nRequired scope | `sites:write`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "9ffd402a-a74c-495d-aedd-aadf166b6a21",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"triggerType\": \"ecomm_order_changed\",\n  \"url\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"filter\": {\n    \"name\": \"<string>\"\n  },\n  \"lastTriggered\": \"<dateTime>\",\n  \"createdOn\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"triggerType\": \"ecomm_order_changed\",\n  \"url\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"filter\": {\n    \"name\": \"<string>\"\n  },\n  \"lastTriggered\": \"<dateTime>\",\n  \"createdOn\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-9ffd402a-a74c-495d-aedd-aadf166b6a21"
+                    },
+                    {
+                      "id": "6d8e4098-48c3-4b8c-8eb8-cb636c16cefc",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"triggerType\": \"ecomm_order_changed\",\n  \"url\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"filter\": {\n    \"name\": \"<string>\"\n  },\n  \"lastTriggered\": \"<dateTime>\",\n  \"createdOn\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-6d8e4098-48c3-4b8c-8eb8-cb636c16cefc"
+                    },
+                    {
+                      "id": "22cf58b1-fda7-4c50-a303-4c326cc656bf",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"triggerType\": \"ecomm_order_changed\",\n  \"url\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"filter\": {\n    \"name\": \"<string>\"\n  },\n  \"lastTriggered\": \"<dateTime>\",\n  \"createdOn\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-22cf58b1-fda7-4c50-a303-4c326cc656bf"
+                    },
+                    {
+                      "id": "7c347fb1-1488-4013-9f43-00455aa5aac8",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"triggerType\": \"ecomm_order_changed\",\n  \"url\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"filter\": {\n    \"name\": \"<string>\"\n  },\n  \"lastTriggered\": \"<dateTime>\",\n  \"createdOn\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-7c347fb1-1488-4013-9f43-00455aa5aac8"
+                    },
+                    {
+                      "id": "047fb5d2-f550-4527-924c-7cedd77c5d5a",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"triggerType\": \"ecomm_order_changed\",\n  \"url\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"filter\": {\n    \"name\": \"<string>\"\n  },\n  \"lastTriggered\": \"<dateTime>\",\n  \"createdOn\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-047fb5d2-f550-4527-924c-7cedd77c5d5a"
+                    },
+                    {
+                      "id": "b6fa9f3d-a6cc-4eeb-b0f0-77329f57881c",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"triggerType\": \"ecomm_order_changed\",\n  \"url\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"filter\": {\n    \"name\": \"<string>\"\n  },\n  \"lastTriggered\": \"<dateTime>\",\n  \"createdOn\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:38.000Z",
+                      "updatedAt": "2026-06-05T15:21:38.000Z",
+                      "uid": "35240-b6fa9f3d-a6cc-4eeb-b0f0-77329f57881c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:37.000Z",
+                  "updatedAt": "2026-06-05T15:21:37.000Z",
+                  "uid": "35240-9bc50d69-cd29-457c-b079-59c9abf2b739"
+                }
+              ],
+              "id": "42a3bdfd-79dc-41cb-9de0-4d2fcfe8659b",
+              "createdAt": "2026-06-05T15:21:37.000Z",
+              "updatedAt": "2026-06-05T15:21:37.000Z",
+              "uid": "35240-42a3bdfd-79dc-41cb-9de0-4d2fcfe8659b"
+            }
+          ],
+          "id": "365aeaa9-8d87-43d3-b00d-5e3895e96aea",
+          "createdAt": "2026-06-05T15:21:37.000Z",
+          "updatedAt": "2026-06-05T15:21:37.000Z",
+          "uid": "35240-365aeaa9-8d87-43d3-b00d-5e3895e96aea"
+        }
+      ],
+      "id": "95fa887e-6a87-4157-a404-1b3c986d397a",
+      "createdAt": "2026-06-05T15:21:37.000Z",
+      "updatedAt": "2026-06-05T15:21:37.000Z",
+      "uid": "35240-95fa887e-6a87-4157-a404-1b3c986d397a"
+    },
+    {
+      "name": "webhooks",
+      "item": [
+        {
+          "name": "{webhook_id}",
+          "item": [
+            {
+              "name": "Webflow Get Webhook",
+              "id": "24297478-48d3-4a50-8991-b9c52c68eff1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks",
+                    ":webhook_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c927c6f5-6a31-4585-b2f9-681da9c935b8",
+                      "key": "webhook_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for a Webhook"
+                    }
+                  ]
+                },
+                "description": "Get a specific Webhook instance\n\nRequired scope: `sites:read`\n"
+              },
+              "response": [
+                {
+                  "id": "52bbbbd0-aba3-41be-aca6-7344841f0265",
+                  "name": "Request was successful",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"triggerType\": \"ecomm_order_changed\",\n  \"url\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"filter\": {\n    \"name\": \"<string>\"\n  },\n  \"lastTriggered\": \"<dateTime>\",\n  \"createdOn\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-52bbbbd0-aba3-41be-aca6-7344841f0265"
+                },
+                {
+                  "id": "61b1f4e4-0103-4c7e-96fe-cd046f8e931b",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-61b1f4e4-0103-4c7e-96fe-cd046f8e931b"
+                },
+                {
+                  "id": "16b44447-a41e-4074-8d2e-c83b44a614d8",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-16b44447-a41e-4074-8d2e-c83b44a614d8"
+                },
+                {
+                  "id": "b58ea5da-75da-4df4-bc4a-c1f11c31ec10",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-b58ea5da-75da-4df4-bc4a-c1f11c31ec10"
+                },
+                {
+                  "id": "3808cfe1-1603-48f5-9125-e151e282fa4e",
+                  "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains the number of available requests remaining in the current minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Remaining",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains your current overall rate limit per minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-3808cfe1-1603-48f5-9125-e151e282fa4e"
+                },
+                {
+                  "id": "1d33b3f4-bf9a-4932-ab8a-6bd34f0a4ec3",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-1d33b3f4-bf9a-4932-ab8a-6bd34f0a4ec3"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:37.000Z",
+              "updatedAt": "2026-06-05T15:21:37.000Z",
+              "uid": "35240-24297478-48d3-4a50-8991-b9c52c68eff1"
+            },
+            {
+              "name": "Webflow Remove Webhook",
+              "id": "792feaa6-f839-4580-ab72-303ba167b13e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks",
+                    ":webhook_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6c9fcb57-9a8c-49fe-8f74-b31c4f7d6cad",
+                      "key": "webhook_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for a Webhook"
+                    }
+                  ]
+                },
+                "description": "Remove a Webhook\n\nRequired scope: `sites:read`\n"
+              },
+              "response": [
+                {
+                  "id": "3c3ecd1a-5208-4289-b916-4d2252ce485e",
+                  "name": "Request was successful. No Content is returned.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-3c3ecd1a-5208-4289-b916-4d2252ce485e"
+                },
+                {
+                  "id": "3093839c-91ad-4b04-881f-163af7b578ae",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-3093839c-91ad-4b04-881f-163af7b578ae"
+                },
+                {
+                  "id": "a487ed76-774c-463c-b7f6-534e8ce46da8",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-a487ed76-774c-463c-b7f6-534e8ce46da8"
+                },
+                {
+                  "id": "ea3021cf-f2e6-4a10-a493-71b66b2f8609",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-ea3021cf-f2e6-4a10-a493-71b66b2f8609"
+                },
+                {
+                  "id": "19817541-5686-468c-b94d-25a542b47428",
+                  "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains the number of available requests remaining in the current minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Remaining",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains your current overall rate limit per minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-19817541-5686-468c-b94d-25a542b47428"
+                },
+                {
+                  "id": "e937818f-d3e0-4028-b4d3-4eef10f04cac",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhook_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhook_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"duplicate_collection\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"labore reprehenderit qui\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:38.000Z",
+                  "updatedAt": "2026-06-05T15:21:38.000Z",
+                  "uid": "35240-e937818f-d3e0-4028-b4d3-4eef10f04cac"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:37.000Z",
+              "updatedAt": "2026-06-05T15:21:37.000Z",
+              "uid": "35240-792feaa6-f839-4580-ab72-303ba167b13e"
+            }
+          ],
+          "id": "21ec0db9-2162-41ac-9a80-5ba14f05d00b",
+          "createdAt": "2026-06-05T15:21:37.000Z",
+          "updatedAt": "2026-06-05T15:21:37.000Z",
+          "uid": "35240-21ec0db9-2162-41ac-9a80-5ba14f05d00b"
+        }
+      ],
+      "id": "56a16023-d731-4a66-950a-54d297b6bdfd",
+      "createdAt": "2026-06-05T15:21:37.000Z",
+      "updatedAt": "2026-06-05T15:21:37.000Z",
+      "uid": "35240-56a16023-d731-4a66-950a-54d297b6bdfd"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.webflow.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://webflow.com/oauth/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.webflow.com/v2"
+    }
+  ]
+}

@@ -1,0 +1,3482 @@
+{
+  "info": {
+    "_postman_id": "1bf73db8-57ec-4056-98b0-8db63b55092b",
+    "name": "Webflow Assets API",
+    "description": "Webflow Data API v2 - Assets endpoints.\n\nContact Support:\n Name: Webflow Developer Relations\n Email: developers@webflow.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:26.000Z",
+    "updatedAt": "2026-06-05T15:21:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1bf73db8-57ec-4056-98b0-8db63b55092b"
+  },
+  "item": [
+    {
+      "name": "sites",
+      "item": [
+        {
+          "name": "{site_id}",
+          "item": [
+            {
+              "name": "assets",
+              "item": [
+                {
+                  "name": "Webflow List Assets",
+                  "id": "7b0f405d-9331-4cea-960b-d0d09fb029d7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sites/:site_id/assets?offset=<integer>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sites",
+                        ":site_id",
+                        "assets"
+                      ],
+                      "query": [
+                        {
+                          "description": "Offset used for pagination if the results have more than limit records",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of records to be returned (max limit: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "204d9b43-15eb-4395-b914-1e6db88ad440",
+                          "key": "site_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Site"
+                        }
+                      ]
+                    },
+                    "description": "List of assets uploaded to a site\n\nRequired scope | `assets:read`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "64da0b01-a43b-4da3-8b5d-d0cf64ff4d50",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets?offset=<integer>&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "query": [
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"assets\": [\n    {\n      \"id\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"siteId\": \"<string>\",\n      \"hostedUrl\": \"<uri>\",\n      \"originalFileName\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"lastUpdated\": \"<dateTime>\",\n      \"createdOn\": \"<dateTime>\",\n      \"variants\": [\n        {\n          \"hostedUrl\": \"<uri>\",\n          \"originalFileName\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"format\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\",\n          \"quality\": \"<integer>\",\n          \"error\": \"<string>\"\n        },\n        {\n          \"hostedUrl\": \"<uri>\",\n          \"originalFileName\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"format\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\",\n          \"quality\": \"<integer>\",\n          \"error\": \"<string>\"\n        }\n      ],\n      \"altText\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"siteId\": \"<string>\",\n      \"hostedUrl\": \"<uri>\",\n      \"originalFileName\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"lastUpdated\": \"<dateTime>\",\n      \"createdOn\": \"<dateTime>\",\n      \"variants\": [\n        {\n          \"hostedUrl\": \"<uri>\",\n          \"originalFileName\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"format\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\",\n          \"quality\": \"<integer>\",\n          \"error\": \"<string>\"\n        },\n        {\n          \"hostedUrl\": \"<uri>\",\n          \"originalFileName\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"format\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\",\n          \"quality\": \"<integer>\",\n          \"error\": \"<string>\"\n        }\n      ],\n      \"altText\": \"<string>\"\n    }\n  ],\n  \"pagination\": {\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"total\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-64da0b01-a43b-4da3-8b5d-d0cf64ff4d50"
+                    },
+                    {
+                      "id": "b8b3c4de-e9ea-4556-8c2a-01eb06bf8a6d",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets?offset=<integer>&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "query": [
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-b8b3c4de-e9ea-4556-8c2a-01eb06bf8a6d"
+                    },
+                    {
+                      "id": "33c8e948-78c1-4d2f-818c-29e45b458a02",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets?offset=<integer>&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "query": [
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-33c8e948-78c1-4d2f-818c-29e45b458a02"
+                    },
+                    {
+                      "id": "a574cce5-f638-43c1-94a4-1952221c2135",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets?offset=<integer>&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "query": [
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-a574cce5-f638-43c1-94a4-1952221c2135"
+                    },
+                    {
+                      "id": "8ea0cee0-aebc-4aae-9870-e2bee015841f",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets?offset=<integer>&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "query": [
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-8ea0cee0-aebc-4aae-9870-e2bee015841f"
+                    },
+                    {
+                      "id": "8aca361c-facc-4ca7-a594-3da1885ee1c2",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets?offset=<integer>&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "query": [
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-8aca361c-facc-4ca7-a594-3da1885ee1c2"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-7b0f405d-9331-4cea-960b-d0d09fb029d7"
+                },
+                {
+                  "name": "Webflow Upload Asset",
+                  "id": "08366ae8-ac29-4c9a-8723-dca14f1a61f9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"fileName\": \"<string>\",\n  \"fileHash\": \"<string>\",\n  \"parentFolder\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sites/:site_id/assets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sites",
+                        ":site_id",
+                        "assets"
+                      ],
+                      "variable": [
+                        {
+                          "id": "67aba2cc-962f-4515-8594-13f67a222252",
+                          "key": "site_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Site"
+                        }
+                      ]
+                    },
+                    "description": "The first step in uploading an asset to a site.\n\n\nThis endpoint generates a response with the following information: `uploadUrl` and `uploadDetails`.\n\n\nUse these properties in the header of a [POST request to Amazson s3](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPOST.html) to complete the upload.\n\n\nTo learn more about how to upload assets to Webflow, see our [assets guide](/data/docs/working-with-assets).\n\n Required scope | `assets:write`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "46c91cdc-bf1e-4103-b7eb-540fac19fb95",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fileName\": \"<string>\",\n  \"fileHash\": \"<string>\",\n  \"parentFolder\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"uploadDetails\": {\n    \"acl\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"X-Amz-Algorithm\": \"<string>\",\n    \"X-Amz-Credential\": \"<string>\",\n    \"X-Amz-Date\": \"<string>\",\n    \"key\": \"<string>\",\n    \"Policy\": \"<string>\",\n    \"X-Amz-Signature\": \"<string>\",\n    \"success_action_status\": \"<string>\",\n    \"content-type\": \"<string>\",\n    \"Cache-Control\": \"<string>\"\n  },\n  \"contentType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"parentFolder\": null,\n  \"uploadUrl\": \"<uri>\",\n  \"assetUrl\": \"<uri>\",\n  \"hostedUrl\": \"<uri>\",\n  \"originalFileName\": \"<string>\",\n  \"createdOn\": \"<dateTime>\",\n  \"lastUpdated\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-46c91cdc-bf1e-4103-b7eb-540fac19fb95"
+                    },
+                    {
+                      "id": "f9c067a3-8647-4c9e-b1a1-9e9855188c1c",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fileName\": \"<string>\",\n  \"fileHash\": \"<string>\",\n  \"parentFolder\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-f9c067a3-8647-4c9e-b1a1-9e9855188c1c"
+                    },
+                    {
+                      "id": "2a592ed8-0d01-48fe-a3a6-9683c7383bfa",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fileName\": \"<string>\",\n  \"fileHash\": \"<string>\",\n  \"parentFolder\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-2a592ed8-0d01-48fe-a3a6-9683c7383bfa"
+                    },
+                    {
+                      "id": "d8d993a2-8e9d-462c-b32e-fde29143e01d",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fileName\": \"<string>\",\n  \"fileHash\": \"<string>\",\n  \"parentFolder\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-d8d993a2-8e9d-462c-b32e-fde29143e01d"
+                    },
+                    {
+                      "id": "83ae6023-b9c3-499e-9c0c-750a1b0c65b2",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fileName\": \"<string>\",\n  \"fileHash\": \"<string>\",\n  \"parentFolder\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-83ae6023-b9c3-499e-9c0c-750a1b0c65b2"
+                    },
+                    {
+                      "id": "94bbd5a2-c4f3-4fa6-af67-3173258d8526",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fileName\": \"<string>\",\n  \"fileHash\": \"<string>\",\n  \"parentFolder\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/assets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "assets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-94bbd5a2-c4f3-4fa6-af67-3173258d8526"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-08366ae8-ac29-4c9a-8723-dca14f1a61f9"
+                }
+              ],
+              "id": "fabf91b8-fe2c-404d-9104-e48dc5df9dcc",
+              "createdAt": "2026-06-05T15:21:26.000Z",
+              "updatedAt": "2026-06-05T15:21:26.000Z",
+              "uid": "35240-fabf91b8-fe2c-404d-9104-e48dc5df9dcc"
+            },
+            {
+              "name": "asset_folders",
+              "item": [
+                {
+                  "name": "Webflow List Asset Folders",
+                  "id": "f7d5f33f-e6e2-40f1-be34-dbc96b90fc0f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sites",
+                        ":site_id",
+                        "asset_folders"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fb0abae6-3e4d-48b7-bc43-b027b788b73b",
+                          "key": "site_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Site"
+                        }
+                      ]
+                    },
+                    "description": "List Asset Folders within a given site\n\nRequired scope | `assets:read`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "02864dac-93c3-4f07-a2a3-643b1f58c7fc",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"assetFolders\": [\n    {\n      \"id\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"parentFolder\": null,\n      \"assets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"siteId\": \"<string>\",\n      \"createdOn\": \"<dateTime>\",\n      \"lastUpdated\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"parentFolder\": null,\n      \"assets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"siteId\": \"<string>\",\n      \"createdOn\": \"<dateTime>\",\n      \"lastUpdated\": \"<dateTime>\"\n    }\n  ],\n  \"pagination\": {\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"total\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-02864dac-93c3-4f07-a2a3-643b1f58c7fc"
+                    },
+                    {
+                      "id": "83841fdf-b23b-4a73-b917-84e7205e25d2",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-83841fdf-b23b-4a73-b917-84e7205e25d2"
+                    },
+                    {
+                      "id": "639403b1-5f43-455b-a5b4-8fac3d757555",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-639403b1-5f43-455b-a5b4-8fac3d757555"
+                    },
+                    {
+                      "id": "30b9e0b5-c4cf-4b2b-9ce1-4e21fe43805f",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-30b9e0b5-c4cf-4b2b-9ce1-4e21fe43805f"
+                    },
+                    {
+                      "id": "e5e2daf1-502a-476d-9725-6817d964c441",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-e5e2daf1-502a-476d-9725-6817d964c441"
+                    },
+                    {
+                      "id": "a8c146b5-6466-445b-931f-876a9d318ec9",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-a8c146b5-6466-445b-931f-876a9d318ec9"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-f7d5f33f-e6e2-40f1-be34-dbc96b90fc0f"
+                },
+                {
+                  "name": "Webflow Create Asset Folder",
+                  "id": "33db6a99-ea82-42d3-8f7d-26778e0f7640",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"displayName\": \"<string>\",\n  \"parentFolder\": null\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sites",
+                        ":site_id",
+                        "asset_folders"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f504ab03-2558-40b1-b4df-82f4171e8834",
+                          "key": "site_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Site"
+                        }
+                      ]
+                    },
+                    "description": "Create an Asset Folder within a given site\n\nRequired scope | `assets:write`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "3b9ba6f6-afe7-4bab-93b6-4b9acf650654",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"parentFolder\": null\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"parentFolder\": null,\n  \"assets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"siteId\": \"<string>\",\n  \"createdOn\": \"<dateTime>\",\n  \"lastUpdated\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-3b9ba6f6-afe7-4bab-93b6-4b9acf650654"
+                    },
+                    {
+                      "id": "1dc2cf01-8c16-49d8-acca-3759f67a84e2",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"parentFolder\": null\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-1dc2cf01-8c16-49d8-acca-3759f67a84e2"
+                    },
+                    {
+                      "id": "6add3097-4f2a-4c2f-9447-bc89e182790a",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"parentFolder\": null\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-6add3097-4f2a-4c2f-9447-bc89e182790a"
+                    },
+                    {
+                      "id": "f8cbd690-9f7b-4d13-9a40-4f302532272d",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"parentFolder\": null\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-f8cbd690-9f7b-4d13-9a40-4f302532272d"
+                    },
+                    {
+                      "id": "f1d7a9f0-11c6-41be-919f-75abb922ecea",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"parentFolder\": null\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-f1d7a9f0-11c6-41be-919f-75abb922ecea"
+                    },
+                    {
+                      "id": "187dacf9-fb0e-4fb1-8615-647f722578ea",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"parentFolder\": null\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/asset_folders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "asset_folders"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:26.000Z",
+                      "updatedAt": "2026-06-05T15:21:26.000Z",
+                      "uid": "35240-187dacf9-fb0e-4fb1-8615-647f722578ea"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-33db6a99-ea82-42d3-8f7d-26778e0f7640"
+                }
+              ],
+              "id": "4718cb6e-61d9-4c0d-8bae-4eba6037f894",
+              "createdAt": "2026-06-05T15:21:26.000Z",
+              "updatedAt": "2026-06-05T15:21:26.000Z",
+              "uid": "35240-4718cb6e-61d9-4c0d-8bae-4eba6037f894"
+            }
+          ],
+          "id": "4d6208f0-26bb-4b73-b4a1-49f01a25f3d9",
+          "createdAt": "2026-06-05T15:21:26.000Z",
+          "updatedAt": "2026-06-05T15:21:26.000Z",
+          "uid": "35240-4d6208f0-26bb-4b73-b4a1-49f01a25f3d9"
+        }
+      ],
+      "id": "97adb9f4-c787-4faa-9eb1-ba9b633fdb43",
+      "createdAt": "2026-06-05T15:21:26.000Z",
+      "updatedAt": "2026-06-05T15:21:26.000Z",
+      "uid": "35240-97adb9f4-c787-4faa-9eb1-ba9b633fdb43"
+    },
+    {
+      "name": "assets",
+      "item": [
+        {
+          "name": "{asset_id}",
+          "item": [
+            {
+              "name": "Webflow Get Asset",
+              "id": "f34f76be-5cea-43ce-ad5a-75aaff7da4fa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.webflow.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://webflow.com/oauth/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assets/:asset_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assets",
+                    ":asset_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "596a59dc-3811-41f5-a922-93e7b07b1231",
+                      "key": "asset_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for an Asset on a site"
+                    }
+                  ]
+                },
+                "description": "Get details about an asset\n\nRequired scope | `assets:read`\n"
+              },
+              "response": [
+                {
+                  "id": "dce650b3-c930-4dbf-84af-a23ceca1566a",
+                  "name": "Request was successful",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"size\": \"<integer>\",\n  \"siteId\": \"<string>\",\n  \"hostedUrl\": \"<uri>\",\n  \"originalFileName\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"createdOn\": \"<dateTime>\",\n  \"variants\": [\n    {\n      \"hostedUrl\": \"<uri>\",\n      \"originalFileName\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"quality\": \"<integer>\",\n      \"error\": \"<string>\"\n    },\n    {\n      \"hostedUrl\": \"<uri>\",\n      \"originalFileName\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"quality\": \"<integer>\",\n      \"error\": \"<string>\"\n    }\n  ],\n  \"altText\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-dce650b3-c930-4dbf-84af-a23ceca1566a"
+                },
+                {
+                  "id": "731324ac-1bea-4591-93f1-7528b3bd5f66",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-731324ac-1bea-4591-93f1-7528b3bd5f66"
+                },
+                {
+                  "id": "4812436e-569d-4f43-83ef-a763cecb2c59",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-4812436e-569d-4f43-83ef-a763cecb2c59"
+                },
+                {
+                  "id": "136efad9-bd2f-4159-9ac5-9355a80ed100",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-136efad9-bd2f-4159-9ac5-9355a80ed100"
+                },
+                {
+                  "id": "f4b2d176-5720-47e0-9614-bc6c81608560",
+                  "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains the number of available requests remaining in the current minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Remaining",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains your current overall rate limit per minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-f4b2d176-5720-47e0-9614-bc6c81608560"
+                },
+                {
+                  "id": "c0e26158-d9a4-4ab1-a0c5-e2fbf73f221f",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-c0e26158-d9a4-4ab1-a0c5-e2fbf73f221f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:26.000Z",
+              "updatedAt": "2026-06-05T15:21:26.000Z",
+              "uid": "35240-f34f76be-5cea-43ce-ad5a-75aaff7da4fa"
+            },
+            {
+              "name": "Webflow Update Asset",
+              "id": "e97cbbee-b80d-4d44-87c2-000828ebd797",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.webflow.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://webflow.com/oauth/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"localeId\": \"<string>\",\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/assets/:asset_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assets",
+                    ":asset_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1561436d-0435-4b6f-8948-0dada76da92f",
+                      "key": "asset_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for an Asset on a site"
+                    }
+                  ]
+                },
+                "description": "Update details of an Asset.\n\nRequired scope | `assets:write`\n"
+              },
+              "response": [
+                {
+                  "id": "6b86bd9b-c067-4c43-85fe-a46d0692a212",
+                  "name": "Request was successful",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"localeId\": \"<string>\",\n  \"displayName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"size\": \"<integer>\",\n  \"siteId\": \"<string>\",\n  \"hostedUrl\": \"<uri>\",\n  \"originalFileName\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"createdOn\": \"<dateTime>\",\n  \"variants\": [\n    {\n      \"hostedUrl\": \"<uri>\",\n      \"originalFileName\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"quality\": \"<integer>\",\n      \"error\": \"<string>\"\n    },\n    {\n      \"hostedUrl\": \"<uri>\",\n      \"originalFileName\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"quality\": \"<integer>\",\n      \"error\": \"<string>\"\n    }\n  ],\n  \"altText\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-6b86bd9b-c067-4c43-85fe-a46d0692a212"
+                },
+                {
+                  "id": "30e5616d-456c-4de3-995c-c0677f6bff20",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"localeId\": \"<string>\",\n  \"displayName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-30e5616d-456c-4de3-995c-c0677f6bff20"
+                },
+                {
+                  "id": "9bf3e826-c805-4399-9428-5874eba255eb",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"localeId\": \"<string>\",\n  \"displayName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-9bf3e826-c805-4399-9428-5874eba255eb"
+                },
+                {
+                  "id": "9b16bb38-a295-4d06-ad90-8fc22a9c844b",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"localeId\": \"<string>\",\n  \"displayName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-9b16bb38-a295-4d06-ad90-8fc22a9c844b"
+                },
+                {
+                  "id": "c7978de8-147c-4897-b18f-45aa7d09b8a7",
+                  "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"localeId\": \"<string>\",\n  \"displayName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains the number of available requests remaining in the current minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Remaining",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains your current overall rate limit per minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-c7978de8-147c-4897-b18f-45aa7d09b8a7"
+                },
+                {
+                  "id": "a4334222-8928-4a34-b7ff-532200001f19",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"localeId\": \"<string>\",\n  \"displayName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-a4334222-8928-4a34-b7ff-532200001f19"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:26.000Z",
+              "updatedAt": "2026-06-05T15:21:26.000Z",
+              "uid": "35240-e97cbbee-b80d-4d44-87c2-000828ebd797"
+            },
+            {
+              "name": "Webflow Delete Asset",
+              "id": "5bc2e936-ae17-4705-9165-9bd3e07348a7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.webflow.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://webflow.com/oauth/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assets/:asset_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assets",
+                    ":asset_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "88cd7499-ab15-4478-9683-cbc5102a05cd",
+                      "key": "asset_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for an Asset on a site"
+                    }
+                  ]
+                },
+                "description": "Delete an Asset\n\nRequired Scope: `assets: write`\n"
+              },
+              "response": [
+                {
+                  "id": "722417a1-de76-47f2-afd4-079385924436",
+                  "name": "Request was successful. No Content is returned.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-722417a1-de76-47f2-afd4-079385924436"
+                },
+                {
+                  "id": "9e94fe30-99b8-45e5-9db7-1a06624a5111",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-9e94fe30-99b8-45e5-9db7-1a06624a5111"
+                },
+                {
+                  "id": "78bb2078-7681-4381-a0c5-5fe61642accf",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-78bb2078-7681-4381-a0c5-5fe61642accf"
+                },
+                {
+                  "id": "dfec82cd-003e-4b12-8a12-745c268a8050",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-dfec82cd-003e-4b12-8a12-745c268a8050"
+                },
+                {
+                  "id": "da75b3b5-3b59-4992-a50e-597431031f16",
+                  "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains the number of available requests remaining in the current minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Remaining",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains your current overall rate limit per minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-da75b3b5-3b59-4992-a50e-597431031f16"
+                },
+                {
+                  "id": "9bce7179-6bd0-43cc-b4c4-fb012663f01d",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-9bce7179-6bd0-43cc-b4c4-fb012663f01d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:26.000Z",
+              "updatedAt": "2026-06-05T15:21:26.000Z",
+              "uid": "35240-5bc2e936-ae17-4705-9165-9bd3e07348a7"
+            }
+          ],
+          "id": "c51c7dda-ac78-495e-a2cb-2614d557e80d",
+          "createdAt": "2026-06-05T15:21:26.000Z",
+          "updatedAt": "2026-06-05T15:21:26.000Z",
+          "uid": "35240-c51c7dda-ac78-495e-a2cb-2614d557e80d"
+        }
+      ],
+      "id": "0b6d0e25-2d5c-4dd4-b190-0c6d999d2019",
+      "createdAt": "2026-06-05T15:21:26.000Z",
+      "updatedAt": "2026-06-05T15:21:26.000Z",
+      "uid": "35240-0b6d0e25-2d5c-4dd4-b190-0c6d999d2019"
+    },
+    {
+      "name": "asset_folders",
+      "item": [
+        {
+          "name": "{asset_folder_id}",
+          "item": [
+            {
+              "name": "Webflow Get Asset Folder",
+              "id": "7484596c-68dd-4b3c-b401-dbc2bf5fb362",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.webflow.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://webflow.com/oauth/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/asset_folders/:asset_folder_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "asset_folders",
+                    ":asset_folder_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "fd249aae-17ac-4320-a45f-dceb5bde117c",
+                      "key": "asset_folder_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for an Asset Folder"
+                    }
+                  ]
+                },
+                "description": "Get details about a specific Asset Folder\n\nRequired scope | `assets:read`\n"
+              },
+              "response": [
+                {
+                  "id": "3e53dc86-c6be-4d9c-bde2-d59b26e58fca",
+                  "name": "Request was successful",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/asset_folders/:asset_folder_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "asset_folders",
+                        ":asset_folder_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_folder_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"parentFolder\": null,\n  \"assets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"siteId\": \"<string>\",\n  \"createdOn\": \"<dateTime>\",\n  \"lastUpdated\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-3e53dc86-c6be-4d9c-bde2-d59b26e58fca"
+                },
+                {
+                  "id": "288abaac-2c1b-4561-8c07-386bdfea1fe5",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/asset_folders/:asset_folder_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "asset_folders",
+                        ":asset_folder_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_folder_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-288abaac-2c1b-4561-8c07-386bdfea1fe5"
+                },
+                {
+                  "id": "10ae3be0-f1d6-4885-b1db-2495045cff1c",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/asset_folders/:asset_folder_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "asset_folders",
+                        ":asset_folder_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_folder_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-10ae3be0-f1d6-4885-b1db-2495045cff1c"
+                },
+                {
+                  "id": "8fc2e863-63e2-4985-b1dd-3b0721642cbe",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/asset_folders/:asset_folder_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "asset_folders",
+                        ":asset_folder_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_folder_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-8fc2e863-63e2-4985-b1dd-3b0721642cbe"
+                },
+                {
+                  "id": "85389760-0f50-4b09-86c7-025a6239eb57",
+                  "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/asset_folders/:asset_folder_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "asset_folders",
+                        ":asset_folder_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_folder_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains the number of available requests remaining in the current minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Remaining",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains your current overall rate limit per minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-85389760-0f50-4b09-86c7-025a6239eb57"
+                },
+                {
+                  "id": "dcac0149-ddbe-4856-8605-039e2f9b6df4",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/asset_folders/:asset_folder_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "asset_folders",
+                        ":asset_folder_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "asset_folder_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"veniam\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:26.000Z",
+                  "updatedAt": "2026-06-05T15:21:26.000Z",
+                  "uid": "35240-dcac0149-ddbe-4856-8605-039e2f9b6df4"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:26.000Z",
+              "updatedAt": "2026-06-05T15:21:26.000Z",
+              "uid": "35240-7484596c-68dd-4b3c-b401-dbc2bf5fb362"
+            }
+          ],
+          "id": "83373293-958d-4936-bdfd-fa5a9c7d8568",
+          "createdAt": "2026-06-05T15:21:26.000Z",
+          "updatedAt": "2026-06-05T15:21:26.000Z",
+          "uid": "35240-83373293-958d-4936-bdfd-fa5a9c7d8568"
+        }
+      ],
+      "id": "c257d25d-41e8-446d-be0e-952704009011",
+      "createdAt": "2026-06-05T15:21:26.000Z",
+      "updatedAt": "2026-06-05T15:21:26.000Z",
+      "uid": "35240-c257d25d-41e8-446d-be0e-952704009011"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.webflow.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://webflow.com/oauth/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.webflow.com/v2"
+    }
+  ]
+}

@@ -1,0 +1,3012 @@
+{
+  "info": {
+    "_postman_id": "7610c9f4-d131-473b-91bc-b446328cd11b",
+    "name": "Webflow Components API",
+    "description": "Webflow Data API v2 - Components endpoints.\n\nContact Support:\n Name: Webflow Developer Relations\n Email: developers@webflow.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:24.000Z",
+    "updatedAt": "2026-06-05T15:21:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7610c9f4-d131-473b-91bc-b446328cd11b"
+  },
+  "item": [
+    {
+      "name": "sites",
+      "item": [
+        {
+          "name": "{site_id}",
+          "item": [
+            {
+              "name": "components",
+              "item": [
+                {
+                  "name": "{component_id}",
+                  "item": [
+                    {
+                      "name": "dom",
+                      "item": [
+                        {
+                          "name": "Webflow Get Component Content",
+                          "id": "e6f58f64-8e37-4812-a02f-944307dbe19b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://api.webflow.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "authUrl",
+                                  "value": "https://webflow.com/oauth/authorize",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "authorization_code",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "components",
+                                ":component_id",
+                                "dom"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                  "key": "localeId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Scope the operation to work on a specific branch.",
+                                  "key": "branchId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of records to be returned (max limit: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Offset used for pagination if the results have more than limit records",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "784fca74-3e96-40a6-bb29-a447720c9c16",
+                                  "key": "site_id",
+                                  "value": "",
+                                  "description": "(Required) Unique identifier for a Site"
+                                },
+                                {
+                                  "id": "9b2e7e45-6aca-45e7-8744-6b416a0befdb",
+                                  "key": "component_id",
+                                  "value": "",
+                                  "description": "(Required) Unique identifier for a Component"
+                                }
+                              ]
+                            },
+                            "description": "Get static content from a component definition. This includes text nodes, image nodes, select nodes, text input nodes, submit button nodes, and nested component instances.\nTo retrieve dynamic content set by component properties, use the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.\n\n<Note>If you do not provide a Locale ID in your request, the response will return any content that can be localized from the Primary locale.</Note>\n\nRequired scope | `components:read`\n"
+                          },
+                          "response": [
+                            {
+                              "id": "41af0fcb-0070-4b54-8bcc-f29a410896b7",
+                              "name": "Request was successful",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"componentId\": \"<string>\",\n  \"nodes\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"text\",\n      \"text\": {\n        \"html\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      \"attributes\": {\n        \"sit07\": \"<string>\",\n        \"consecteturafd\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"text\",\n      \"text\": {\n        \"html\": \"<string>\",\n        \"text\": \"<string>\"\n      },\n      \"attributes\": {\n        \"cillum_c86\": \"<string>\",\n        \"incididunt_1\": \"<string>\",\n        \"commodo2\": \"<string>\",\n        \"deseruntf\": \"<string>\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"total\": \"<integer>\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-41af0fcb-0070-4b54-8bcc-f29a410896b7"
+                            },
+                            {
+                              "id": "30b8318b-da9b-408b-8d21-03aff7b22cac",
+                              "name": "Request body was incorrectly formatted.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-30b8318b-da9b-408b-8d21-03aff7b22cac"
+                            },
+                            {
+                              "id": "64bb4a0c-0b08-4bc4-aa93-7563bcfcf014",
+                              "name": "Provided access token is invalid or does not have access to requested resource",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-64bb4a0c-0b08-4bc4-aa93-7563bcfcf014"
+                            },
+                            {
+                              "id": "a4ebd870-6158-493e-8daf-5631833885b4",
+                              "name": "Requested resource not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-a4ebd870-6158-493e-8daf-5631833885b4"
+                            },
+                            {
+                              "id": "beda2163-e5d4-49be-8d7e-1e7d6648a339",
+                              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "Contains the number of available requests remaining in the current minute",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "X-RateLimit-Remaining",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "Contains your current overall rate limit per minute",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "X-RateLimit-Limit",
+                                  "value": "<number>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-beda2163-e5d4-49be-8d7e-1e7d6648a339"
+                            },
+                            {
+                              "id": "ae40caac-290b-4b9d-9da3-fe85a4c224a0",
+                              "name": "We had a problem with our server. Try again later.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-ae40caac-290b-4b9d-9da3-fe85a4c224a0"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:21:25.000Z",
+                          "updatedAt": "2026-06-05T15:21:25.000Z",
+                          "uid": "35240-e6f58f64-8e37-4812-a02f-944307dbe19b"
+                        },
+                        {
+                          "name": "Webflow Update Component Content",
+                          "id": "bd53a597-6629-4fb0-9775-8a5658ba54ef",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://api.webflow.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "authUrl",
+                                  "value": "https://webflow.com/oauth/authorize",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "authorization_code",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "components",
+                                ":component_id",
+                                "dom"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                  "key": "localeId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Scope the operation to work on a specific branch.",
+                                  "key": "branchId",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "9731aaac-a863-4fe1-bc83-d137d663c22c",
+                                  "key": "site_id",
+                                  "value": "",
+                                  "description": "(Required) Unique identifier for a Site"
+                                },
+                                {
+                                  "id": "84c0ae6c-72db-48de-ae65-9bf4ab168bd5",
+                                  "key": "component_id",
+                                  "value": "",
+                                  "description": "(Required) Unique identifier for a Component"
+                                }
+                              ]
+                            },
+                            "description": "This endpoint updates content within a component defintion for **secondary locales**. It supports updating up to 1000 nodes in a single request.\n\nBefore making updates:\n1. Use the [get component content](/data/reference/pages-and-components/components/get-content) endpoint to identify available content nodes and their types.\n2. If your component definition has a component instance nested within it, retrieve the nested component instance's properties that you'll override using the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.\n3. DOM elements may include a `data-w-id` attribute. This attribute is used by Webflow to maintain custom attributes and links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.\n\n<Note>\n  This endpoint is specifically for localizing component definitions. Ensure that the specified `localeId` is a valid **secondary locale** for the site otherwise the request will fail.\n</Note>\n\nRequired scope | `components:write`\n"
+                          },
+                          "response": [
+                            {
+                              "id": "c0f9e0d1-784a-4442-90c8-9218cf760977",
+                              "name": "Request was successful",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-c0f9e0d1-784a-4442-90c8-9218cf760977"
+                            },
+                            {
+                              "id": "f6d051f4-f968-4d51-a8cc-119c579fb7a4",
+                              "name": "Request body was incorrectly formatted.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-f6d051f4-f968-4d51-a8cc-119c579fb7a4"
+                            },
+                            {
+                              "id": "f81bfca1-4272-4697-bf20-2c832252b970",
+                              "name": "Provided access token is invalid or does not have access to requested resource",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-f81bfca1-4272-4697-bf20-2c832252b970"
+                            },
+                            {
+                              "id": "48fce2e7-87db-416c-bef2-415f415b77de",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-48fce2e7-87db-416c-bef2-415f415b77de"
+                            },
+                            {
+                              "id": "a2e88764-ed31-4b83-80ed-af5bcf755483",
+                              "name": "Requested resource not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-a2e88764-ed31-4b83-80ed-af5bcf755483"
+                            },
+                            {
+                              "id": "b18c408c-543a-438b-9f2c-2387aa7c4257",
+                              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "Contains the number of available requests remaining in the current minute",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "X-RateLimit-Remaining",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "Contains your current overall rate limit per minute",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "X-RateLimit-Limit",
+                                  "value": "<number>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-b18c408c-543a-438b-9f2c-2387aa7c4257"
+                            },
+                            {
+                              "id": "5f2a3ae1-b222-41ad-a127-1d4d6e9e2be4",
+                              "name": "We had a problem with our server. Try again later.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/dom?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "dom"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-5f2a3ae1-b222-41ad-a127-1d4d6e9e2be4"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:21:25.000Z",
+                          "updatedAt": "2026-06-05T15:21:25.000Z",
+                          "uid": "35240-bd53a597-6629-4fb0-9775-8a5658ba54ef"
+                        }
+                      ],
+                      "id": "122cf73b-0149-4a60-bc2f-e7f0e2421eff",
+                      "createdAt": "2026-06-05T15:21:24.000Z",
+                      "updatedAt": "2026-06-05T15:21:24.000Z",
+                      "uid": "35240-122cf73b-0149-4a60-bc2f-e7f0e2421eff"
+                    },
+                    {
+                      "name": "properties",
+                      "item": [
+                        {
+                          "name": "Webflow Get Component Properties",
+                          "id": "c3c02b22-9d16-4426-8d4a-ae614447a6b9",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://api.webflow.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "authUrl",
+                                  "value": "https://webflow.com/oauth/authorize",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "authorization_code",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "components",
+                                ":component_id",
+                                "properties"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                  "key": "localeId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Scope the operation to work on a specific branch.",
+                                  "key": "branchId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of records to be returned (max limit: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Offset used for pagination if the results have more than limit records",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8ee36d73-db90-42c1-b3e1-1fb8c93fd164",
+                                  "key": "site_id",
+                                  "value": "",
+                                  "description": "(Required) Unique identifier for a Site"
+                                },
+                                {
+                                  "id": "2db0f565-771b-40e9-9205-f3279014744a",
+                                  "key": "component_id",
+                                  "value": "",
+                                  "description": "(Required) Unique identifier for a Component"
+                                }
+                              ]
+                            },
+                            "description": "Get the default property values of a component definition.\n\n<Note>If you do not include a `localeId` in your request, the response will return any properties that can be localized from the Primary locale.</Note>\n\nRequired scope | `components:read`\n"
+                          },
+                          "response": [
+                            {
+                              "id": "1b54142e-73a1-49b9-a291-7baf22569aa8",
+                              "name": "Request was successful",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"componentId\": \"<string>\",\n  \"properties\": [\n    {\n      \"propertyId\": \"<string>\",\n      \"type\": \"Alt Text\",\n      \"label\": \"<string>\",\n      \"text\": {\n        \"html\": \"<string>\",\n        \"text\": \"<string>\"\n      }\n    },\n    {\n      \"propertyId\": \"<string>\",\n      \"type\": \"Plain Text\",\n      \"label\": \"<string>\",\n      \"text\": {\n        \"html\": \"<string>\",\n        \"text\": \"<string>\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"total\": \"<integer>\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-1b54142e-73a1-49b9-a291-7baf22569aa8"
+                            },
+                            {
+                              "id": "bb8b99a4-f816-43dc-9275-afc1b2eabe61",
+                              "name": "Request body was incorrectly formatted.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-bb8b99a4-f816-43dc-9275-afc1b2eabe61"
+                            },
+                            {
+                              "id": "2ce9ecf5-04c3-4082-827b-5918b4607d39",
+                              "name": "Provided access token is invalid or does not have access to requested resource",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-2ce9ecf5-04c3-4082-827b-5918b4607d39"
+                            },
+                            {
+                              "id": "f5195e7f-56fa-4d6a-9426-2b9ac2dc8bfa",
+                              "name": "Requested resource not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-f5195e7f-56fa-4d6a-9426-2b9ac2dc8bfa"
+                            },
+                            {
+                              "id": "9a149b86-4016-4768-a6a1-0389fc7a4586",
+                              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "Contains the number of available requests remaining in the current minute",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "X-RateLimit-Remaining",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "Contains your current overall rate limit per minute",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "X-RateLimit-Limit",
+                                  "value": "<number>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-9a149b86-4016-4768-a6a1-0389fc7a4586"
+                            },
+                            {
+                              "id": "6085f7de-ed98-4105-bdae-8055f7b3d945",
+                              "name": "We had a problem with our server. Try again later.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-6085f7de-ed98-4105-bdae-8055f7b3d945"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:21:25.000Z",
+                          "updatedAt": "2026-06-05T15:21:25.000Z",
+                          "uid": "35240-c3c02b22-9d16-4426-8d4a-ae614447a6b9"
+                        },
+                        {
+                          "name": "Webflow Update Component Properties",
+                          "id": "0c6610f1-98c7-4e09-9355-c83bda0c67a4",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://api.webflow.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "authUrl",
+                                  "value": "https://webflow.com/oauth/authorize",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "authorization_code",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "components",
+                                ":component_id",
+                                "properties"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                  "key": "localeId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Scope the operation to work on a specific branch.",
+                                  "key": "branchId",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "34b45c9f-b5d2-4ed5-87c3-e79c65a3c9f1",
+                                  "key": "site_id",
+                                  "value": "",
+                                  "description": "(Required) Unique identifier for a Site"
+                                },
+                                {
+                                  "id": "b440a4eb-1ab3-4e5d-9e85-38b4d55ce9b1",
+                                  "key": "component_id",
+                                  "value": "",
+                                  "description": "(Required) Unique identifier for a Component"
+                                }
+                              ]
+                            },
+                            "description": "Update the default property values of a component definition in a specificed locale.\n\nBefore making updates:\n1. Use the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint to identify properties that can be updated in a secondary locale.\n2. Rich Text properties may include a `data-w-id` attribute. This attribute is used by Webflow to maintain links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.\n\n<Note>The request requires a secondary locale ID. If a `localeId` is missing, the request will not be processed and will result in an error.</Note>\n\nRequired scope | `components:write`\n"
+                          },
+                          "response": [
+                            {
+                              "id": "3ef8b829-8533-4417-9481-e7ddfbc051cd",
+                              "name": "Request was successful",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-3ef8b829-8533-4417-9481-e7ddfbc051cd"
+                            },
+                            {
+                              "id": "b5aec946-ea90-4fc2-830d-38ae28d44d67",
+                              "name": "Request body was incorrectly formatted.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-b5aec946-ea90-4fc2-830d-38ae28d44d67"
+                            },
+                            {
+                              "id": "3433775b-be3d-4c1f-bf51-3c194cb8f57f",
+                              "name": "Provided access token is invalid or does not have access to requested resource",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-3433775b-be3d-4c1f-bf51-3c194cb8f57f"
+                            },
+                            {
+                              "id": "1c4d1ef1-8cf7-4100-ad87-7d6fa7a54a44",
+                              "name": "Requested resource not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-1c4d1ef1-8cf7-4100-ad87-7d6fa7a54a44"
+                            },
+                            {
+                              "id": "89b73d85-4668-40b1-a055-3395b62bdd8c",
+                              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "Contains the number of available requests remaining in the current minute",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "X-RateLimit-Remaining",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "Contains your current overall rate limit per minute",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "X-RateLimit-Limit",
+                                  "value": "<number>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-89b73d85-4668-40b1-a055-3395b62bdd8c"
+                            },
+                            {
+                              "id": "d412a2b8-062f-4f9e-ae2f-81be76fa1e2d",
+                              "name": "We had a problem with our server. Try again later.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/components/:component_id/properties?localeId=<string>&branchId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "components",
+                                    ":component_id",
+                                    "properties"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Scope the operation to work on a specific branch.",
+                                      "key": "branchId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "component_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:25.000Z",
+                              "updatedAt": "2026-06-05T15:21:25.000Z",
+                              "uid": "35240-d412a2b8-062f-4f9e-ae2f-81be76fa1e2d"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:21:25.000Z",
+                          "updatedAt": "2026-06-05T15:21:25.000Z",
+                          "uid": "35240-0c6610f1-98c7-4e09-9355-c83bda0c67a4"
+                        }
+                      ],
+                      "id": "eab08a48-e940-44b3-b0e6-39ae2ad9f32b",
+                      "createdAt": "2026-06-05T15:21:24.000Z",
+                      "updatedAt": "2026-06-05T15:21:24.000Z",
+                      "uid": "35240-eab08a48-e940-44b3-b0e6-39ae2ad9f32b"
+                    }
+                  ],
+                  "id": "9d808e61-7b68-413f-9d16-0dbca4a97eed",
+                  "createdAt": "2026-06-05T15:21:24.000Z",
+                  "updatedAt": "2026-06-05T15:21:24.000Z",
+                  "uid": "35240-9d808e61-7b68-413f-9d16-0dbca4a97eed"
+                },
+                {
+                  "name": "Webflow List Components",
+                  "id": "73139ba0-eddf-433b-bb36-f29844b89d09",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sites/:site_id/components?branchId=<string>&limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sites",
+                        ":site_id",
+                        "components"
+                      ],
+                      "query": [
+                        {
+                          "description": "Scope the operation to work on a specific branch.",
+                          "key": "branchId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of records to be returned (max limit: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset used for pagination if the results have more than limit records",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "432ef63b-0b62-4fd1-aab3-21778018c430",
+                          "key": "site_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Site"
+                        }
+                      ]
+                    },
+                    "description": "List of all components for a site.\n\nRequired scope | `components:read`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "4cadeb68-7c62-4359-a4e1-f62746e77d36",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/components?branchId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "components"
+                          ],
+                          "query": [
+                            {
+                              "description": "Scope the operation to work on a specific branch.",
+                              "key": "branchId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"components\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"group\": \"<string>\",\n      \"description\": \"<string>\",\n      \"readonly\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"group\": \"<string>\",\n      \"description\": \"<string>\",\n      \"readonly\": \"<boolean>\"\n    }\n  ],\n  \"pagination\": {\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"total\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:25.000Z",
+                      "updatedAt": "2026-06-05T15:21:25.000Z",
+                      "uid": "35240-4cadeb68-7c62-4359-a4e1-f62746e77d36"
+                    },
+                    {
+                      "id": "05df5d36-f15e-4c04-a54f-eeb572627ab5",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/components?branchId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "components"
+                          ],
+                          "query": [
+                            {
+                              "description": "Scope the operation to work on a specific branch.",
+                              "key": "branchId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:25.000Z",
+                      "updatedAt": "2026-06-05T15:21:25.000Z",
+                      "uid": "35240-05df5d36-f15e-4c04-a54f-eeb572627ab5"
+                    },
+                    {
+                      "id": "22ea8f96-f244-429f-8a29-96044923c2d9",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/components?branchId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "components"
+                          ],
+                          "query": [
+                            {
+                              "description": "Scope the operation to work on a specific branch.",
+                              "key": "branchId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:25.000Z",
+                      "updatedAt": "2026-06-05T15:21:25.000Z",
+                      "uid": "35240-22ea8f96-f244-429f-8a29-96044923c2d9"
+                    },
+                    {
+                      "id": "1383ff20-d46b-4d73-9e7c-34712b20fa86",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/components?branchId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "components"
+                          ],
+                          "query": [
+                            {
+                              "description": "Scope the operation to work on a specific branch.",
+                              "key": "branchId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:25.000Z",
+                      "updatedAt": "2026-06-05T15:21:25.000Z",
+                      "uid": "35240-1383ff20-d46b-4d73-9e7c-34712b20fa86"
+                    },
+                    {
+                      "id": "5268b053-38cb-44cc-8f5a-0320e8b45edb",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/components?branchId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "components"
+                          ],
+                          "query": [
+                            {
+                              "description": "Scope the operation to work on a specific branch.",
+                              "key": "branchId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:25.000Z",
+                      "updatedAt": "2026-06-05T15:21:25.000Z",
+                      "uid": "35240-5268b053-38cb-44cc-8f5a-0320e8b45edb"
+                    },
+                    {
+                      "id": "66d11c6d-70a6-4f75-8eab-5186da911da1",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/components?branchId=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "components"
+                          ],
+                          "query": [
+                            {
+                              "description": "Scope the operation to work on a specific branch.",
+                              "key": "branchId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"item_not_found\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"magna amet\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:25.000Z",
+                      "updatedAt": "2026-06-05T15:21:25.000Z",
+                      "uid": "35240-66d11c6d-70a6-4f75-8eab-5186da911da1"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:25.000Z",
+                  "updatedAt": "2026-06-05T15:21:25.000Z",
+                  "uid": "35240-73139ba0-eddf-433b-bb36-f29844b89d09"
+                }
+              ],
+              "id": "b373bc2f-0698-4944-b4a4-9b3e74c19e9c",
+              "createdAt": "2026-06-05T15:21:24.000Z",
+              "updatedAt": "2026-06-05T15:21:24.000Z",
+              "uid": "35240-b373bc2f-0698-4944-b4a4-9b3e74c19e9c"
+            }
+          ],
+          "id": "8aec8971-4699-4ba3-a441-03dd9feb2e54",
+          "createdAt": "2026-06-05T15:21:24.000Z",
+          "updatedAt": "2026-06-05T15:21:24.000Z",
+          "uid": "35240-8aec8971-4699-4ba3-a441-03dd9feb2e54"
+        }
+      ],
+      "id": "31c4582b-7f11-40de-a07b-f4bf0b2cd530",
+      "createdAt": "2026-06-05T15:21:24.000Z",
+      "updatedAt": "2026-06-05T15:21:24.000Z",
+      "uid": "35240-31c4582b-7f11-40de-a07b-f4bf0b2cd530"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.webflow.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://webflow.com/oauth/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.webflow.com/v2"
+    }
+  ]
+}

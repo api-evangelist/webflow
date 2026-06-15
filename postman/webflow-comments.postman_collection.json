@@ -1,0 +1,1860 @@
+{
+  "info": {
+    "_postman_id": "0ecadb4a-0ea9-4edb-a3ce-8e5b05e605c9",
+    "name": "Webflow Comments API",
+    "description": "Webflow Data API v2 - Comments endpoints.\n\nContact Support:\n Name: Webflow Developer Relations\n Email: developers@webflow.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:40.000Z",
+    "updatedAt": "2026-06-05T15:21:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0ecadb4a-0ea9-4edb-a3ce-8e5b05e605c9"
+  },
+  "item": [
+    {
+      "name": "sites",
+      "item": [
+        {
+          "name": "{site_id}",
+          "item": [
+            {
+              "name": "comments",
+              "item": [
+                {
+                  "name": "{comment_thread_id}",
+                  "item": [
+                    {
+                      "name": "replies",
+                      "item": [
+                        {
+                          "name": "Webflow List Comment Replies",
+                          "id": "cf80f2d1-54a1-44bf-a873-294fb483ba04",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://api.webflow.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "authUrl",
+                                  "value": "https://webflow.com/oauth/authorize",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "authorization_code",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id/replies?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "comments",
+                                ":comment_thread_id",
+                                "replies"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                  "key": "localeId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Offset used for pagination if the results have more than limit records",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Maximum number of records to be returned (max limit: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                  "key": "sortBy",
+                                  "value": "lastUpdated"
+                                },
+                                {
+                                  "description": "Sorts the results by asc or desc",
+                                  "key": "sortOrder",
+                                  "value": "asc"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "be868798-56d2-4148-89af-19e962c70d8c",
+                                  "key": "site_id",
+                                  "value": "",
+                                  "description": "(Required) Unique identifier for a Site"
+                                },
+                                {
+                                  "id": "e7cb0658-d535-4ef8-b010-25e550cb9845",
+                                  "key": "comment_thread_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier for a Comment Thread"
+                                }
+                              ]
+                            },
+                            "description": "List all replies to a specific comment thread.\n\n<Note title=\"Timing of comment threads\">\n  There may be a delay of up to 5 minutes before new comments appear in the system.\n</Note>\n\nRequired scope | `comments:read`\n"
+                          },
+                          "response": [
+                            {
+                              "id": "f94e62dc-bcf5-429b-bdc7-b57b8505eb79",
+                              "name": "Request was successful",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id/replies?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "comments",
+                                    ":comment_thread_id",
+                                    "replies"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                      "key": "sortBy",
+                                      "value": "lastUpdated"
+                                    },
+                                    {
+                                      "description": "Sorts the results by asc or desc",
+                                      "key": "sortOrder",
+                                      "value": "asc"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "comment_thread_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"comments\": [\n    {\n      \"id\": \"<string>\",\n      \"commentId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"pageId\": \"<string>\",\n      \"breakpoint\": \"<string>\",\n      \"content\": \"<string>\",\n      \"isResolved\": false,\n      \"author\": {\n        \"id\": \"<string>\",\n        \"email\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"lastUpdated\": \"<string>\",\n      \"createdOn\": \"<string>\",\n      \"localeId\": \"<string>\",\n      \"mentionedUsers\": [\n        {\n          \"id\": \"<string>\",\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"commentId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"pageId\": \"<string>\",\n      \"breakpoint\": \"<string>\",\n      \"content\": \"<string>\",\n      \"isResolved\": false,\n      \"author\": {\n        \"id\": \"<string>\",\n        \"email\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"lastUpdated\": \"<string>\",\n      \"createdOn\": \"<string>\",\n      \"localeId\": \"<string>\",\n      \"mentionedUsers\": [\n        {\n          \"id\": \"<string>\",\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"limit\": 100,\n    \"offset\": 0,\n    \"total\": \"<integer>\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:21:41.000Z",
+                              "updatedAt": "2026-06-05T15:21:41.000Z",
+                              "uid": "35240-f94e62dc-bcf5-429b-bdc7-b57b8505eb79"
+                            },
+                            {
+                              "id": "5e11bf9a-b61f-4792-bd07-58fabf652fa2",
+                              "name": "Request body was incorrectly formatted.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id/replies?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "comments",
+                                    ":comment_thread_id",
+                                    "replies"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                      "key": "sortBy",
+                                      "value": "lastUpdated"
+                                    },
+                                    {
+                                      "description": "Sorts the results by asc or desc",
+                                      "key": "sortOrder",
+                                      "value": "asc"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "comment_thread_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:41.000Z",
+                              "updatedAt": "2026-06-05T15:21:41.000Z",
+                              "uid": "35240-5e11bf9a-b61f-4792-bd07-58fabf652fa2"
+                            },
+                            {
+                              "id": "6aac0ba4-ae70-4fe5-99e3-a114073ad99c",
+                              "name": "Provided access token is invalid or does not have access to requested resource",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id/replies?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "comments",
+                                    ":comment_thread_id",
+                                    "replies"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                      "key": "sortBy",
+                                      "value": "lastUpdated"
+                                    },
+                                    {
+                                      "description": "Sorts the results by asc or desc",
+                                      "key": "sortOrder",
+                                      "value": "asc"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "comment_thread_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:41.000Z",
+                              "updatedAt": "2026-06-05T15:21:41.000Z",
+                              "uid": "35240-6aac0ba4-ae70-4fe5-99e3-a114073ad99c"
+                            },
+                            {
+                              "id": "07da4f41-5a59-4e0d-b54d-e245cda89ada",
+                              "name": "Requested resource not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id/replies?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "comments",
+                                    ":comment_thread_id",
+                                    "replies"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                      "key": "sortBy",
+                                      "value": "lastUpdated"
+                                    },
+                                    {
+                                      "description": "Sorts the results by asc or desc",
+                                      "key": "sortOrder",
+                                      "value": "asc"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "comment_thread_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:41.000Z",
+                              "updatedAt": "2026-06-05T15:21:41.000Z",
+                              "uid": "35240-07da4f41-5a59-4e0d-b54d-e245cda89ada"
+                            },
+                            {
+                              "id": "81f6c919-51af-4e7c-9a00-d7f00bfd6666",
+                              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id/replies?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "comments",
+                                    ":comment_thread_id",
+                                    "replies"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                      "key": "sortBy",
+                                      "value": "lastUpdated"
+                                    },
+                                    {
+                                      "description": "Sorts the results by asc or desc",
+                                      "key": "sortOrder",
+                                      "value": "asc"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "comment_thread_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "Contains the number of available requests remaining in the current minute",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "X-RateLimit-Remaining",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "Contains your current overall rate limit per minute",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "X-RateLimit-Limit",
+                                  "value": "<number>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:41.000Z",
+                              "updatedAt": "2026-06-05T15:21:41.000Z",
+                              "uid": "35240-81f6c919-51af-4e7c-9a00-d7f00bfd6666"
+                            },
+                            {
+                              "id": "52d754d5-902a-4b7c-8931-b573fd4bedfc",
+                              "name": "We had a problem with our server. Try again later.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id/replies?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sites",
+                                    ":site_id",
+                                    "comments",
+                                    ":comment_thread_id",
+                                    "replies"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                      "key": "localeId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Offset used for pagination if the results have more than limit records",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Maximum number of records to be returned (max limit: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                      "key": "sortBy",
+                                      "value": "lastUpdated"
+                                    },
+                                    {
+                                      "description": "Sorts the results by asc or desc",
+                                      "key": "sortOrder",
+                                      "value": "asc"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "site_id"
+                                    },
+                                    {
+                                      "key": "comment_thread_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:41.000Z",
+                              "updatedAt": "2026-06-05T15:21:41.000Z",
+                              "uid": "35240-52d754d5-902a-4b7c-8931-b573fd4bedfc"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:21:41.000Z",
+                          "updatedAt": "2026-06-05T15:21:41.000Z",
+                          "uid": "35240-cf80f2d1-54a1-44bf-a873-294fb483ba04"
+                        }
+                      ],
+                      "id": "cb80044e-502e-4526-960c-7af38fbd74c2",
+                      "createdAt": "2026-06-05T15:21:41.000Z",
+                      "updatedAt": "2026-06-05T15:21:41.000Z",
+                      "uid": "35240-cb80044e-502e-4526-960c-7af38fbd74c2"
+                    },
+                    {
+                      "name": "Webflow Get Comment Thread",
+                      "id": "87ee598c-791b-4884-9f26-b9004eb2fe19",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.webflow.com/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://webflow.com/oauth/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "comments",
+                            ":comment_thread_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                              "key": "sortBy",
+                              "value": "lastUpdated"
+                            },
+                            {
+                              "description": "Sorts the results by asc or desc",
+                              "key": "sortOrder",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "8228242d-6852-4efa-b958-4a7a2e982285",
+                              "key": "site_id",
+                              "value": "",
+                              "description": "(Required) Unique identifier for a Site"
+                            },
+                            {
+                              "id": "e4ff8e4e-779e-4c5c-b1ee-dab753ceff1a",
+                              "key": "comment_thread_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for a Comment Thread"
+                            }
+                          ]
+                        },
+                        "description": "Get details of a specific comment thread.\n\n  <Note title=\"Timing of comment threads\">\n    There may be a delay of up to 5 minutes before new comments appear in the system.\n  </Note>\n\nRequired scope | `comments:read`\n"
+                      },
+                      "response": [
+                        {
+                          "id": "23ec5ea4-0b63-4c56-b3c7-ef253fe084b7",
+                          "name": "Request was successful",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "comments",
+                                ":comment_thread_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                  "key": "localeId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Offset used for pagination if the results have more than limit records",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Maximum number of records to be returned (max limit: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                  "key": "sortBy",
+                                  "value": "lastUpdated"
+                                },
+                                {
+                                  "description": "Sorts the results by asc or desc",
+                                  "key": "sortOrder",
+                                  "value": "asc"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                },
+                                {
+                                  "key": "comment_thread_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"localeId\": \"<string>\",\n  \"itemId\": \"<string>\",\n  \"breakpoint\": \"<string>\",\n  \"url\": \"<string>\",\n  \"content\": \"<string>\",\n  \"isResolved\": false,\n  \"author\": {\n    \"userId\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"mentionedUsers\": [\n    {\n      \"userId\": \"<string>\",\n      \"email\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"userId\": \"<string>\",\n      \"email\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"createdOn\": \"<string>\",\n  \"lastUpdated\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:21:41.000Z",
+                          "updatedAt": "2026-06-05T15:21:41.000Z",
+                          "uid": "35240-23ec5ea4-0b63-4c56-b3c7-ef253fe084b7"
+                        },
+                        {
+                          "id": "90b76134-94e5-4cee-8f63-d59d98076d44",
+                          "name": "Request body was incorrectly formatted.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "comments",
+                                ":comment_thread_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                  "key": "localeId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Offset used for pagination if the results have more than limit records",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Maximum number of records to be returned (max limit: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                  "key": "sortBy",
+                                  "value": "lastUpdated"
+                                },
+                                {
+                                  "description": "Sorts the results by asc or desc",
+                                  "key": "sortOrder",
+                                  "value": "asc"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                },
+                                {
+                                  "key": "comment_thread_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:41.000Z",
+                          "updatedAt": "2026-06-05T15:21:41.000Z",
+                          "uid": "35240-90b76134-94e5-4cee-8f63-d59d98076d44"
+                        },
+                        {
+                          "id": "826dd4d5-c083-4526-9d1b-4423066cb079",
+                          "name": "Provided access token is invalid or does not have access to requested resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "comments",
+                                ":comment_thread_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                  "key": "localeId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Offset used for pagination if the results have more than limit records",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Maximum number of records to be returned (max limit: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                  "key": "sortBy",
+                                  "value": "lastUpdated"
+                                },
+                                {
+                                  "description": "Sorts the results by asc or desc",
+                                  "key": "sortOrder",
+                                  "value": "asc"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                },
+                                {
+                                  "key": "comment_thread_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:41.000Z",
+                          "updatedAt": "2026-06-05T15:21:41.000Z",
+                          "uid": "35240-826dd4d5-c083-4526-9d1b-4423066cb079"
+                        },
+                        {
+                          "id": "26b8325e-242c-4d98-a142-95a6224edfa8",
+                          "name": "Requested resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "comments",
+                                ":comment_thread_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                  "key": "localeId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Offset used for pagination if the results have more than limit records",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Maximum number of records to be returned (max limit: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                  "key": "sortBy",
+                                  "value": "lastUpdated"
+                                },
+                                {
+                                  "description": "Sorts the results by asc or desc",
+                                  "key": "sortOrder",
+                                  "value": "asc"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                },
+                                {
+                                  "key": "comment_thread_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:41.000Z",
+                          "updatedAt": "2026-06-05T15:21:41.000Z",
+                          "uid": "35240-26b8325e-242c-4d98-a142-95a6224edfa8"
+                        },
+                        {
+                          "id": "a6cfc093-f303-469a-b5c8-95df921f3aa7",
+                          "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "comments",
+                                ":comment_thread_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                  "key": "localeId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Offset used for pagination if the results have more than limit records",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Maximum number of records to be returned (max limit: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                  "key": "sortBy",
+                                  "value": "lastUpdated"
+                                },
+                                {
+                                  "description": "Sorts the results by asc or desc",
+                                  "key": "sortOrder",
+                                  "value": "asc"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                },
+                                {
+                                  "key": "comment_thread_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Contains the number of available requests remaining in the current minute",
+                                "type": "text/plain"
+                              },
+                              "key": "X-RateLimit-Remaining",
+                              "value": "<number>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Contains your current overall rate limit per minute",
+                                "type": "text/plain"
+                              },
+                              "key": "X-RateLimit-Limit",
+                              "value": "<number>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:41.000Z",
+                          "updatedAt": "2026-06-05T15:21:41.000Z",
+                          "uid": "35240-a6cfc093-f303-469a-b5c8-95df921f3aa7"
+                        },
+                        {
+                          "id": "d9dc4c90-704e-45ce-92ec-e55cda6dd5f9",
+                          "name": "We had a problem with our server. Try again later.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sites/:site_id/comments/:comment_thread_id?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sites",
+                                ":site_id",
+                                "comments",
+                                ":comment_thread_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                                  "key": "localeId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Offset used for pagination if the results have more than limit records",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Maximum number of records to be returned (max limit: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                                  "key": "sortBy",
+                                  "value": "lastUpdated"
+                                },
+                                {
+                                  "description": "Sorts the results by asc or desc",
+                                  "key": "sortOrder",
+                                  "value": "asc"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "site_id"
+                                },
+                                {
+                                  "key": "comment_thread_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:41.000Z",
+                          "updatedAt": "2026-06-05T15:21:41.000Z",
+                          "uid": "35240-d9dc4c90-704e-45ce-92ec-e55cda6dd5f9"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:41.000Z",
+                      "updatedAt": "2026-06-05T15:21:41.000Z",
+                      "uid": "35240-87ee598c-791b-4884-9f26-b9004eb2fe19"
+                    }
+                  ],
+                  "id": "c0025498-6c1d-4872-9896-ecd9e9999834",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-c0025498-6c1d-4872-9896-ecd9e9999834"
+                },
+                {
+                  "name": "Webflow List Comment Threads",
+                  "id": "0e500662-2473-46f8-b6aa-b8b58695a63f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sites/:site_id/comments?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sites",
+                        ":site_id",
+                        "comments"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                          "key": "localeId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Offset used for pagination if the results have more than limit records",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of records to be returned (max limit: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                          "key": "sortBy",
+                          "value": "lastUpdated"
+                        },
+                        {
+                          "description": "Sorts the results by asc or desc",
+                          "key": "sortOrder",
+                          "value": "asc"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "8b053038-b0bc-4ed8-85c6-5ce653d06a8a",
+                          "key": "site_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Site"
+                        }
+                      ]
+                    },
+                    "description": "List all comment threads for a site.\n\n<Note title=\"Timing of comment threads\">\n  There may be a delay of up to 5 minutes before new comments appear in the system.\n</Note>\n\nRequired scope | `comments:read`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "d5dd92cb-7dea-440e-9ee4-8ee4acb0b6b3",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/comments?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "comments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                              "key": "sortBy",
+                              "value": "lastUpdated"
+                            },
+                            {
+                              "description": "Sorts the results by asc or desc",
+                              "key": "sortOrder",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"comments\": [\n    {\n      \"id\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"pageId\": \"<string>\",\n      \"localeId\": \"<string>\",\n      \"itemId\": \"<string>\",\n      \"breakpoint\": \"<string>\",\n      \"url\": \"<string>\",\n      \"content\": \"<string>\",\n      \"isResolved\": false,\n      \"author\": {\n        \"userId\": \"<string>\",\n        \"email\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"mentionedUsers\": [\n        {\n          \"userId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"userId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"createdOn\": \"<string>\",\n      \"lastUpdated\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"pageId\": \"<string>\",\n      \"localeId\": \"<string>\",\n      \"itemId\": \"<string>\",\n      \"breakpoint\": \"<string>\",\n      \"url\": \"<string>\",\n      \"content\": \"<string>\",\n      \"isResolved\": false,\n      \"author\": {\n        \"userId\": \"<string>\",\n        \"email\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"mentionedUsers\": [\n        {\n          \"userId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"userId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"createdOn\": \"<string>\",\n      \"lastUpdated\": \"<string>\"\n    }\n  ],\n  \"pagination\": {\n    \"limit\": 100,\n    \"offset\": 0,\n    \"total\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:41.000Z",
+                      "updatedAt": "2026-06-05T15:21:41.000Z",
+                      "uid": "35240-d5dd92cb-7dea-440e-9ee4-8ee4acb0b6b3"
+                    },
+                    {
+                      "id": "a18e94fe-bd3a-468d-9250-e96e51202a0f",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/comments?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "comments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                              "key": "sortBy",
+                              "value": "lastUpdated"
+                            },
+                            {
+                              "description": "Sorts the results by asc or desc",
+                              "key": "sortOrder",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:41.000Z",
+                      "updatedAt": "2026-06-05T15:21:41.000Z",
+                      "uid": "35240-a18e94fe-bd3a-468d-9250-e96e51202a0f"
+                    },
+                    {
+                      "id": "2b68052e-51a9-43f1-8d12-41b902d17fdf",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/comments?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "comments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                              "key": "sortBy",
+                              "value": "lastUpdated"
+                            },
+                            {
+                              "description": "Sorts the results by asc or desc",
+                              "key": "sortOrder",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:41.000Z",
+                      "updatedAt": "2026-06-05T15:21:41.000Z",
+                      "uid": "35240-2b68052e-51a9-43f1-8d12-41b902d17fdf"
+                    },
+                    {
+                      "id": "5688eac2-1ec4-478a-842f-e6f5d20e8f14",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/comments?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "comments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                              "key": "sortBy",
+                              "value": "lastUpdated"
+                            },
+                            {
+                              "description": "Sorts the results by asc or desc",
+                              "key": "sortOrder",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:41.000Z",
+                      "updatedAt": "2026-06-05T15:21:41.000Z",
+                      "uid": "35240-5688eac2-1ec4-478a-842f-e6f5d20e8f14"
+                    },
+                    {
+                      "id": "ebdebad0-27d9-42a6-a6e4-47b72e0bb40d",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/comments?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "comments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                              "key": "sortBy",
+                              "value": "lastUpdated"
+                            },
+                            {
+                              "description": "Sorts the results by asc or desc",
+                              "key": "sortOrder",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:41.000Z",
+                      "updatedAt": "2026-06-05T15:21:41.000Z",
+                      "uid": "35240-ebdebad0-27d9-42a6-a6e4-47b72e0bb40d"
+                    },
+                    {
+                      "id": "e6fe8e25-e942-4d2b-a342-1de79c06115c",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/comments?localeId=<string>&offset=<integer>&limit=<integer>&sortBy=lastUpdated&sortOrder=asc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "comments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n",
+                              "key": "localeId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Offset used for pagination if the results have more than limit records",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of records to be returned (max limit: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort results by the provided value. Only allowed when sortOrder is provided.",
+                              "key": "sortBy",
+                              "value": "lastUpdated"
+                            },
+                            {
+                              "description": "Sorts the results by asc or desc",
+                              "key": "sortOrder",
+                              "value": "asc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"duplicate_user_email\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"consequat\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:41.000Z",
+                      "updatedAt": "2026-06-05T15:21:41.000Z",
+                      "uid": "35240-e6fe8e25-e942-4d2b-a342-1de79c06115c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-0e500662-2473-46f8-b6aa-b8b58695a63f"
+                }
+              ],
+              "id": "97b0780a-4073-4db0-8f99-319f57351c7c",
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-97b0780a-4073-4db0-8f99-319f57351c7c"
+            }
+          ],
+          "id": "f0757cfb-5ea2-41d8-9f2c-569636931f96",
+          "createdAt": "2026-06-05T15:21:41.000Z",
+          "updatedAt": "2026-06-05T15:21:41.000Z",
+          "uid": "35240-f0757cfb-5ea2-41d8-9f2c-569636931f96"
+        }
+      ],
+      "id": "75988f5c-815f-499e-bed7-1fabc9603165",
+      "createdAt": "2026-06-05T15:21:41.000Z",
+      "updatedAt": "2026-06-05T15:21:41.000Z",
+      "uid": "35240-75988f5c-815f-499e-bed7-1fabc9603165"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.webflow.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://webflow.com/oauth/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.webflow.com/v2"
+    }
+  ]
+}
