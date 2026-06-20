@@ -5,7 +5,7 @@ description: Webflow provides a visual web development platform with a comprehen
   users, and forms. The Data API enables developers to build integrations, automate
   workflows, and extend Webflow's core functionality.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - CMS
 - Ecommerce
@@ -66,7 +66,7 @@ apis:
   name: Webflow Meta API
   description: The Webflow Meta API provides endpoints for retrieving information
     about the authorized user and introspecting API tokens, including scopes and permissions.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -81,7 +81,7 @@ apis:
   description: The Webflow Sites API provides endpoints for managing Webflow sites
     within a workspace, including creating, updating, publishing, and deleting sites,
     as well as managing custom domains, redirects, robots.txt, and site activity logs.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -95,7 +95,7 @@ apis:
   name: Webflow Pages API
   description: The Webflow Pages API provides endpoints for listing, retrieving, and
     updating page metadata and DOM content for pages within a Webflow site.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -110,7 +110,7 @@ apis:
   description: The Webflow Collections API provides endpoints for managing CMS collections,
     including creating, listing, and deleting collections, as well as managing collection
     fields and their configurations.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -125,7 +125,7 @@ apis:
   description: The Webflow CMS Items API provides endpoints for creating, reading,
     updating, deleting, and publishing collection items, including support for bulk
     operations and live/staged item management.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -139,7 +139,7 @@ apis:
   name: Webflow Components API
   description: The Webflow Components API provides endpoints for listing components
     within a site, and retrieving or updating component content and properties.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -153,7 +153,7 @@ apis:
   name: Webflow Assets API
   description: The Webflow Assets API provides endpoints for uploading, listing, updating,
     and deleting assets and asset folders within a Webflow site.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -168,7 +168,7 @@ apis:
   description: The Webflow Forms API provides endpoints for listing forms, retrieving
     form schemas, and managing form submissions including listing, modifying, and
     deleting submissions.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -182,7 +182,7 @@ apis:
   description: The Webflow Products and SKUs API provides endpoints for managing ecommerce
     products and their SKU variants, including creating, listing, updating products
     and creating or updating SKUs.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -197,7 +197,7 @@ apis:
   description: The Webflow Orders API provides endpoints for listing, retrieving,
     and updating ecommerce orders, as well as fulfilling, unfulfilling, and refunding
     orders.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -211,7 +211,7 @@ apis:
   name: Webflow Inventory API
   description: The Webflow Inventory API provides endpoints for listing and updating
     inventory quantities for ecommerce product SKUs.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -225,7 +225,7 @@ apis:
   name: Webflow Ecommerce Settings API
   description: The Webflow Ecommerce Settings API provides an endpoint for retrieving
     the ecommerce configuration settings for a Webflow site.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -240,7 +240,7 @@ apis:
   description: The Webflow Webhooks API provides endpoints for registering, listing,
     retrieving, and removing webhooks that deliver real-time event notifications for
     a Webflow site.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -255,7 +255,7 @@ apis:
   description: The Webflow Custom Code API provides endpoints for adding, updating,
     and deleting custom JavaScript code on sites and pages, as well as registering
     and managing hosted or inline scripts.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
@@ -269,7 +269,7 @@ apis:
   name: Webflow Comments API
   description: The Webflow Comments API provides endpoints for listing comment threads
     and retrieving comment replies within a Webflow site.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
