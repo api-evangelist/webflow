@@ -1,0 +1,58 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/webflow-assets-openapi.yml, openapi/webflow-collections-openapi.yml, openapi/webflow-comments-openapi.yml,
+  openapi/webflow-components-openapi.yml, openapi/webflow-custom-code-openapi.yml, openapi/webflow-data-api-openapi.yml,
+  openapi/webflow-ecommerce-settings-openapi.yml, openapi/webflow-forms-openapi.yml, openapi/webflow-inventory-openapi.yml,
+  openapi/webflow-items-openapi.yml, openapi/webflow-meta-openapi.yml, openapi/webflow-orders-openapi.yml
+  ...
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://webflow.com/oauth/authorize
+    tokenUrl: https://api.webflow.com/oauth/token
+    scopes: 26
+  sources:
+  - openapi/webflow-assets-openapi.yml
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-comments-openapi.yml
+  - openapi/webflow-components-openapi.yml
+  - openapi/webflow-custom-code-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-ecommerce-settings-openapi.yml
+  - openapi/webflow-forms-openapi.yml
+  - openapi/webflow-inventory-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-meta-openapi.yml
+  - openapi/webflow-orders-openapi.yml
+  - openapi/webflow-pages-openapi.yml
+  - openapi/webflow-products-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- name: ApiKey
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/webflow-assets-openapi.yml
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-comments-openapi.yml
+  - openapi/webflow-components-openapi.yml
+  - openapi/webflow-custom-code-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-ecommerce-settings-openapi.yml
+  - openapi/webflow-forms-openapi.yml
+  - openapi/webflow-inventory-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-meta-openapi.yml
+  - openapi/webflow-orders-openapi.yml
+  - openapi/webflow-pages-openapi.yml
+  - openapi/webflow-products-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
