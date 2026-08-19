@@ -1,0 +1,635 @@
+{
+  "item": [
+    {
+      "id": "d9fc0bcf-8a91-475e-b477-4e0d5ac29d86",
+      "name": "Workspce Audit Logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "151f1e1a-ef45-40b4-a563-14686f38e228",
+          "name": "Webflow Get Workspace Audit Logs",
+          "request": {
+            "name": "Webflow Get Workspace Audit Logs",
+            "description": {
+              "content": "Get audit logs for a workspace.\n\n<Warning title=\"Enterprise & workspace API token only\">This endpoint requires an Enterprise workspace and a workspace token with the `workspace_activity:read` scope. Create a workspace token from your workspace dashboard integrations page to use this endpoint.</Warning>\n\nRequired scope | `workspace_activity:read`\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workspaces",
+                ":workspace_id_or_slug",
+                "audit_logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to be returned (max limit: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Offset used for pagination if the results have more than limit records"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>",
+                  "description": "Sorts the results by asc or desc"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventType",
+                  "value": "<string>",
+                  "description": "The event type to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "The start date to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "The end date to filter by"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "workspace_id_or_slug",
+                  "description": "(Required) Unique identifier or slug for a Workspace"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.webflow.com/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://webflow.com/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e9d67424-f39a-406f-94c3-2f55d9dcf0ec",
+              "name": "A list of workspace audit logs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspace_id_or_slug",
+                    "audit_logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "user_access"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2025-06-22T16:00:31Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2025-07-22T16:00:31Z"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workspace_id_or_slug",
+                      "description": "(Required) Unique identifier or slug for a Workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"eventType\": \"user_access\",\n      \"eventSubType\": \"login\",\n      \"payload\": {\n        \"method\": \"google\",\n        \"location\": \"string\",\n        \"ipAddress\": \"string\"\n      }\n    },\n    {\n      \"eventType\": \"user_access\",\n      \"eventSubType\": \"logout\",\n      \"payload\": {\n        \"method\": \"dashboard\",\n        \"location\": \"string\",\n        \"ipAddress\": \"string\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"limit\": 100,\n    \"offset\": 0,\n    \"total\": 100\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e862d3fc-51da-458d-889d-0195059dc621",
+              "name": "Provided access token is invalid or does not have access to requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspace_id_or_slug",
+                    "audit_logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "user_access"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2025-06-22T16:00:31Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2025-07-22T16:00:31Z"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workspace_id_or_slug",
+                      "description": "(Required) Unique identifier or slug for a Workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"not_authorized\",\n  \"message\": \"Request not authorized\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6e58092-e9b2-491b-bf6e-f50fbff62da4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspace_id_or_slug",
+                    "audit_logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "user_access"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2025-06-22T16:00:31Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2025-07-22T16:00:31Z"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workspace_id_or_slug",
+                      "description": "(Required) Unique identifier or slug for a Workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbidden\",\n  \"message\": \"User is not authorized to perform this action\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "124f9339-fb06-4d59-bdcd-f65755c959d2",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspace_id_or_slug",
+                    "audit_logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "user_access"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2025-06-22T16:00:31Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2025-07-22T16:00:31Z"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workspace_id_or_slug",
+                      "description": "(Required) Unique identifier or slug for a Workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"Requested resource not found: The site cannot be found\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7dc345f-04bb-4dee-9435-386920efa077",
+              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspace_id_or_slug",
+                    "audit_logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "user_access"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2025-06-22T16:00:31Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2025-07-22T16:00:31Z"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workspace_id_or_slug",
+                      "description": "(Required) Unique identifier or slug for a Workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Contains the number of available requests remaining in the current minute",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "6392.054629419441"
+                },
+                {
+                  "disabled": false,
+                  "description": "Contains your current overall rate limit per minute",
+                  "key": "X-RateLimit-Limit",
+                  "value": "6392.054629419441"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"too_many_requests\",\n  \"message\": \"Too many requests\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e549924-c627-4ae1-8ee2-39f45cb74cd1",
+              "name": "We had a problem with our server. Try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspace_id_or_slug",
+                    "audit_logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "user_access"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2025-06-22T16:00:31Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2025-07-22T16:00:31Z"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workspace_id_or_slug",
+                      "description": "(Required) Unique identifier or slug for a Workspace"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"internal_error\",\n  \"message\": \"An Internal Error occurred\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.webflow.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.webflow.com/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://webflow.com/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a744e56d-6408-4abe-b308-a474eb2eadc6",
+    "name": "Webflow Assets Asset Folders Workspce Audit Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Webflow Data API v2 - Assets endpoints.\n\nContact Support:\n Name: Webflow Developer Relations\n Email: developers@webflow.com",
+      "type": "text/plain"
+    }
+  }
+}

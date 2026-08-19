@@ -1,0 +1,2966 @@
+{
+  "item": [
+    {
+      "id": "264019cb-716f-4b42-ac5b-cd89485f70f1",
+      "name": "Components",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "464b9dc3-e41c-4063-b915-af030295b6a6",
+          "name": "Webflow List Components",
+          "request": {
+            "name": "Webflow List Components",
+            "description": {
+              "content": "List of all components for a site.\n\nRequired scope | `components:read`\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sites",
+                ":site_id",
+                "components"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "branchId",
+                  "value": "<objectid>",
+                  "description": "Scope the operation to work on a specific branch."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to be returned (max limit: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Offset used for pagination if the results have more than limit records"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "site_id",
+                  "description": "(Required) Unique identifier for a Site"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.webflow.com/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://webflow.com/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "66b1c123-445d-4e17-ac50-c643a70c308c",
+              "name": "Request was successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"components\": [\n    {\n      \"id\": \"8505ba55-ef72-629e-f85c-33e4b703d48b\",\n      \"name\": \"My Button Component\",\n      \"group\": \"Buttons\",\n      \"description\": \"A button component that can be used across the site\",\n      \"readonly\": true\n    },\n    {\n      \"id\": \"8505ba55-ef72-629e-f85c-33e4b703d48b\",\n      \"name\": \"My Button Component\",\n      \"group\": \"Buttons\",\n      \"description\": \"A button component that can be used across the site\",\n      \"readonly\": true\n    }\n  ],\n  \"pagination\": {\n    \"limit\": 100,\n    \"offset\": 0,\n    \"total\": 100\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca9c2b85-1aff-4000-9a61-5532918dd867",
+              "name": "Request body was incorrectly formatted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"bad_request\",\n  \"message\": \"Bad Request: Request is malformed\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ae3de68-adc3-48db-b6a9-49c3c80c2123",
+              "name": "Provided access token is invalid or does not have access to requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"not_authorized\",\n  \"message\": \"Request not authorized\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf6a9761-f0c0-4f2e-a4fc-bb6a4790c9b7",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"Requested resource not found: The site cannot be found\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50c57abf-fa53-490d-b104-9526191eb72d",
+              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Contains the number of available requests remaining in the current minute",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "5263.490691971975"
+                },
+                {
+                  "disabled": false,
+                  "description": "Contains your current overall rate limit per minute",
+                  "key": "X-RateLimit-Limit",
+                  "value": "5263.490691971975"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"too_many_requests\",\n  \"message\": \"Too many requests\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "218defe7-0a99-49dd-9a02-0ee4f1f94104",
+              "name": "We had a problem with our server. Try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"internal_error\",\n  \"message\": \"An Internal Error occurred\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f6d82fc-a405-40b5-ac65-1bf23bf856ad",
+          "name": "Webflow Get Component Content",
+          "request": {
+            "name": "Webflow Get Component Content",
+            "description": {
+              "content": "Get static content from a component definition. This includes text nodes, image nodes, select nodes, text input nodes, submit button nodes, and nested component instances.\nTo retrieve dynamic content set by component properties, use the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.\n\n<Note>If you do not provide a Locale ID in your request, the response will return any content that can be localized from the Primary locale.</Note>\n\nRequired scope | `components:read`\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sites",
+                ":site_id",
+                "components",
+                ":component_id",
+                "dom"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "localeId",
+                  "value": "<string>",
+                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "branchId",
+                  "value": "<objectid>",
+                  "description": "Scope the operation to work on a specific branch."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to be returned (max limit: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Offset used for pagination if the results have more than limit records"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "site_id",
+                  "description": "(Required) Unique identifier for a Site"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "component_id",
+                  "description": "(Required) Unique identifier for a Component"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.webflow.com/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://webflow.com/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "293dad72-cffe-493c-beeb-5783cf30d654",
+              "name": "Request was successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"componentId\": \"string\",\n  \"nodes\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"text\",\n      \"text\": {\n        \"html\": \"string\",\n        \"text\": \"string\"\n      },\n      \"attributes\": {\n        \"key_0\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"text\",\n      \"text\": {\n        \"html\": \"string\",\n        \"text\": \"string\"\n      },\n      \"attributes\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"limit\": 100,\n    \"offset\": 0,\n    \"total\": 100\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2db7c043-37b6-4c91-9af3-d0c92ca1430f",
+              "name": "Request body was incorrectly formatted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"bad_request\",\n  \"message\": \"Bad Request: Request is malformed\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa336ce1-e266-44b8-abfa-0689c6531ec4",
+              "name": "Provided access token is invalid or does not have access to requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"not_authorized\",\n  \"message\": \"Request not authorized\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc5e5875-d695-4f50-b8af-0a013182794f",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"Requested resource not found: The site cannot be found\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c2ff801-9cc7-4c2f-b447-81bba190f9fe",
+              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Contains the number of available requests remaining in the current minute",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "5263.490691971975"
+                },
+                {
+                  "disabled": false,
+                  "description": "Contains your current overall rate limit per minute",
+                  "key": "X-RateLimit-Limit",
+                  "value": "5263.490691971975"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"too_many_requests\",\n  \"message\": \"Too many requests\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1738264e-fca1-45e9-b8df-916c0be6f5c3",
+              "name": "We had a problem with our server. Try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"internal_error\",\n  \"message\": \"An Internal Error occurred\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d3600bc-16bd-41f3-9519-69d1a4a7f684",
+          "name": "Webflow Update Component Content",
+          "request": {
+            "name": "Webflow Update Component Content",
+            "description": {
+              "content": "This endpoint updates content within a component defintion for **secondary locales**. It supports updating up to 1000 nodes in a single request.\n\nBefore making updates:\n1. Use the [get component content](/data/reference/pages-and-components/components/get-content) endpoint to identify available content nodes and their types.\n2. If your component definition has a component instance nested within it, retrieve the nested component instance's properties that you'll override using the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.\n3. DOM elements may include a `data-w-id` attribute. This attribute is used by Webflow to maintain custom attributes and links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.\n\n<Note>\n  This endpoint is specifically for localizing component definitions. Ensure that the specified `localeId` is a valid **secondary locale** for the site otherwise the request will fail.\n</Note>\n\nRequired scope | `components:write`\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sites",
+                ":site_id",
+                "components",
+                ":component_id",
+                "dom"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "localeId",
+                  "value": "<string>",
+                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "branchId",
+                  "value": "<objectid>",
+                  "description": "Scope the operation to work on a specific branch."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "site_id",
+                  "description": "(Required) Unique identifier for a Site"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "component_id",
+                  "description": "(Required) Unique identifier for a Component"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.webflow.com/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://webflow.com/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6385c839-90ed-4340-8277-fb8f7a7538ca",
+              "name": "Request was successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"<h1>Hello world</h1>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2198adfa-a451-47dd-9012-c8ba8f8fa3f3",
+              "name": "Request body was incorrectly formatted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"<h1>Hello world</h1>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"bad_request\",\n  \"message\": \"Bad Request: Request is malformed\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b96477c-dfdb-486f-b1f0-399e85eaa860",
+              "name": "Provided access token is invalid or does not have access to requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"<h1>Hello world</h1>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"not_authorized\",\n  \"message\": \"Request not authorized\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c3deb28-73cb-450a-96f0-860e4c23a414",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"<h1>Hello world</h1>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbidden\",\n  \"message\": \"User is not authorized to perform this action\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2506fe7-fe6b-49ec-94fd-1cae49849f0c",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"<h1>Hello world</h1>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"Requested resource not found: The site cannot be found\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e558b8c5-6c82-4a27-a6b1-2205e047ece9",
+              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"<h1>Hello world</h1>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Contains the number of available requests remaining in the current minute",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "5263.490691971975"
+                },
+                {
+                  "disabled": false,
+                  "description": "Contains your current overall rate limit per minute",
+                  "key": "X-RateLimit-Limit",
+                  "value": "5263.490691971975"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"too_many_requests\",\n  \"message\": \"Too many requests\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "552e793a-00a0-42d5-b6c0-9598c9cfb09d",
+              "name": "We had a problem with our server. Try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "dom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"nodeId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"<h1>Hello world</h1>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"internal_error\",\n  \"message\": \"An Internal Error occurred\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1663feb3-ce53-464b-9889-50b752b97124",
+          "name": "Webflow Get Component Properties",
+          "request": {
+            "name": "Webflow Get Component Properties",
+            "description": {
+              "content": "Get the default property values of a component definition.\n\n<Note>If you do not include a `localeId` in your request, the response will return any properties that can be localized from the Primary locale.</Note>\n\nRequired scope | `components:read`\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sites",
+                ":site_id",
+                "components",
+                ":component_id",
+                "properties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "localeId",
+                  "value": "<string>",
+                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "branchId",
+                  "value": "<objectid>",
+                  "description": "Scope the operation to work on a specific branch."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to be returned (max limit: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Offset used for pagination if the results have more than limit records"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "site_id",
+                  "description": "(Required) Unique identifier for a Site"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "component_id",
+                  "description": "(Required) Unique identifier for a Component"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.webflow.com/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://webflow.com/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4c17a40a-37f9-4faa-a4c9-53a36f03a4ae",
+              "name": "Request was successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"componentId\": \"658205daa3e8206a523b5ad4\",\n  \"properties\": [\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"label\": \"Title\",\n      \"type\": \"Plain Text\",\n      \"text\": {\n        \"html\": null,\n        \"text\": \"The Hitchhiker's Guide to the Galaxy\"\n      }\n    },\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad627\",\n      \"label\": \"Content\",\n      \"type\": \"Rich Text\",\n      \"text\": {\n        \"html\": \"<div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>\",\n        \"text\": null\n      }\n    }\n  ],\n  \"pagination\": {\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 2\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa0a8771-6eec-4c7c-9b82-b206e3b0b7a2",
+              "name": "Request body was incorrectly formatted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"bad_request\",\n  \"message\": \"Bad Request: Request is malformed\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a19cbdce-48fc-4e77-9d4d-680eb0a13757",
+              "name": "Provided access token is invalid or does not have access to requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"not_authorized\",\n  \"message\": \"Request not authorized\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70ab908d-8238-4e4c-9d6b-a32f0c53e984",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"Requested resource not found: The site cannot be found\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33e92472-eb70-4d6a-a6ab-b532714e0fa5",
+              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Contains the number of available requests remaining in the current minute",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "5263.490691971975"
+                },
+                {
+                  "disabled": false,
+                  "description": "Contains your current overall rate limit per minute",
+                  "key": "X-RateLimit-Limit",
+                  "value": "5263.490691971975"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"too_many_requests\",\n  \"message\": \"Too many requests\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b0e8f7d-13eb-4577-a559-88df311a1a58",
+              "name": "We had a problem with our server. Try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"internal_error\",\n  \"message\": \"An Internal Error occurred\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "27ad545f-6374-4d22-a19e-f0d53fc44193",
+          "name": "Webflow Update Component Properties",
+          "request": {
+            "name": "Webflow Update Component Properties",
+            "description": {
+              "content": "Update the default property values of a component definition in a specificed locale.\n\nBefore making updates:\n1. Use the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint to identify properties that can be updated in a secondary locale.\n2. Rich Text properties may include a `data-w-id` attribute. This attribute is used by Webflow to maintain links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.\n\n<Note>The request requires a secondary locale ID. If a `localeId` is missing, the request will not be processed and will result in an error.</Note>\n\nRequired scope | `components:write`\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sites",
+                ":site_id",
+                "components",
+                ":component_id",
+                "properties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "localeId",
+                  "value": "<string>",
+                  "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "branchId",
+                  "value": "<objectid>",
+                  "description": "Scope the operation to work on a specific branch."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "site_id",
+                  "description": "(Required) Unique identifier for a Site"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "component_id",
+                  "description": "(Required) Unique identifier for a Component"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.webflow.com/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://webflow.com/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"propertyId\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53ba7e80-86c1-4463-8b2d-058ee1c0317f",
+              "name": "Request was successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"The Hitchhiker’s Guide to the Galaxy\"\n    },\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad627\",\n      \"text\": \"<div><h3>Dont Panic!</h3><p>Always know where your towel is.</p></div>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cfc8b25a-12d5-4330-b5e2-3f1e02e583ba",
+              "name": "Request body was incorrectly formatted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"The Hitchhiker’s Guide to the Galaxy\"\n    },\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad627\",\n      \"text\": \"<div><h3>Dont Panic!</h3><p>Always know where your towel is.</p></div>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"bad_request\",\n  \"message\": \"Bad Request: Request is malformed\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef10a18d-4b0c-49d6-89ee-1ea896315bd5",
+              "name": "Provided access token is invalid or does not have access to requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"The Hitchhiker’s Guide to the Galaxy\"\n    },\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad627\",\n      \"text\": \"<div><h3>Dont Panic!</h3><p>Always know where your towel is.</p></div>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"not_authorized\",\n  \"message\": \"Request not authorized\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4f7dd96-ac41-4bde-9e87-fa7719932741",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"The Hitchhiker’s Guide to the Galaxy\"\n    },\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad627\",\n      \"text\": \"<div><h3>Dont Panic!</h3><p>Always know where your towel is.</p></div>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"Requested resource not found: The site cannot be found\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd047dcb-bac5-411f-bd76-92b282911361",
+              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"The Hitchhiker’s Guide to the Galaxy\"\n    },\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad627\",\n      \"text\": \"<div><h3>Dont Panic!</h3><p>Always know where your towel is.</p></div>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Contains the number of available requests remaining in the current minute",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "5263.490691971975"
+                },
+                {
+                  "disabled": false,
+                  "description": "Contains your current overall rate limit per minute",
+                  "key": "X-RateLimit-Limit",
+                  "value": "5263.490691971975"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"too_many_requests\",\n  \"message\": \"Too many requests\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5474e89a-a7e0-4dc9-ad48-18f03240ceef",
+              "name": "We had a problem with our server. Try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sites",
+                    ":site_id",
+                    "components",
+                    ":component_id",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "localeId",
+                      "value": "65427cf400e02b306eaa04a0"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "68026fa68ef6dc744c75b833"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "site_id",
+                      "description": "(Required) Unique identifier for a Site"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "component_id",
+                      "description": "(Required) Unique identifier for a Component"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": [\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad623\",\n      \"text\": \"The Hitchhiker’s Guide to the Galaxy\"\n    },\n    {\n      \"propertyId\": \"a245c12d-995b-55ee-5ec7-aa36a6cad627\",\n      \"text\": \"<div><h3>Dont Panic!</h3><p>Always know where your towel is.</p></div>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"internal_error\",\n  \"message\": \"An Internal Error occurred\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.webflow.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.webflow.com/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://webflow.com/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d96ec6c1-bb19-4dc6-9149-46112f30074c",
+    "name": "Webflow Assets Asset Folders Components API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Webflow Data API v2 - Assets endpoints.\n\nContact Support:\n Name: Webflow Developer Relations\n Email: developers@webflow.com",
+      "type": "text/plain"
+    }
+  }
+}

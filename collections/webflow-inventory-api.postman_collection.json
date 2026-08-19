@@ -1,0 +1,1294 @@
+{
+  "item": [
+    {
+      "id": "03901b96-f72e-417e-a7ae-2d50bce161a3",
+      "name": "Inventory",
+      "description": {
+        "content": "Inventory is the stock of e-commerce items in your Webflow site.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "667bf8fa-c0cc-4cbf-9fbe-869c49d52c85",
+          "name": "Webflow List Inventory",
+          "request": {
+            "name": "Webflow List Inventory",
+            "description": {
+              "content": "List the current inventory levels for a particular SKU item.\n\nRequired scope | `ecommerce:read`\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                ":sku_collection_id",
+                "items",
+                ":sku_id",
+                "inventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<objectid>",
+                  "key": "sku_collection_id",
+                  "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<objectid>",
+                  "key": "sku_id",
+                  "description": "(Required) Unique identifier for a SKU"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.webflow.com/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://webflow.com/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c9fd81f6-9274-493d-967c-280804e85ba9",
+              "name": "Request was successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quantity\": 100,\n  \"inventoryType\": \"finite\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b372e47-ecf5-4675-bff1-c6d5b94e9181",
+              "name": "Request body was incorrectly formatted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"bad_request\",\n  \"message\": \"Bad Request: Request is malformed\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4103876c-7862-419a-905f-b083db77d2d1",
+              "name": "Provided access token is invalid or does not have access to requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"not_authorized\",\n  \"message\": \"Request not authorized\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85e90de2-b1e2-43e1-a245-a38f4704b303",
+              "name": "Provided access token is valid, but is missing the required scopes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"OAuthForbidden: You are missing the following scopes - components:write\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64a36ba9-0f49-4935-8a1a-3d369760bb84",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"Requested resource not found: The site cannot be found\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4510dcc-f6ca-4828-a72d-6628c62fa3b6",
+              "name": "The site does not have ecommerce enabled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ecommerce_not_enabled\",\n  \"message\": \"Ecommerce is not yet initialized\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7146681-c314-424a-b064-f9ff69ce74b0",
+              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Contains the number of available requests remaining in the current minute",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "1397.6475725184566"
+                },
+                {
+                  "disabled": false,
+                  "description": "Contains your current overall rate limit per minute",
+                  "key": "X-RateLimit-Limit",
+                  "value": "1397.6475725184566"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"too_many_requests\",\n  \"message\": \"Too many requests\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9ff0ad8-a807-4161-8d8b-af776338b243",
+              "name": "We had a problem with our server. Try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"internal_error\",\n  \"message\": \"An Internal Error occurred\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2f3b9ae-6270-48ab-97ae-487f39f0ce13",
+          "name": "Webflow Update Item Inventory",
+          "request": {
+            "name": "Webflow Update Item Inventory",
+            "description": {
+              "content": "Updates the current inventory levels for a particular SKU item.\n\nUpdates may be given in one or two methods, absolutely or incrementally.\n- Absolute updates are done by setting `quantity` directly.\n- Incremental updates are by specifying the inventory delta in `updateQuantity` which is then added to the `quantity` stored on the server.\n\nRequired scope | `ecommerce:write`\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                ":sku_collection_id",
+                "items",
+                ":sku_id",
+                "inventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<objectid>",
+                  "key": "sku_collection_id",
+                  "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<objectid>",
+                  "key": "sku_id",
+                  "description": "(Required) Unique identifier for a SKU"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.webflow.com/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://webflow.com/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inventoryType\": \"<string>\",\n  \"updateQuantity\": \"<number>\",\n  \"quantity\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aaa3ac0d-3efd-4cba-9e76-31a31f605ad2",
+              "name": "Request was successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inventoryType\": \"finite\",\n  \"updateQuantity\": 1,\n  \"quantity\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quantity\": 100,\n  \"inventoryType\": \"finite\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fe94c71-7357-427d-ad0b-9676a1a61537",
+              "name": "Request body was incorrectly formatted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inventoryType\": \"finite\",\n  \"updateQuantity\": 1,\n  \"quantity\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"bad_request\",\n  \"message\": \"Bad Request: Request is malformed\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ba44668-c9d3-4793-8427-c23c3f289459",
+              "name": "Provided access token is invalid or does not have access to requested resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inventoryType\": \"finite\",\n  \"updateQuantity\": 1,\n  \"quantity\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"not_authorized\",\n  \"message\": \"Request not authorized\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f6d5f19-378b-4f0e-887c-5bb8a6d22ec6",
+              "name": "Provided access token is valid, but is missing the required scopes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inventoryType\": \"finite\",\n  \"updateQuantity\": 1,\n  \"quantity\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"missing_scopes\",\n  \"message\": \"OAuthForbidden: You are missing the following scopes - components:write\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd27100e-8bf6-4597-9d88-b4d4b886e740",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inventoryType\": \"finite\",\n  \"updateQuantity\": 1,\n  \"quantity\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"resource_not_found\",\n  \"message\": \"Requested resource not found: The site cannot be found\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2c27570-8c81-48ac-84c8-7f4d7f81b3f8",
+              "name": "The site does not have ecommerce enabled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inventoryType\": \"finite\",\n  \"updateQuantity\": 1,\n  \"quantity\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ecommerce_not_enabled\",\n  \"message\": \"Ecommerce is not yet initialized\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a0be79c-8230-4fbc-b3dd-a155395cf1f9",
+              "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inventoryType\": \"finite\",\n  \"updateQuantity\": 1,\n  \"quantity\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Contains the number of available requests remaining in the current minute",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "1397.6475725184566"
+                },
+                {
+                  "disabled": false,
+                  "description": "Contains your current overall rate limit per minute",
+                  "key": "X-RateLimit-Limit",
+                  "value": "1397.6475725184566"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"too_many_requests\",\n  \"message\": \"Too many requests\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8307fb58-c5a7-4be7-b0e0-159bac742d17",
+              "name": "We had a problem with our server. Try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":sku_collection_id",
+                    "items",
+                    ":sku_id",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_collection_id",
+                      "description": "(Required) Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<objectid>",
+                      "key": "sku_id",
+                      "description": "(Required) Unique identifier for a SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inventoryType\": \"finite\",\n  \"updateQuantity\": 1,\n  \"quantity\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"internal_error\",\n  \"message\": \"An Internal Error occurred\",\n  \"externalReference\": null,\n  \"details\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.webflow.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.webflow.com/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://webflow.com/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "55760999-02de-46da-ba8d-643c7c9730fe",
+    "name": "Webflow Assets Asset Folders Inventory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Webflow Data API v2 - Assets endpoints.\n\nContact Support:\n Name: Webflow Developer Relations\n Email: developers@webflow.com",
+      "type": "text/plain"
+    }
+  }
+}
