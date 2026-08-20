@@ -21,6 +21,11 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/webflow.png
 tags:
 - CMS
+- E-Commerce
+- No-Code
+- Web Development
+tags_raw:
+- CMS
 - Ecommerce
 - No-Code
 - Web Development
@@ -102,6 +107,8 @@ apis:
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -310,6 +317,8 @@ apis:
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
@@ -362,6 +371,8 @@ apis:
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -570,6 +581,8 @@ apis:
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   baseURL: https://api.webflow.com/v2
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
