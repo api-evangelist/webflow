@@ -10,14 +10,14 @@ info:
     read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: sitesApi
-  url: ../openapi/webflow-sites-openapi.yml
-  type: openapi
 - name: formsApi
-  url: ../openapi/webflow-forms-openapi.yml
+  url: ../openapi/webflow-forms-api-openapi.yml
+  type: openapi
+- name: sitesApi
+  url: ../openapi/webflow-sites-api-openapi.yml
   type: openapi
 - name: webhooksApi
-  url: ../openapi/webflow-webhooks-openapi.yml
+  url: ../openapi/webflow-webhooks-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: register-form-webhook

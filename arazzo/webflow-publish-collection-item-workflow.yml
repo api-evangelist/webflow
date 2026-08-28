@@ -10,8 +10,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: itemsApi
-  url: ../openapi/webflow-items-openapi.yml
+- name: collectionsApi
+  url: ../openapi/webflow-collections-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: publish-collection-item

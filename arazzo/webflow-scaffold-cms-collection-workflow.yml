@@ -10,14 +10,11 @@ info:
     and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: sitesApi
-  url: ../openapi/webflow-sites-openapi.yml
-  type: openapi
 - name: collectionsApi
-  url: ../openapi/webflow-collections-openapi.yml
+  url: ../openapi/webflow-collections-api-openapi.yml
   type: openapi
-- name: itemsApi
-  url: ../openapi/webflow-items-openapi.yml
+- name: sitesApi
+  url: ../openapi/webflow-sites-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: scaffold-cms-collection

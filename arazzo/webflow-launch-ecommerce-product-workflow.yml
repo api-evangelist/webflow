@@ -10,11 +10,11 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: sitesApi
-  url: ../openapi/webflow-sites-openapi.yml
+- name: productsSkusApi
+  url: ../openapi/webflow-products-skus-api-openapi.yml
   type: openapi
-- name: productsApi
-  url: ../openapi/webflow-products-openapi.yml
+- name: sitesApi
+  url: ../openapi/webflow-sites-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: launch-ecommerce-product
