@@ -5,6 +5,18 @@ description: Webflow provides a visual web development platform with a comprehen
   users, and forms. The Data API enables developers to build integrations, automate
   workflows, and extend Webflow's core functionality.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
