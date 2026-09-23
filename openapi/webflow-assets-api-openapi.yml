@@ -1,13 +1,13 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Webflow Asset Folders Assets API
-  description: Webflow Data API v2 - Assets endpoints.
   version: 2.0.0
+  title: Webflow Data Assets API
+  description: Webflow's Data API v2
+  termsOfService: https://webflow.com/legal/terms
   contact:
     name: Webflow Developer Relations
     email: developers@webflow.com
     url: https://developers.webflow.com
-  termsOfService: https://webflow.com/legal/terms
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
@@ -34,9 +34,7 @@ paths:
       description: 'List of assets uploaded to a site
 
 
-        Required scope | `assets:read`
-
-        '
+        Required scope | `assets:read`'
       tags:
       - Assets
       parameters:
@@ -664,7 +662,19 @@ paths:
         - assets:write
       operationId: create-asset
       summary: Webflow Upload Asset
-      description: "The first step in uploading an asset to a site.\n\n\nThis endpoint generates a response with the following information: `uploadUrl` and `uploadDetails`.\n\n\nUse these properties in the header of a [POST request to Amazson s3](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPOST.html) to complete the upload.\n\n\nTo learn more about how to upload assets to Webflow, see our [assets guide](/data/docs/working-with-assets).\n\n Required scope | `assets:write`\n"
+      description: 'The first step in uploading an asset to a site.
+
+
+        This endpoint generates a response with the following information: `uploadUrl` and `uploadDetails`.
+
+
+        Use these properties in the header of a POST request to Amazson s3 to complete the upload.
+
+
+        To learn more about how to upload assets to Webflow, see our assets guide.
+
+
+        Required scope | `assets:write`'
       tags:
       - Assets
       parameters:
@@ -1194,9 +1204,7 @@ paths:
       description: 'Get details about an asset
 
 
-        Required scope | `assets:read`
-
-        '
+        Required scope | `assets:read`'
       tags:
       - Assets
       parameters:
@@ -1734,9 +1742,7 @@ paths:
       description: 'Update details of an Asset.
 
 
-        Required scope | `assets:write`
-
-        '
+        Required scope | `assets:write`'
       tags:
       - Assets
       parameters:
@@ -2290,9 +2296,7 @@ paths:
       description: 'Delete an Asset
 
 
-        Required Scope: `assets: write`
-
-        '
+        Required Scope: `assets: write`'
       tags:
       - Assets
       parameters:

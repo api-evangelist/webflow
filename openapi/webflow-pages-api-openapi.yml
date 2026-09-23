@@ -1,13 +1,13 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Webflow Assets Asset Folders Pages API
-  description: Webflow Data API v2 - Assets endpoints.
   version: 2.0.0
+  title: Webflow Data Pages API
+  description: Webflow's Data API v2
+  termsOfService: https://webflow.com/legal/terms
   contact:
     name: Webflow Developer Relations
     email: developers@webflow.com
     url: https://developers.webflow.com
-  termsOfService: https://webflow.com/legal/terms
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
@@ -34,9 +34,7 @@ paths:
       description: 'List of all pages for a site.
 
 
-        Required scope | `pages:read`
-
-        '
+        Required scope | `pages:read`'
       tags:
       - Pages
       parameters:
@@ -698,9 +696,7 @@ paths:
       description: 'Get metadata information for a single page.
 
 
-        Required scope | `pages:read`
-
-        '
+        Required scope | `pages:read`'
       tags:
       - Pages
       parameters:
@@ -1260,9 +1256,7 @@ paths:
       description: 'Update Page-level metadata, including SEO and Open Graph fields.
 
 
-        Required scope | `pages:write`
-
-        '
+        Required scope | `pages:write`'
       summary: Webflow Update Page Metadata
       operationId: update-page-settings
       tags:
@@ -1891,12 +1885,10 @@ paths:
       description: 'Get text and component instance content from a static page.
 
 
-        <Badge intent="info">Localization</Badge>
+        Localization
 
 
-        Required scope | `pages:read`
-
-        '
+        Required scope | `pages:read`'
       tags:
       - Pages
       parameters:
@@ -2816,7 +2808,22 @@ paths:
       - OAuth2:
         - page:write
       summary: Webflow Update Page Content
-      description: "This endpoint updates content on a static page in **secondary locales**. It supports updating up to 1000 nodes in a single request.\n\nBefore making updates:\n1. Use the [get page content](/data/reference/pages-and-components/pages/get-content) endpoint to identify available content nodes and their types.\n2. If the page has component instances, retrieve the component's properties that you'll override using the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.\n3. DOM elements may include a `data-w-id` attribute. This attribute is used by Webflow to maintain custom attributes and links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.\n\n<Note>\n  This endpoint is specifically for localized pages. Ensure that the specified `localeId` is a valid **secondary locale** for the site otherwise the request will fail.\n</Note>\n\nRequired scope | `pages:write`\n"
+      description: 'This endpoint updates content on a static page in **secondary locales**. It supports updating up to 1000 nodes in a single request.
+
+
+        Before making updates:
+
+        1. Use the get page content endpoint to identify available content nodes and their types.
+
+        2. If the page has component instances, retrieve the component''s properties that you''ll override using the get component properties endpoint.
+
+        3. DOM elements may include a `data-w-id` attribute. This attribute is used by Webflow to maintain custom attributes and links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.
+
+
+        This endpoint is specifically for localized pages. Ensure that the specified `localeId` is a valid **secondary locale** for the site otherwise the request will fail.
+
+
+        Required scope | `pages:write`'
       operationId: update-static-content
       tags:
       - Pages
@@ -3476,6 +3483,162 @@ paths:
                 message: An Internal Error occurred
                 externalReference: null
                 details: []
+webhooks:
+  page_created:
+    post:
+      operationId: page_created
+      summary: Page Created
+      description: Information about a new pages
+      tags:
+      - Pages
+      requestBody:
+        description: Details about the page that was created
+        content:
+          application/json:
+            schema:
+              description: The Webhook payload for when a Page is created
+              type: object
+              properties:
+                triggerType:
+                  type: string
+                  description: The type of event that triggered the request
+                  example: page_created
+                payload:
+                  type: object
+                  description: The payload of data sent from Webflow
+                  properties:
+                    siteId:
+                      type: string
+                      format: objectid
+                      example: 562ac0395358780a1f5e6fbd
+                    pageId:
+                      type: string
+                      format: objectid
+                      example: 1as2d3f4g5h6j7k8l9z0x1c2v3b4n5m6
+                    pageTitle:
+                      type: string
+                      example: My New Page
+                    createdOn:
+                      type: string
+                      format: date-time
+                      example: '2022-12-07T16:51:37.571Z'
+                    publishedPath:
+                      type: string
+                      example: /blog/my-new-page
+              example:
+                triggerType: page_created
+                payload:
+                  siteId: 65427cf400e02b306eaa049c
+                  pageId: 66a3cfb276641574f5d58311
+                  pageTitle: Heart of Gold Specs
+                  createdOn: '2024-07-26T16:32:50.903Z'
+                  publishedPath: /blog/earth
+      responses:
+        '200':
+          description: Return a 200 status to indicate that the data was received successfully
+  page_metadata_updated:
+    post:
+      operationId: page_metadata_updated
+      summary: Page Metadata Updated
+      description: Information about a page's updated metadata and/or settings
+      tags:
+      - Pages
+      requestBody:
+        description: Details about the page that was updated
+        content:
+          application/json:
+            schema:
+              description: The Webhook payload for when a Page's metadata is updated
+              type: object
+              properties:
+                triggerType:
+                  description: The type of event that triggered the request
+                  type: string
+                  example: page_metadata_updated
+                payload:
+                  description: The payload of data sent from Webflow
+                  type: object
+                  properties:
+                    siteId:
+                      type: string
+                      format: objectid
+                      example: 562ac0395358780a1f5e6fbd
+                    pageId:
+                      type: string
+                      format: objectid
+                      example: 1as2d3f4g5h6j7k8l9z0x1c2v3b4n5m6
+                    pageTitle:
+                      type: string
+                      example: My New Page
+                    lastUpdated:
+                      type: string
+                      format: date-time
+                      example: '2022-12-07T16:51:37.571Z'
+                    publishedPath:
+                      type: string
+                      example: /blog/earth
+              example:
+                triggerType: page_metadata_updated
+                payload:
+                  siteId: 65427cf400e02b306eaa049c
+                  pageId: 66a3cfb276641574f5d58311
+                  pageTitle: Heart of Gold Specs
+                  lastUpdated: '2024-07-26T16:32:50.903Z'
+                  publishedPath: /blog/earth
+      responses:
+        '200':
+          description: Return a 200 status to indicate that the data was received successfully
+  page_deleted:
+    post:
+      operationId: page_deleted
+      summary: Page Deleted
+      description: Information about a page that was deleted
+      tags:
+      - Pages
+      requestBody:
+        description: Details about the page that was deleted
+        content:
+          application/json:
+            schema:
+              description: The Webhook payload for when a Page is deleted
+              type: object
+              properties:
+                triggerType:
+                  description: The type of event that triggered the request
+                  type: string
+                payload:
+                  description: The payload of data sent from Webflow
+                  type: object
+                  properties:
+                    siteId:
+                      type: string
+                      format: objectid
+                      example: 562ac0395358780a1f5e6fbd
+                    pageId:
+                      type: string
+                      format: objectid
+                      example: 1as2d3f4g5h6j7k8l9z0x1c2v3b4n5m6
+                    pageTitle:
+                      type: string
+                      example: My New Page
+                    deletedOn:
+                      type: string
+                      format: date-time
+                      example: '2022-12-07T16:51:37.571Z'
+                    publishedPath:
+                      type: string
+                      example: /blog/earth
+              example:
+                triggerType: page_deleted
+                payload:
+                  siteId: 65427cf400e02b306eaa049c
+                  pageId: 66a3cfb276641574f5d58311
+                  pageTitle: Heart of Gold Specs
+                  deletedOn: '2024-07-26T16:32:50.903Z'
+                  publishedPath: /blog/earth
+      responses:
+        '200':
+          description: Return a 200 status to indicate that the data was received successfully
 components:
   securitySchemes:
     OAuth2:

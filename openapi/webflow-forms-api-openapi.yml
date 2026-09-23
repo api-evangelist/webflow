@@ -1,13 +1,13 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Webflow Assets Asset Folders Forms API
-  description: Webflow Data API v2 - Assets endpoints.
   version: 2.0.0
+  title: Webflow Data Forms API
+  description: Webflow's Data API v2
+  termsOfService: https://webflow.com/legal/terms
   contact:
     name: Webflow Developer Relations
     email: developers@webflow.com
     url: https://developers.webflow.com
-  termsOfService: https://webflow.com/legal/terms
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
@@ -34,9 +34,7 @@ paths:
       description: 'List forms for a given site.
 
 
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -868,9 +866,7 @@ paths:
       description: 'Get information about a given form.
 
 
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -1474,7 +1470,16 @@ paths:
         - forms:read
       operationId: list-submissions
       summary: Webflow List Form Submissions
-      description: "List form submissions for a given form\n\n<Note title=\"Forms in components\">\n  When a form is used in a component definition, each instance of the form is considered a unique form.\n\n  To get a combined list of submissions for a form that appears across multiple component instances, use the [List Form Submissions by Site](/data/reference/forms/form-submissions/list-submissions-by-site) endpoint.\n</Note>\n\nRequired scope | `forms:read`\n"
+      description: 'List form submissions for a given form
+
+
+        When a form is used in a component definition, each instance of the form is considered a unique form.
+
+
+        To get a combined list of submissions for a form that appears across multiple component instances, use the List Form Submissions by Site endpoint.
+
+
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -2060,9 +2065,7 @@ paths:
       description: 'Get information about a given form submissio.
 
 
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -2580,9 +2583,7 @@ paths:
       description: 'Update hidden fields on a form submission
 
 
-        Required scope | `forms:write`
-
-        '
+        Required scope | `forms:write`'
       tags:
       - Forms
       parameters:
@@ -3184,10 +3185,7 @@ paths:
       description: 'Delete a form submission
 
 
-
-        Required scope | `forms:write`
-
-        '
+        Required scope | `forms:write`'
       tags:
       - Forms
       parameters:
@@ -3737,22 +3735,16 @@ paths:
       description: 'List all form submissions for a given site with the ability to filter submissions by a centralized `elementId`.
 
 
-        Add `elementId` when you want to filter form submissions to a specific form in a site. You can get the `elementId` from the [List forms endpoint](/data/reference/forms/forms/list) (displayed as `formElementId` in the response).
+        Add `elementId` when you want to filter form submissions to a specific form in a site. You can get the `elementId` from the List forms endpoint (displayed as `formElementId` in the response).
 
-
-        <Note title="Forms in components">
 
         When a form is used in a Webflow component definition, each instance of the component will yield a unique form. Adding the `elementId` in this request ensures this API response includes all submissions from that core form, wherever that form is used in instantiated components.
 
-        </Note>
+
+        Use the List Form Submissions endpoint to list form submissions for a given form ID.
 
 
-        Use the [List Form Submissions endpoint](/data/reference/forms/form-submissions/list-submissions) to list form submissions for a given form ID.
-
-
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -4350,12 +4342,10 @@ paths:
       description: 'List form submissions for a given form ID within a specific site.
 
 
-        Use the [List Form Submissions by Site endpoint](/data/reference/forms/form-submissions/list-submissions-by-site) to list form submissions for a given site with the ability to filter by a `formElementId`.
+        Use the List Form Submissions by Site endpoint to list form submissions for a given site with the ability to filter by a `formElementId`.
 
 
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -4952,9 +4942,7 @@ paths:
       description: 'Get information about a form submission within a specific site.
 
 
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -5483,9 +5471,7 @@ paths:
       description: 'Update hidden fields on a form submission within a specific site.
 
 
-        Required scope | `forms:write`
-
-        '
+        Required scope | `forms:write`'
       tags:
       - Forms
       parameters:
@@ -6098,9 +6084,7 @@ paths:
       description: 'Delete a form submission within a specific site.
 
 
-        Required scope | `forms:write`
-
-        '
+        Required scope | `forms:write`'
       tags:
       - Forms
       parameters:
@@ -6645,6 +6629,114 @@ paths:
                 message: An Internal Error occurred
                 externalReference: null
                 details: []
+webhooks:
+  form_submission:
+    post:
+      operationId: form_submission
+      summary: Form Submission
+      description: Information about a form that was subitted
+      tags:
+      - Forms
+      requestBody:
+        description: The form data submitted
+        content:
+          application/json:
+            schema:
+              description: The Webhook payload for when a form is submitted
+              properties:
+                triggerType:
+                  description: The type of event that triggered the request
+                  type: string
+                  example: form_submission
+                payload:
+                  type: object
+                  description: The payload of data sent from Webflow
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the form
+                      example: Sample Form
+                    siteId:
+                      type: string
+                      format: objectid
+                      description: The ID of the site that the form was submitted from
+                      example: 62749158efef318abc8d5a0f
+                    data:
+                      type: object
+                      description: The data submitted in the form
+                      example:
+                        name: Arthur Dent
+                        email: arthur.dent@mostlyharmless.com
+                    schema:
+                      description: A list of fields from the submitted form
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          fieldName:
+                            description: Form field name
+                            type: string
+                            example: First Name
+                          fieldType:
+                            description: Form field type
+                            type: string
+                            enum:
+                            - FormTextInput
+                            - FormTextarea
+                            - FormCheckboxInput
+                            - FormRadioInput
+                            - FormFileUploadInput
+                            example: FormTextInput
+                          fieldElementId:
+                            description: Element ID of the Form Field
+                            type: string
+                            format: UUID
+                            example: 285042f7-d554-dc7f-102c-aa10d6a2d2c4
+                    submittedAt:
+                      type: string
+                      description: The timestamp the form was submitted
+                      example: '2022-09-14T12:35:16.117Z'
+                    id:
+                      type: string
+                      description: the ID of the event
+                      example: 6321ca84df3949bfc6752327
+                    formId:
+                      type: string
+                      format: objectid
+                      description: The ID of the form submission
+                      example: 6321ca84df3949bfc6752327
+                    formElementId:
+                      type: string
+                      nullable: true
+                      description: The uniqueID of the Form element
+                      example: 4e038d2c-6a1e-4953-7be9-a59a2b453177
+              example:
+                triggerType: form_submission
+                payload:
+                  name: Contact Us
+                  siteId: 65427cf400e02b306eaa049c
+                  data:
+                    First Name: Zaphod
+                    Last Name: Beeblebrox
+                    email: zaphod@heartofgold.ai
+                    Phone Number: 15550000000
+                  schema:
+                  - fieldName: First Name
+                    fieldType: FormTextInput
+                    fieldElementId: 285042f7-d554-dc7f-102c-aa10d6a2d2c4
+                  - fieldName: Last Name
+                    fieldType: FormTextInput
+                    fieldElementId: 285042f7-d554-dc7f-102c-aa10d6a2d2c5
+                  - fieldName: email
+                    fieldType: FormTextInput
+                    fieldElementId: 285042f7-d554-dc7f-102c-aa10d6a2d2c6
+                  - fieldName: Phone Number
+                    fieldType: FormTextInput
+                    fieldElementId: 285042f7-d554-dc7f-102c-aa10d6a2d2c7
+                  submittedAt: '2022-09-14T12:35:16.117Z'
+                  id: 6321ca84df3949bfc6752327
+                  formId: 65429eadebe8a9f3a30f62d0
+                  formElementId: 4e038d2c-6a1e-4953-7be9-a59a2b453177
 components:
   securitySchemes:
     OAuth2:
