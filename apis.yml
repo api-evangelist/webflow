@@ -526,6 +526,8 @@ apis:
   - type: AsyncAPI
     url: asyncapi/webflow-webhooks-asyncapi.yml
 common:
+- type: VendorFacets
+  url: vendor-facets/webflow-vendor-facets.yml
 - type: AgenticAccess
   url: agentic-access/webflow-agentic-access.yml
 - type: TrustCenter
