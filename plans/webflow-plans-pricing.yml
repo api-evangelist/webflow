@@ -544,3 +544,162 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  - subscription
+  units:
+  - data
+  - object
+  - period
+  - seat
+  - transaction
+  plans:
+  - name: Site - Starter
+    access: freemium
+    model: subscription
+    model_how: derived
+    units:
+    - data
+    - object
+    - other
+    - period
+    periods:
+    - month
+    - per-use
+  - name: Site - Basic
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - data
+    - object
+    - period
+    periods:
+    - month
+    - per-use
+  - name: Site - CMS
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - data
+    - object
+    - other
+    - period
+    periods:
+    - month
+    - per-use
+  - name: Site - Business
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - data
+    - object
+    - other
+    - period
+    periods:
+    - month
+    - per-use
+  - name: Site - Enterprise
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - period
+    periods:
+    - month
+  - name: Ecommerce - Standard
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    - period
+    - transaction
+    periods:
+    - month
+    - per-use
+  - name: Ecommerce - Plus
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    - period
+    - transaction
+    periods:
+    - month
+    - per-use
+  - name: Ecommerce - Advanced
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    - period
+    - transaction
+    periods:
+    - month
+    - per-use
+  - name: Workspace - Starter
+    access: freemium
+    model: seat
+    model_how: derived
+    units:
+    - object
+    - seat
+    periods:
+    - month
+    - per-use
+  - name: Workspace - Core
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    - seat
+    periods:
+    - month
+    - per-use
+  - name: Workspace - Growth
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    - seat
+    periods:
+    - month
+    - per-use
+  - name: Workspace - Freelancer
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    - seat
+    periods:
+    - month
+    - per-use
+  - name: Workspace - Agency
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    - seat
+    periods:
+    - month
+    - per-use
+  - name: Workspace - Enterprise
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
