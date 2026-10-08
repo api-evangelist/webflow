@@ -526,6 +526,10 @@ apis:
   - type: AsyncAPI
     url: asyncapi/webflow-webhooks-asyncapi.yml
 common:
+- type: Plans
+  url: plans/webflow-plans-pricing.yml
+- type: FinOps
+  url: finops/webflow-finops.yml
 - type: CapabilityMap
   url: capabilities/webflow-capability-edges.yml
   name: Webflow Business Capability Map
