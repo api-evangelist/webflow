@@ -6,6 +6,7 @@ source:
 - https://composio.dev/toolkits/webflow
 checked:
 - https://composio.dev/toolkits/webflow
+- https://hightouch.com/docs/destinations/webflow
 - https://monid.ai/tools/webflow
 - https://n8n.io/integrations/webflow/
 - https://zapier.com/apps/webflow/integrations
@@ -478,6 +479,29 @@ edges:
   direction: third-party
   category: Documents
   partner_url: http://google.com/
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/webflow
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - webflow
+      status: released
+      sync_types:
+      - Collections
+      sync_modes:
+      - update
+      - upsert
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
 templates:
 - title: Send Webflow form data to Google Sheets
   url: https://zapier.com/apps/google-sheets/integrations/webflow/2242/send-webflow-form-data-to-google-sheets

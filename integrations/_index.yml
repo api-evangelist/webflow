@@ -229,7 +229,6 @@
   arazzo: null
 - slug: webflow-monday-com
   label: monday.com
-  partner: monday-com
   partner_name: monday.com
   category: Project Management
   type: marketplace
@@ -237,7 +236,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/webflow/integrations/monday
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: webflow-telegram
   label: Telegram
@@ -287,7 +286,6 @@
   arazzo: null
 - slug: webflow-microsoft-excel
   label: Microsoft Excel
-  partner: microsoft-excel
   partner_name: Microsoft Excel
   category: Microsoft
   type: marketplace
@@ -295,7 +293,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/webflow/integrations/excel
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: webflow-google-drive
   label: Google Drive
@@ -403,4 +401,16 @@
   evidence: https://zapier.com/apps/webflow/integrations/google-docs
   source: edge
   status: pending-generation
+  arazzo: null
+- slug: webflow-hightouch
+  label: Hightouch
+  partner: hightouch
+  partner_name: Hightouch
+  type: coverage
+  marketplace: coverage
+  channel: partner-built
+  evidence: https://hightouch.com/docs/destinations/webflow
+  source: edge
+  relationship: connector-coverage
+  status: not-a-workflow
   arazzo: null
