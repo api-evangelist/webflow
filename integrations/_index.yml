@@ -456,7 +456,7 @@
     app_slug: webflow
     beta: false
     builder: unknown (not in the directory record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: webflow-n8n
   label: n8n
@@ -484,7 +484,7 @@
     other_nodes:
     - Webflow
     - Webflow/V2
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: webflow-pipedream
   label: Pipedream
@@ -510,5 +510,5 @@
     actions: true
     sources: true
     builder: Pipedream repo (component)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
