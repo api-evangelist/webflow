@@ -1,4 +1,4 @@
-generated: '2026-10-12'
+generated: '2026-10-20'
 method: searched
 source:
 - https://zapier.com/apps/webflow/integrations
@@ -64,55 +64,22 @@ marketplace_apps:
   app: webflow
   url: https://n8n.io/integrations/webflow/
   identity: title
-  pair_pages: 35
-  pairs:
-  - webscraperio
-  - wekan
-  - whal3s
-  - whatconverts
-  - whatsapp-business-cloud
-  - wise
-  - wizychat
-  - wonderchat
-  - wondercraft
-  - woocommerce
-  - woodpeckerco
-  - wordpress
-  - workast
-  - workboard
-  - woxo
-  - writesonic
-  - wubook-ratechecker
-  - xero
-  - xtractly
-  - ybug
-  - ycode
-  - yodiz
-  - yourls
-  - youtube
-  - zabbix
-  - zammad
-  - zendesk
-  - zenrows
-  - zoho-books
-  - zoho-crm
-  - zoho-desk
-  - zonka-feedback
-  - zoom
-  - zscaler-zia
-  - zulip
+  pair_pages: 0
+  pairs: []
 - marketplace: composio
   channel: agent-gateway
   app: webflow
   url: https://composio.dev/toolkits/webflow
   identity: action-prefix
   actions:
+  - key: WEBFLOW_CREATE_ASSET
   - key: WEBFLOW_CREATE_ASSET_FOLDER
   - key: WEBFLOW_CREATE_BULK_COLLECTION_ITEMS
   - key: WEBFLOW_CREATE_COLLECTION
   - key: WEBFLOW_CREATE_COLLECTION_FIELD
   - key: WEBFLOW_CREATE_COLLECTION_ITEM
   - key: WEBFLOW_CREATE_LIVE_COLLECTION_ITEM
+  - key: WEBFLOW_CREATE_WEBHOOK
   - key: WEBFLOW_DELETE_ASSET
   - key: WEBFLOW_DELETE_COLLECTION
   - key: WEBFLOW_DELETE_COLLECTION_FIELD
@@ -133,12 +100,16 @@ marketplace_apps:
   - key: WEBFLOW_GET_PAGE_DOM
   - key: WEBFLOW_GET_SITE_INFO
   - key: WEBFLOW_GET_TOKEN_AUTHORIZED_BY
+  - key: WEBFLOW_GET_WEBHOOK
   - key: WEBFLOW_LIST_ASSETS
   - key: WEBFLOW_LIST_ASSET_FOLDERS
   - key: WEBFLOW_LIST_COLLECTIONS
   - key: WEBFLOW_LIST_COLLECTION_ITEMS
   - key: WEBFLOW_LIST_COMMENT_THREADS
+  - key: WEBFLOW_LIST_CUSTOM_DOMAINS
+  - key: WEBFLOW_LIST_FORMS
   - key: WEBFLOW_LIST_FORM_SUBMISSIONS
+  - key: WEBFLOW_LIST_LIVE_COLLECTION_ITEMS
   - key: WEBFLOW_LIST_ORDERS
   - key: WEBFLOW_LIST_PAGES
   - key: WEBFLOW_LIST_WEBFLOW_SITES
@@ -150,345 +121,17 @@ marketplace_apps:
   - key: WEBFLOW_UNPUBLISH_LIVE_COLLECTION_ITEM
   - key: WEBFLOW_UNPUBLISH_LIVE_COLLECTION_ITEMS
   - key: WEBFLOW_UPDATE_COLLECTION_FIELD
+  - key: WEBFLOW_UPDATE_COLLECTION_ITEMS_BULK
   - key: WEBFLOW_UPDATE_COLLECTION_ITEM_V2
   - key: WEBFLOW_UPDATE_ITEM_INVENTORY
   - key: WEBFLOW_UPDATE_LIVE_COLLECTION_ITEM
   - key: WEBFLOW_UPDATE_LIVE_COLLECTION_ITEMS
   - key: WEBFLOW_UPDATE_ORDER
+  - key: WEBFLOW_UPDATE_PAGE
   - key: WEBFLOW_UPDATE_PAGE_METADATA
   - key: WEBFLOW_UPDATE_SITE
   - key: WEBFLOW_UPLOAD_ASSET
 edges:
-- partner_name: Gmail
-  partner: gmail
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/gmail
-  direction: third-party
-  category: Email
-  partner_url: https://mail.google.com/
-- partner_name: HubSpot
-  partner: hubspot
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/hubspot
-  direction: third-party
-  category: Marketing Automation
-  partner_url: http://www.hubspot.com/
-- partner_name: Airtable
-  partner: airtable
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/airtable
-  direction: third-party
-  category: Databases
-  partner_url: https://airtable.com/
-- partner_name: Mailchimp
-  partner: mailchimp
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/mailchimp
-  direction: third-party
-  category: Marketing Automation
-  partner_url: https://mailchimp.com/
-- partner_name: Slack
-  partner: slack
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/slack
-  direction: third-party
-  category: Team Chat
-  partner_url: https://slack.com/
-- partner_name: Brevo
-  partner: brevo
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/brevo
-  direction: third-party
-  category: Email Newsletters
-  partner_url: https://www.sendinblue.com/?utm_medium=plugin&utm_source=zapier
-- partner_name: Pipedrive
-  partner: pipedrive
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/pipedrive
-  direction: third-party
-  category: CRM (Customer Relationship Management)
-  partner_url: https://pipedrive.com/
-- partner_name: Google Sheets
-  partner: google-sheets
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/google-sheets
-  direction: third-party
-  category: Google
-  partner_url: http://sheets.google.com/
-- partner_name: MailerLite
-  partner: mailerlite
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/mailerlite
-  direction: third-party
-  category: Marketing Automation
-  partner_url: https://www.mailerlite.com/?utm_source=zapier&utm_medium=partner&utm_campaign=profile&utm_term=learn_more&utm_content=integrations
-- partner_name: ActiveCampaign
-  partner: activecampaign
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/activecampaign
-  direction: third-party
-  category: Marketing Automation
-  partner_url: https://www.activecampaign.com/?utm_source=unpaid_syndication_website&utm_medium=referral&utm_campaign=zapier_listing
-- partner_name: Microsoft Outlook
-  partner: microsoft-outlook
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/microsoft-outlook
-  direction: third-party
-  category: Calendar
-  partner_url: https://outlook.live.com/
-- partner_name: Klaviyo
-  partner: klaviyo
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/klaviyo
-  direction: third-party
-  category: Marketing Automation
-  partner_url: https://www.klaviyo.com/
-- partner_name: Notion
-  partner: notion
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/notion
-  direction: third-party
-  category: Task Management
-  partner_url: https://www.notion.so/
-- partner_name: Instagram for Business
-  partner: instagram
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/instagram-for-business
-  direction: third-party
-  category: Facebook
-  partner_url: https://instagram.com/
-- partner_name: monday.com
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/monday
-  direction: third-party
-  category: Project Management
-  partner_url: https://monday.com/
-- partner_name: Telegram
-  partner: telegram
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/telegram
-  direction: third-party
-  category: Phone & SMS
-  partner_url: https://telegram.org/
-- partner_name: LeadConnector
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/leadconnector
-  direction: third-party
-  category: Marketing Automation
-  partner_url: https://www.leadconnectorhq.com/
-- partner_name: Memberstack
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/memberstack
-  direction: third-party
-  category: Developer Tools
-  partner_url: https://www.memberstack.com/
-- partner_name: beehiiv
-  partner: beehiiv
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/beehiiv
-  direction: third-party
-  category: Email Newsletters
-  partner_url: http://beehiiv.link/zapier
-- partner_name: Microsoft Excel
-  partner: null
-  partner_match: null
-  partner_candidate: zapier
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/excel
-  direction: third-party
-  category: Microsoft
-  partner_url: https://zapier.com/office.com
-- partner_name: Google Drive
-  partner: google-drive
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/google-drive
-  direction: third-party
-  category: File Management & Storage
-  partner_url: https://www.google.com/drive/
-- partner_name: Attio
-  partner: attio
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/attio
-  direction: third-party
-  category: CRM (Customer Relationship Management)
-  partner_url: https://attio.com/
-- partner_name: Flodesk
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/flodesk
-  direction: third-party
-  category: Email Newsletters
-  partner_url: https://flodesk.com/
-- partner_name: Google Calendar
-  partner: google-calendar
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/google-calendar
-  direction: third-party
-  category: Calendar
-  partner_url: https://calendar.google.com/
-- partner_name: SendGrid
-  partner: sendgrid
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/sendgrid
-  direction: third-party
-  category: Transactional Email
-  partner_url: https://sendgrid.com/
-- partner_name: Constant Contact
-  partner: constant-contact
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/constant-contact
-  direction: third-party
-  category: Email Newsletters
-  partner_url: http://www.constantcontact.com/signup.jsp?pn=zapier
-- partner_name: Close
-  partner: close
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/close
-  direction: third-party
-  category: CRM (Customer Relationship Management)
-  partner_url: https://www.close.com/?utm_source=Partner&utm_medium=Integration_Listing&utm_campaign=2025_Partnerships&utm_content=Home
-- partner_name: ClickUp
-  partner: clickup
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/clickup
-  direction: third-party
-  category: Project Management
-  partner_url: https://clickup.com/zapier
-- partner_name: Salesforce
-  partner: salesforce
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/salesforce
-  direction: third-party
-  category: CRM (Customer Relationship Management)
-  partner_url: https://www.salesforce.com/
-- partner_name: Google Docs
-  partner: google-docs
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/webflow/integrations/google-docs
-  direction: third-party
-  category: Documents
-  partner_url: http://google.com/
 - partner_name: Slack (own)
   partner: slack
   partner_match: mirror
@@ -698,6 +341,366 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Gmail
+  partner: gmail
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Airtable
+  partner: airtable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/airtable
+  direction: third-party
+  category: Databases
+  partner_url: https://airtable.com/
+- partner_name: Mailchimp
+  partner: mailchimp
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/mailchimp
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://mailchimp.com/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: Brevo
+  partner: brevo
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/brevo
+  direction: third-party
+  category: Email Newsletters
+  partner_url: https://www.sendinblue.com/?utm_medium=plugin&utm_source=zapier
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: Pipedrive
+  partner: pipedrive
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/pipedrive
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://pipedrive.com/
+- partner_name: MailerLite
+  partner: mailerlite
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/mailerlite
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.mailerlite.com/?utm_source=zapier&utm_medium=partner&utm_campaign=profile&utm_term=learn_more&utm_content=integrations
+- partner_name: ActiveCampaign
+  partner: activecampaign
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/activecampaign
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.activecampaign.com/?utm_source=unpaid_syndication_website&utm_medium=referral&utm_campaign=zapier_listing
+- partner_name: Klaviyo
+  partner: klaviyo
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/klaviyo
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.klaviyo.com/
+- partner_name: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/microsoft-outlook
+  direction: third-party
+  category: Calendar
+  partner_url: https://outlook.live.com/
+- partner_name: Notion
+  partner: notion
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/notion
+  direction: third-party
+  category: Task Management
+  partner_url: https://www.notion.so/
+- partner_name: Instagram for Business
+  partner: instagram
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/instagram-for-business
+  direction: third-party
+  category: Facebook
+  partner_url: https://instagram.com/
+- partner_name: monday.com
+  partner: monday-com
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/monday
+  direction: third-party
+  category: Project Management
+  partner_url: https://monday.com/
+- partner_name: Telegram
+  partner: telegram
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/telegram
+  direction: third-party
+  category: Phone & SMS
+  partner_url: https://telegram.org/
+- partner_name: LeadConnector
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/leadconnector
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.leadconnectorhq.com/
+- partner_name: Memberstack
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/memberstack
+  direction: third-party
+  category: Developer Tools
+  partner_url: https://www.memberstack.com/
+- partner_name: beehiiv
+  partner: beehiiv
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/beehiiv
+  direction: third-party
+  category: Email Newsletters
+  partner_url: http://beehiiv.link/zapier
+- partner_name: Microsoft Excel
+  partner: null
+  partner_match: null
+  partner_candidate: zapier
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/excel
+  direction: third-party
+  category: Microsoft
+  partner_url: https://zapier.com/office.com
+- partner_name: Google Drive
+  partner: google-drive
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/google-drive
+  direction: third-party
+  category: File Management & Storage
+  partner_url: https://www.google.com/drive/
+- partner_name: Attio
+  partner: attio
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/attio
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://attio.com/
+- partner_name: Flodesk
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/flodesk
+  direction: third-party
+  category: Email Newsletters
+  partner_url: https://flodesk.com/
+- partner_name: SendGrid
+  partner: sendgrid
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/sendgrid
+  direction: third-party
+  category: Transactional Email
+  partner_url: https://sendgrid.com/
+- partner_name: Google Calendar
+  partner: google-calendar
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/google-calendar
+  direction: third-party
+  category: Calendar
+  partner_url: https://calendar.google.com/
+- partner_name: Constant Contact
+  partner: constant-contact
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/constant-contact
+  direction: third-party
+  category: Email Newsletters
+  partner_url: http://www.constantcontact.com/signup.jsp?pn=zapier
+- partner_name: Close
+  partner: close
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/close
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.close.com/?utm_source=Partner&utm_medium=Integration_Listing&utm_campaign=2025_Partnerships&utm_content=Home
+- partner_name: ClickUp
+  partner: clickup
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/clickup
+  direction: third-party
+  category: Project Management
+  partner_url: https://clickup.com/zapier
+- partner_name: Google Docs
+  partner: google-docs
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/google-docs
+  direction: third-party
+  category: Documents
+  partner_url: http://google.com/
+- partner_name: Salesforce
+  partner: salesforce
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/webflow/integrations/salesforce
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.salesforce.com/
 templates:
 - title: Send Webflow form data to Google Sheets
   url: https://zapier.com/apps/google-sheets/integrations/webflow/2242/send-webflow-form-data-to-google-sheets
@@ -759,4 +762,4 @@ templates:
   apps:
   - rss
   - webflow
-template_total: 1900
+template_total: 1901
