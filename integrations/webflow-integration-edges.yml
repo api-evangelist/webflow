@@ -20,6 +20,13 @@ checked:
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/webflow/integrations
 - slack/integrations/slack-integration-edges.yml
+- https://appexchange.salesforce.com/explore/business-needs?category=commerce
+- https://commercetools.com/partners
+- https://machalliance.org/members
+- https://marketplace.commercetools.com
+- https://printify.com/integrations/
+- https://www.bigcommerce.com/apps/
+- https://www.printful.com/integrations
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -701,6 +708,38 @@ edges:
   direction: third-party
   category: CRM (Customer Relationship Management)
   partner_url: https://www.salesforce.com/
+- partner_name: MACH Alliance
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://machalliance.org/members/webflow
+  category: composable (MACH) commerce alliance membership
+  contract_reference:
+    register: MACH Alliance members directory (machalliance.org/members)
+    standard: MACH Alliance (Microservices, API-first, Cloud-native SaaS, Headless)
+    spec_file: null
+    role: mach-certified-vendor
+    registered_name: Webflow
+    register_id: webflow
+    register_category: MACH Certified ISVs
+    register_country: US
+    matched_domain: webflow.com
+    matched_by: domain+name-among-holders
+    signal_note: certified_products = ONE entry for the vendor's MACH certification (the Alliance certifies the
+      vendor against the MACH criteria; no per-product list); awards and self-listed partnerships are context, never
+      counted
+    detected_by: sweep-mach-headless-commerce.py
+    detected: '2026-10-20'
+    certified_products:
+    - product: MACH certified ISV
+      product_type: MACH certified ISV
+      certifier: MACH Alliance
+      lapsed: false
+  detected_by: sweep-mach-headless-commerce.py
+  first_seen: '2026-10-20'
 templates:
 - title: Send Webflow form data to Google Sheets
   url: https://zapier.com/apps/google-sheets/integrations/webflow/2242/send-webflow-form-data-to-google-sheets
