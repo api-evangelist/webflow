@@ -43,6 +43,10 @@ checked:
 - https://www.raycast.com/api/v1/store_listings
 - https://api.apis.guru/v2/list.json
 - https://api.apis.guru/v2/providers.json
+- https://ifttt.com/explore/services
+- https://ifttt.com/sitemap_services.xml
+- https://ifttt.com/webflow
+- marketo/integrations/marketo-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -155,23 +159,6 @@ marketplace_apps:
   - key: WEBFLOW_UPDATE_SITE
   - key: WEBFLOW_UPLOAD_ASSET
 edges:
-- partner_name: Slack (own)
-  partner: slack
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://slack.com/marketplace/A0B55QTA7T4-webflow
-  mirror_of: slack/integrations/slack-integration-edges.yml
-  apps:
-  - Webflow
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Slack app
 - partner_name: MCP Registry
   partner: mcp
   partner_match: register
@@ -914,6 +901,67 @@ edges:
     detected: '2026-10-22'
   detected_by: sweep-openapi-directory-apis-guru.py
   first_seen: '2026-10-22'
+- partner_name: IFTTT
+  partner: ifttt
+  partner_match: aggregator
+  type: marketplace
+  marketplace: ifttt-services
+  channel: ipaas-listing
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://ifttt.com/webflow
+  category: null
+  contract_reference:
+    register: IFTTT service directory (ifttt.com/explore/services; ifttt.com/<service>)
+    spec_file: null
+    role: ipaas-connector:ifttt
+    registered_name: Webflow
+    matched_domain: webflow.com
+    matched_by: domain+name-among-holders
+    app_slug: webflow
+    ifttt_category: Website & blog
+    builder: unknown (the service page does not say who built it)
+    detected_by: sweep-ifttt-services.py
+    detected: '2026-10-23'
+    signal_note: one edge per (provider, platform); triggers, actions and applet counts are context, never read
+  detected_by: sweep-ifttt-services.py
+  first_seen: '2026-10-23'
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A0B55QTA7T4-webflow
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Webflow
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
+- partner_name: Marketo (own)
+  partner: marketo
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://exchange.adobe.com/apps/ec/600128
+  mirror_of: marketo/integrations/marketo-integration-edges.yml
+  apps:
+  - Webflow Optimize
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Adobe Exchange Experience Cloud listing (Marketo Engage)
+  publisher_verified:
+  - Adobe Exchange verified listing
 templates:
 - title: Send Webflow form data to Google Sheets
   url: https://zapier.com/apps/google-sheets/integrations/webflow/2242/send-webflow-form-data-to-google-sheets

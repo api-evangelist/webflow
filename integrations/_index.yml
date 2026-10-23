@@ -153,19 +153,6 @@
   relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
-- slug: webflow-slack-own
-  label: Slack (own)
-  partner: slack
-  partner_name: Slack (own)
-  category: Slack app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://slack.com/marketplace/A0B55QTA7T4-webflow
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: webflow-mcp-registry
   label: MCP Registry
   partner: mcp
@@ -805,5 +792,56 @@
       did not file them). Signals: version_count, apis_listed, origin_publisher_hosted.'
     detected_by: sweep-openapi-directory-apis-guru.py
     detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: webflow-ifttt
+  label: IFTTT
+  partner: ifttt
+  partner_name: IFTTT
+  type: marketplace
+  marketplace: ifttt-services
+  channel: ipaas-listing
+  evidence: https://ifttt.com/webflow
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: IFTTT service directory (ifttt.com/explore/services; ifttt.com/<service>)
+    spec_file: null
+    role: ipaas-connector:ifttt
+    registered_name: Webflow
+    matched_domain: webflow.com
+    matched_by: domain+name-among-holders
+    app_slug: webflow
+    ifttt_category: Website & blog
+    builder: unknown (the service page does not say who built it)
+    detected_by: sweep-ifttt-services.py
+    detected: '2026-10-23'
+    signal_note: one edge per (provider, platform); triggers, actions and applet counts are context, never read
+  status: not-a-workflow
+  arazzo: null
+- slug: webflow-slack-own
+  label: Slack (own)
+  partner: slack
+  partner_name: Slack (own)
+  category: Slack app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://slack.com/marketplace/A0B55QTA7T4-webflow
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: webflow-marketo-own
+  label: Marketo (own)
+  partner: marketo
+  partner_name: Marketo (own)
+  category: Adobe Exchange Experience Cloud listing (Marketo Engage)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://exchange.adobe.com/apps/ec/600128
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
